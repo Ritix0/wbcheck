@@ -971,6 +971,470 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    /* Main View Navigation Tabs */
+    .nav-tools-switch {
+      display: inline-flex;
+      background: var(--bg-surface-subtle);
+      padding: 3px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-hairline);
+      gap: 2px;
+    }
+
+    .nav-tab {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .nav-tab:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-tab.active {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .main-view {
+      display: block;
+    }
+
+    .main-view.hidden {
+      display: none;
+    }
+
+    /* Calculator Styles */
+    .calc-wrap {
+      padding-top: 36px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .calc-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 44px;
+    }
+
+    @media (max-width: 860px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .nav-tools-switch {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+      }
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+    }
+
+    .calc-card {
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .calc-card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* Number Quick Buttons */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .chip-btn {
+      padding: 6px 12px;
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .chip-btn:hover {
+      border-color: #cbd5e1;
+      color: var(--text-primary);
+    }
+
+    .chip-btn.active {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: #ffffff;
+    }
+
+    .calc-input-number {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      background: #f8fafc;
+      color: var(--text-primary);
+    }
+
+    .calc-input-number:focus {
+      outline: none;
+      border-color: var(--emerald);
+      background: #ffffff;
+    }
+
+    /* Radio / Toggle Pills */
+    .pill-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background: var(--bg-surface-subtle);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .pill-option {
+      padding: 8px 12px;
+      text-align: center;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .pill-option.active {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-xs);
+    }
+
+    /* Checkbox Card */
+    .checkbox-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-card input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--amber);
+    }
+
+    .checkbox-card-text {
+      font-size: 0.82rem;
+      color: #92400e;
+      line-height: 1.4;
+    }
+
+    .checkbox-card-title {
+      font-weight: 700;
+      color: #78350f;
+    }
+
+    /* Results Card */
+    .results-card {
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stat-hero {
+      background: #f8fafc;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    .stat-hero-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+
+    .stat-hero-value {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--emerald-dark);
+      font-family: var(--font-mono);
+    }
+
+    .stat-hero-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .stat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.85rem;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-row-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .stat-row-val {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .risk-banner {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .risk-banner-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #991b1b;
+      margin-bottom: 2px;
+    }
+
+    .risk-banner-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #b91c1c;
+      font-family: var(--font-mono);
+    }
+
+    .risk-banner-sub {
+      font-size: 0.75rem;
+      color: #7f1d1d;
+      margin-top: 2px;
+    }
+
+    /* Template Message Box */
+    .template-box {
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .template-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .template-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .btn-copy-template {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--emerald-bg);
+      color: var(--emerald-dark);
+      border: 1px solid var(--emerald-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .btn-copy-template:hover {
+      background: #d1fae5;
+      transform: translateY(-1px);
+    }
+
+    .template-text-area {
+      width: 100%;
+      min-height: 120px;
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    /* Conversion CTA Card */
+    .cta-kwork-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-kwork-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      align-self: flex-start;
+    }
+
+    .cta-kwork-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .cta-kwork-desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      max-width: 680px;
+    }
+
+    .btn-kwork-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: var(--transition-fast);
+      align-self: flex-start;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-kwork-primary:hover {
+      background: #059669;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+      color: #ffffff;
+    }
+
   </style>
 
   
@@ -1076,16 +1540,21 @@
       <div class="logo">
         <img src="favicon-32x32.png" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
         <span>WBCheck</span>
-        <span class="logo-version">ТН ВЭД · ПП РФ № 2425</span>
+        <span class="logo-version">Инструменты селлера</span>
       </div>
-      <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank" class="btn-nav">
-        <span>Оформить на Kwork</span>
+      <div class="nav-tools-switch">
+        <button type="button" class="nav-tab active" id="tabBtnTnved" onclick="switchTool('tnved')">🔍 ТН ВЭД Чекер</button>
+        <button type="button" class="nav-tab" id="tabBtnCalc" onclick="switchTool('calc')">⚖️ Калькулятор кражи фото</button>
+      </div>
+      <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank" class="btn-nav" id="navKworkBtn">
+        <span id="navKworkBtnText">Оформить на Kwork</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
       </a>
     </div>
   </header>
 
   <main class="container">
+    <div id="viewTnved" class="main-view">
     
     <!-- Hero & Spotlight Console -->
     <section class="hero">
@@ -1503,6 +1972,195 @@
         <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank">Заказать на бирже Kwork</a>
       </div>
     </footer>
+
+    </div>
+    <!-- /viewTnved -->
+
+    <!-- VIEW: Калькулятор компенсации за кражу фото/инфографики (ст. 1301 ГК РФ) -->
+    <div id="viewCalc" class="main-view hidden">
+      <section class="calc-wrap">
+        
+        <div class="calc-hero">
+          <div class="hero-eyebrow">
+            <span class="status-dot"></span>
+            <span>Правовая защита селлеров · Статьи 1252, 1259, 1300, 1301 ГК РФ</span>
+          </div>
+          <h1 class="hero-title">Калькулятор компенсации за кражу фото и инфографики</h1>
+          <p class="hero-subtitle">Мгновенный расчёт законной суммы компенсации и судебных издержек нарушителя на Wildberries и Ozon с генератором досудебного предупреждения.</p>
+        </div>
+
+        <div class="calc-grid">
+          <!-- Левая колонка: параметры нарушения -->
+          <div class="calc-card">
+            <div class="calc-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              <span>Параметры нарушения</span>
+            </div>
+
+            <!-- 1. Количество слайдов -->
+            <div class="form-group">
+              <label class="form-label" for="calcSlides">Количество украденных слайдов / фото:</label>
+              <div class="chip-group" id="chipGroupSlides">
+                <button type="button" class="chip-btn" data-val="1">1</button>
+                <button type="button" class="chip-btn" data-val="2">2</button>
+                <button type="button" class="chip-btn" data-val="3">3</button>
+                <button type="button" class="chip-btn active" data-val="4">4</button>
+                <button type="button" class="chip-btn" data-val="5">5</button>
+                <button type="button" class="chip-btn" data-val="6">6</button>
+                <button type="button" class="chip-btn" data-val="8">8</button>
+                <button type="button" class="chip-btn" data-val="10">10</button>
+              </div>
+              <input type="number" id="calcSlides" class="calc-input-number" min="1" max="30" value="4">
+              <div class="form-hint">По закону каждое отдельное фото или слайд инфографики — это самостоятельный объект авторского права (п. 59-65 Постановления Пленума ВС РФ № 10).</div>
+            </div>
+
+            <!-- 2. Маркетплейс -->
+            <div class="form-group">
+              <label class="form-label">Где обнаружена карточка-клон?</label>
+              <div class="pill-switch">
+                <button type="button" class="pill-option active" id="btnMpWb" onclick="setCalcMp('wb')">🟣 Wildberries</button>
+                <button type="button" class="pill-option" id="btnMpOzon" onclick="setCalcMp('ozon')">🔵 Ozon</button>
+              </div>
+            </div>
+
+            <!-- 3. Срезание логотипа (ст. 1300 ГК) -->
+            <div class="form-group">
+              <label class="checkbox-card">
+                <input type="checkbox" id="calcStripLogo" onchange="calcRecalculate()">
+                <div class="checkbox-card-text">
+                  <div class="checkbox-card-title">Срезан логотип, водяной знак или бренд (ст. 1300 ГК РФ)</div>
+                  Нарушитель замазал или обрезал плашку автора. Это отдельное правонарушение со штрафом от 10 000 до 5 000 000 ₽ за каждый слайд.
+                </div>
+              </label>
+            </div>
+
+            <!-- 4. Статус нарушителя -->
+            <div class="form-group">
+              <label class="form-label">Статус нарушителя:</label>
+              <div class="pill-switch">
+                <button type="button" class="pill-option active" id="btnStatusIp" onclick="setCalcStatus('ip')">ИП / ООО (Арбитраж)</button>
+                <button type="button" class="pill-option" id="btnStatusSelf" onclick="setCalcStatus('self')">Самозанятый / Физлицо</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: расчёт суммы иска и расходов -->
+          <div class="results-card">
+            <div>
+              <div class="stat-hero">
+                <div class="stat-hero-label">Законная компенсация (ст. 1301 ГК РФ)</div>
+                <div class="stat-hero-value" id="calcStatMin">40 000 ₽</div>
+                <div class="stat-hero-desc" id="calcStatMinDesc">Минимум по закону (10 000 ₽ за каждый украденный слайд)</div>
+              </div>
+
+              <div class="risk-banner">
+                <div class="risk-banner-title">Совокупный финансовый риск нарушителя</div>
+                <div class="risk-banner-val" id="calcStatRisk">до 202 000 ₽</div>
+                <div class="risk-banner-sub">Компенсация + госпошлина + фиксация доказательств + юрист</div>
+              </div>
+
+              <div class="stat-list">
+                <div class="stat-row">
+                  <span class="stat-row-label">Реальный прогноз Арбитражного суда:</span>
+                  <span class="stat-row-val" id="calcStatCourt">60 000 – 140 000 ₽</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-row-label">Судебные расходы (оплатит вор):</span>
+                  <span class="stat-row-val" id="calcStatCosts">~62 000 ₽</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-row-label">Рекомендуемая досудебная выплата (мирно):</span>
+                  <span class="stat-row-val" style="color: var(--emerald-dark);" id="calcStatSettle">30 000 – 40 000 ₽</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-row-label">Регламентный срок блокировки:</span>
+                  <span class="stat-row-val" id="calcStatDeadline">10 дней (WB Арбитраж)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Готовый текст претензии для чата -->
+        <div class="template-box">
+          <div class="template-header">
+            <div class="template-title">Готовое досудебное предупреждение для чата с нарушителем</div>
+            <button type="button" class="btn-copy-template" onclick="copyClaimTemplate()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Скопировать в 1 клик</span>
+            </button>
+          </div>
+          <textarea id="calcClaimText" class="template-text-area" readonly></textarea>
+        </div>
+
+        <!-- Конверсионный блок перехода на Kwork -->
+        <div class="cta-kwork-card">
+          <div class="cta-kwork-badge">Юридическая блокировка карточки-клона</div>
+          <div class="cta-kwork-title">Нарушитель игнорирует сообщения в чате?</div>
+          <div class="cta-kwork-desc">
+            Эмоциональные жалобы поддержка маркетплейса отклоняет как «хозяйственный спор». Чтобы юридический отдел Wildberries или Ozon заблокировал чужую карточку-клон за 24–48 часов по регламенту площадки, требуется официальная мотивированная досудебная претензия со ссылками на ст. 1252, 1259, 1301 ГК РФ и заверенный пакет исходников (RAW, Figma, EXIF).
+          </div>
+          <a href="https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833" target="_blank" class="btn-kwork-primary">
+            <span>Оформить официальную претензию и снос карточки на Kwork (1 000 ₽)</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- FAQ по краже фото -->
+        <div class="faq-wrap">
+          <div class="section-header-clean">
+            <div>
+              <h2 class="section-heading">Частые вопросы по защите авторских прав на WB и Ozon</h2>
+              <p class="section-subheading">Разбор процедур Цифрового арбитража, сбора исходников и взыскания компенсаций</p>
+            </div>
+          </div>
+
+          <div class="faq-accordion">
+            <div class="faq-row">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Какие доказательства авторства требует Wildberries в Цифровом арбитраже?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                Для положительного решения требуется прикрепить: 1) Оригинальные файлы фотокамеры в формате RAW (CR2, NEF, ARW, DNG) либо оригиналы JPEG с полными метаданными EXIF (дата, модель камеры, экспозиция); 2) Исходные макеты инфографики Figma с историей слоев или несведенные PSD; 3) Скриншот из личного кабинета с более ранней датой загрузки; 4) Если привлекался дизайнер — договор авторского заказа и акт приема-передачи.
+              </div>
+            </div>
+
+            <div class="faq-row">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Как работает процедура блокировки на Ozon (Ozon Claim)?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                При подаче мотивированной претензии через форму контроля качества Ozon направляет нарушителю официальный запрос с требованием предоставить документы авторства в течение 3–7 рабочих дней. Если нарушитель не может подтвердить права исходниками, Ozon деактивирует карточку и скрывает ее с витрины маркетплейса.
+              </div>
+            </div>
+
+            <div class="faq-row">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Может ли самозанятый требовать компенсацию по ст. 1301 ГК РФ?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                Да. В соответствии со ст. 1257 и 1259 ГК РФ авторские права принадлежат создателю произведения независимо от его предпринимательского статуса (самозанятый, ИП или физическое лицо). Самозанятый вправе взыскать компенсацию от 10 000 до 5 000 000 ₽ через суд общей юрисдикции.
+              </div>
+            </div>
+
+            <div class="faq-row">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Что делать, если нарушитель удалил фото сразу после получения предупреждения?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                Если вы предварительно зафиксировали факт нарушения (нотариальный протокол или автоматический протокол с хешем времени WEBJUS / ShotApp), удаление фото не освобождает нарушителя от ответственности. Сам факт незаконного использования уже состоялся, и право на компенсацию в суде сохраняется в полном объеме.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+    <!-- /viewCalc -->
 
   </main>
 
@@ -1943,6 +2601,168 @@
 
     let selectedId = 1;
     let activeCategory = 'all';
+
+
+    // --- ПЕРЕКЛЮЧЕНИЕ МЕЖДУ ИНСТРУМЕНТАМИ (ТН ВЭД / КАЛЬКУЛЯТОР ФОТО) ---
+    let currentTool = 'tnved';
+
+    function switchTool(tool) {
+      currentTool = tool;
+      const viewTnved = document.getElementById('viewTnved');
+      const viewCalc = document.getElementById('viewCalc');
+      const tabTnved = document.getElementById('tabBtnTnved');
+      const tabCalc = document.getElementById('tabBtnCalc');
+      const navKwork = document.getElementById('navKworkBtn');
+      const navKworkText = document.getElementById('navKworkBtnText');
+
+      if (tool === 'calc') {
+        viewTnved.classList.add('hidden');
+        viewCalc.classList.remove('hidden');
+        tabTnved.classList.remove('active');
+        tabCalc.classList.add('active');
+        if (navKwork) {
+          navKwork.href = 'https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833';
+          navKworkText.textContent = 'Претензия на Kwork (1 000 ₽)';
+        }
+        window.location.hash = 'photo-calc';
+        calcRecalculate();
+      } else {
+        viewCalc.classList.add('hidden');
+        viewTnved.classList.remove('hidden');
+        tabCalc.classList.remove('active');
+        tabTnved.classList.add('active');
+        if (navKwork) {
+          navKwork.href = 'https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon';
+          navKworkText.textContent = 'Оформить на Kwork';
+        }
+        window.location.hash = '';
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Проверка хэша URL при загрузке
+    if (window.location.hash === '#photo-calc') {
+      setTimeout(() => switchTool('calc'), 50);
+    }
+
+    // --- ЛОГИКА КАЛЬКУЛЯТОРА СТ. 1301 ГК РФ ---
+    let calcMp = 'wb';
+    let calcStatus = 'ip';
+
+    function setCalcMp(mp) {
+      calcMp = mp;
+      document.getElementById('btnMpWb').classList.toggle('active', mp === 'wb');
+      document.getElementById('btnMpOzon').classList.toggle('active', mp === 'ozon');
+      calcRecalculate();
+    }
+
+    function setCalcStatus(st) {
+      calcStatus = st;
+      document.getElementById('btnStatusIp').classList.toggle('active', st === 'ip');
+      document.getElementById('btnStatusSelf').classList.toggle('active', st === 'self');
+      calcRecalculate();
+    }
+
+    // Обработка быстрых чипсов количества слайдов
+    document.getElementById('chipGroupSlides').addEventListener('click', (e) => {
+      const btn = e.target.closest('.chip-btn');
+      if (!btn) return;
+      document.querySelectorAll('#chipGroupSlides .chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('calcSlides').value = btn.dataset.val;
+      calcRecalculate();
+    });
+
+    document.getElementById('calcSlides').addEventListener('input', () => {
+      const val = parseInt(document.getElementById('calcSlides').value) || 1;
+      document.querySelectorAll('#chipGroupSlides .chip-btn').forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.val) === val);
+      });
+      calcRecalculate();
+    });
+
+    function calcRecalculate() {
+      let slides = parseInt(document.getElementById('calcSlides').value) || 1;
+      if (slides < 1) slides = 1;
+      if (slides > 50) slides = 50;
+
+      const isStripLogo = document.getElementById('calcStripLogo').checked;
+
+      // 1. Законный минимум (ст. 1301 + ст. 1300)
+      const baseMin = slides * 10000;
+      const logoMin = isStripLogo ? slides * 10000 : 0;
+      const totalMin = baseMin + logoMin;
+
+      // 2. Реальная судебная практика (15 000 - 35 000 руб за слайд)
+      const courtLow = slides * 15000 + (isStripLogo ? slides * 10000 : 0);
+      const courtHigh = slides * 35000 + (isStripLogo ? slides * 25000 : 0);
+
+      // 3. Судебные расходы
+      // Госпошлина по НК РФ (сентябрь 2024): до 100 000 руб = 10 000 руб; выше 100k = 10 000 + 5%
+      let duty = 10000;
+      if (courtHigh > 100000) {
+        duty += Math.round((courtHigh - 100000) * 0.05);
+      }
+      const fixCost = 12000; // фиксация доказательств
+      const legalCost = calcStatus === 'ip' ? 40000 : 30000; // юрист
+      const totalCosts = duty + fixCost + legalCost;
+
+      // 4. Суммарный финансовый риск нарушителя
+      const totalRisk = courtHigh + totalCosts;
+
+      // 5. Рекомендуемая досудебная выплата (мирно)
+      const settleLow = Math.round(slides * 7500 / 1000) * 1000;
+      const settleHigh = Math.round(slides * 10000 / 1000) * 1000;
+
+      // Вывод в интерфейс
+      document.getElementById('calcStatMin').textContent = totalMin.toLocaleString('ru-RU') + ' ₽';
+      document.getElementById('calcStatMinDesc').textContent = isStripLogo 
+        ? `Законный минимум: ${baseMin.toLocaleString('ru-RU')} ₽ (ст. 1301) + ${logoMin.toLocaleString('ru-RU')} ₽ (ст. 1300 за логотип)`
+        : `Минимум по закону (10 000 ₽ за каждый из ${slides} украденных слайдов)`;
+
+      document.getElementById('calcStatCourt').textContent = `${courtLow.toLocaleString('ru-RU')} – ${courtHigh.toLocaleString('ru-RU')} ₽`;
+      document.getElementById('calcStatCosts').textContent = `~${totalCosts.toLocaleString('ru-RU')} ₽`;
+      document.getElementById('calcStatRisk').textContent = `до ${totalRisk.toLocaleString('ru-RU')} ₽`;
+      document.getElementById('calcStatSettle').textContent = `${settleLow.toLocaleString('ru-RU')} – ${settleHigh.toLocaleString('ru-RU')} ₽`;
+
+      document.getElementById('calcStatDeadline').textContent = calcMp === 'wb' 
+        ? '10 дней (Цифровой арбитраж WB)' 
+        : '3–7 дней (Ozon Claim)';
+
+      // Генерация текста претензии
+      generateClaimText(slides, isStripLogo, totalMin, totalRisk, settleLow, settleHigh);
+    }
+
+    function generateClaimText(slides, isStripLogo, totalMin, totalRisk, settleLow, settleHigh) {
+      const mpName = calcMp === 'wb' ? 'Wildberries' : 'Ozon';
+      const arbName = calcMp === 'wb' ? '«Цифровой арбитраж» Wildberries' : 'службу защиты интеллектуальной собственности Ozon Claim';
+      const courtType = calcStatus === 'ip' ? 'Арбитражный суд' : 'районный суд';
+
+      let text = `Здравствуйте. В вашей карточке товара на ${mpName} (артикул [УКАЖИТЕ АРТИКУЛ НАРУШИТЕЛЯ]) обнаружено незаконное использование ${slides} слайдов/фотографий авторской инфографики нашего бренда.\n\n` +
+        `Указанные изображения созданы нашим творческим трудом и защищены ст. 1252, 1259 и 1301 Гражданского кодекса РФ. Исходные файлы фотосъёмки (RAW/EXIF) и рабочие проекты дизайна (Figma) сохранены.\n\n`;
+
+      if (isStripLogo) {
+        text += `Отягчающее обстоятельство: удаление/срезание информации об авторском праве (логотипа бренда) квалифицируется по ст. 1300 ГК РФ и влечет дополнительный штраф.\n\n`;
+      }
+
+      text += `Законная сумма компенсации составляет от ${totalMin.toLocaleString('ru-RU')} до 5 000 000 ₽. В случае судебного разбирательства взыскиваются судебные издержки (госпошлина, нотариальный протокол, расходы на представителя), что увеличивает финансовый риск нарушителя до ${totalRisk.toLocaleString('ru-RU')} ₽.\n\n` +
+        `ТРЕБОВАНИЯ:\n` +
+        `1. В течение 24 часов полностью удалить спорные слайды/фотографии из карточки товара.\n` +
+        `2. Либо урегулировать спор досудебным мировым соглашением с компенсацией ${settleLow.toLocaleString('ru-RU')} ₽.\n\n` +
+        `При отсутствии ответа в течение 24 часов мы направляем официальную мотивированную жалобу в ${arbName} с требованием принудительной блокировки карточки товара с витрины, а также передаём материалы юристу для подачи иска в ${courtType}.`;
+
+      document.getElementById('calcClaimText').value = text;
+    }
+
+    function copyClaimTemplate() {
+      const text = document.getElementById('calcClaimText').value;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = 'Текст предупреждения скопирован в буфер обмена!';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
 
     // Управление сворачиванием / растушёвкой таблицы реестра
     function toggleTableExpand() {
