@@ -116,18 +116,25 @@
       box-sizing: border-box;
     }
 
+    .nav .container {
+      max-width: 1240px;
+      padding: 0 20px;
+    }
+
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
       width: 100%;
       height: 40px;
+      box-sizing: border-box;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-weight: 700;
       font-size: 0.98rem;
       letter-spacing: -0.01em;
@@ -144,28 +151,6 @@
       border-left: 1px solid var(--border-hairline);
       padding-left: 10px;
       white-space: nowrap;
-    }
-
-    .btn-nav {
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      background: #ffffff;
-      padding: 7px 15px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-hairline);
-      box-shadow: var(--shadow-xs);
-      transition: var(--transition-fast);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-nav:hover {
-      background: #f8fafc;
-      border-color: var(--border-hairline-hover);
-      color: var(--text-primary);
-      box-shadow: var(--shadow-sm);
     }
 
     /* Hero Section */
@@ -1163,8 +1148,8 @@
       display: none;
     }
 
-    /* Ноутбуки и средние экраны (до 1060px): убираем мелкие подписи и сокращаем табы */
-    @media (max-width: 1060px) {
+    /* Адаптивность для средних экранов (ноутбуки до 1180px) */
+    @media (max-width: 1180px) {
       .logo-version {
         display: none;
       }
@@ -1179,13 +1164,13 @@
         font-size: 0.8rem;
       }
       .btn-nav {
-        padding: 0 10px;
+        padding: 0 12px;
         font-size: 0.8rem;
       }
     }
 
-    /* Планшеты и мобильные устройства (до 860px): перенос табов на вторую строку */
-    @media (max-width: 860px) {
+    /* Адаптивность для планшетов и мобильных (до 920px): двухстрочная навигация без коллизий */
+    @media (max-width: 920px) {
       .nav {
         padding: 8px 0;
         min-height: auto;
@@ -1194,12 +1179,16 @@
         flex-wrap: wrap;
         height: auto;
         row-gap: 8px;
+        gap: 8px;
       }
       .logo {
         font-size: 0.95rem;
       }
+      .logo-version {
+        display: none;
+      }
       .btn-nav {
-        font-size: 0.76rem;
+        font-size: 0.78rem;
         height: 32px;
         padding: 0 10px;
       }
@@ -1207,8 +1196,8 @@
         width: 100%;
         order: 3;
         display: flex;
-        height: 38px;
-        padding: 3px;
+        height: 36px;
+        padding: 2px;
         margin-top: 2px;
       }
       .nav-tab {
@@ -1216,6 +1205,9 @@
         height: 32px;
         padding: 0 4px;
         font-size: 0.76rem;
+      }
+      .tab-full {
+        display: none;
       }
       .tab-mid {
         display: none;
@@ -2415,19 +2407,19 @@
         </button>
         <button type="button" class="nav-tab" id="tabBtnCalc" onclick="switchTool('calc')">
           <span>⚖️</span>
-          <span class="tab-full">Калькулятор кражи фото</span>
+          <span class="tab-full">Калькулятор фото</span>
           <span class="tab-mid">Калькулятор</span>
           <span class="tab-short">Калькулятор</span>
         </button>
         <button type="button" class="nav-tab" id="tabBtnLabel" onclick="switchTool('label')">
           <span>🏷️</span>
-          <span class="tab-full">Термоэтикетки 58х40</span>
-          <span class="tab-mid">Этикетки 58х40</span>
-          <span class="tab-short">Этикетки 58х40</span>
+          <span class="tab-full">Этикетки 58х40</span>
+          <span class="tab-mid">Этикетки</span>
+          <span class="tab-short">Этикетки</span>
         </button>
       </div>
       <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-nav" id="navKworkBtn">
-        <span id="navKworkBtnText">Оформить на Kwork</span>
+        <span id="navKworkBtnText">Отказное (1 000 ₽)</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
       </a>
     </div>
@@ -4025,7 +4017,7 @@
         if (tabCalc) tabCalc.classList.add('active');
         if (navKwork) {
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833';
-          navKworkText.textContent = 'Претензия на Kwork (1 000 ₽)';
+          navKworkText.textContent = 'Претензия (1 000 ₽)';
         }
         if (window.location.hash !== '#photo-calc') {
           history.replaceState(null, '', '#photo-calc');
@@ -4036,7 +4028,7 @@
         if (tabLabel) tabLabel.classList.add('active');
         if (navKwork) {
           navKwork.href = 'https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833';
-          navKworkText.textContent = 'Заказать этикетки (1 000 ₽)';
+          navKworkText.textContent = 'Этикетки (1 000 ₽)';
         }
         if (window.location.hash !== '#labels-58x40') {
           history.replaceState(null, '', '#labels-58x40');
@@ -4047,7 +4039,7 @@
         if (tabTnved) tabTnved.classList.add('active');
         if (navKwork) {
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon';
-          navKworkText.textContent = 'Оформить на Kwork';
+          navKworkText.textContent = 'Отказное (1 000 ₽)';
         }
         if (window.location.hash !== '') {
           history.replaceState(null, '', window.location.pathname + window.location.search);
