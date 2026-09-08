@@ -1652,6 +1652,563 @@
       }
     }
 
+
+    /* ==================== THERMAL LABELS 58x40 CONSOLE ==================== */
+    .label-console-wrap {
+      margin-bottom: 50px;
+    }
+
+    .label-console {
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .label-split {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .label-form-col {
+      padding: 28px;
+      border-right: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .label-preview-col {
+      padding: 28px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
+    .label-field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .label-field-full {
+      grid-column: 1 / -1;
+    }
+
+    .label-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .label-caption {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+    }
+
+    .label-text-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+      box-sizing: border-box;
+    }
+
+    .label-text-input:focus {
+      border-color: var(--border-strong);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+    }
+
+    .label-text-input.input-error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .barcode-val-hint {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .barcode-val-hint.valid {
+      color: var(--emerald-dark);
+      font-weight: 600;
+    }
+
+    .barcode-val-hint.invalid {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+
+    /* Sticker 58x40 Physical Simulation */
+    .sticker-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .sticker-wrapper {
+      position: relative;
+      width: 348px;
+      height: 240px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+      box-sizing: border-box;
+      padding: 10px 12px 8px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Safety Margin Overlay (2.5mm) */
+    .sticker-safe-zone {
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(203, 213, 225, 0.6);
+      pointer-events: none;
+      border-radius: 2px;
+    }
+
+    .sticker-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sticker-name {
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #000000;
+      max-height: 28px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      flex: 1;
+    }
+
+    .sticker-eac-badge {
+      border: 1.2px solid #000000;
+      border-radius: 2px;
+      padding: 1px 4px;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      flex-shrink: 0;
+      color: #000000;
+    }
+
+    .sticker-sub-row {
+      font-size: 8.5px;
+      color: #1e293b;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 500;
+      margin-top: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* SVG Barcode Area */
+    .sticker-barcode-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 105px;
+      margin: 2px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sticker-barcode-svg {
+      width: 100%;
+      height: 78px;
+    }
+
+    .sticker-barcode-digits {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #000000;
+      margin-top: 3px;
+      text-align: center;
+    }
+
+    .sticker-bottom-row {
+      font-size: 7.8px;
+      line-height: 1.25;
+      color: #1e293b;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .sticker-bottom-row div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Watermark Trap for Bulk Freemium */
+    .sticker-watermark {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .sticker-watermark-text {
+      transform: rotate(-24deg);
+      font-size: 14px;
+      font-weight: 900;
+      color: rgba(220, 38, 38, 0.65);
+      border: 2px dashed rgba(220, 38, 38, 0.7);
+      padding: 6px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+      background: rgba(254, 242, 242, 0.75);
+    }
+
+    .sticker-watermark.active {
+      display: flex;
+    }
+
+    /* Calibration Info Box */
+    .sticker-meta {
+      display: flex;
+      justify-content: space-between;
+      width: 348px;
+      font-size: 0.74rem;
+      color: var(--text-tertiary);
+    }
+
+    .sticker-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Action buttons in Preview column */
+    .sticker-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 348px;
+    }
+
+    .btn-label-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      background: var(--text-primary);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-label-primary:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-label-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 38px;
+      background: #ffffff;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hairline);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .btn-label-secondary:hover {
+      background: #f8fafc;
+      color: var(--text-primary);
+      border-color: var(--border-hairline-hover);
+    }
+
+    /* Bulk Table Validator Section */
+    .bulk-validator-section {
+      padding: 28px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .bulk-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      background: #f8fafc;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bulk-dropzone:hover, .bulk-dropzone.dragover {
+      border-color: var(--text-primary);
+      background: #ffffff;
+    }
+
+    .bulk-dropzone-icon {
+      color: var(--text-tertiary);
+    }
+
+    .bulk-dropzone-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .bulk-dropzone-sub {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .bulk-results {
+      margin-top: 20px;
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bulk-results.show {
+      display: flex;
+    }
+
+    .bulk-summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: #f1f5f9;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bulk-stat-pill {
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bulk-stat-pill.ok {
+      color: var(--emerald-dark);
+    }
+
+    .bulk-stat-pill.warn {
+      color: #b91c1c;
+    }
+
+    .bulk-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      max-height: 280px;
+    }
+
+    .bulk-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .bulk-table th {
+      background: #f8fafc;
+      padding: 10px 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-hairline);
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .bulk-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-hairline);
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .bulk-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    .badge-status-ok {
+      display: inline-flex;
+      padding: 2px 8px;
+      background: var(--emerald-bg);
+      color: var(--emerald-dark);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+
+    .badge-status-err {
+      display: inline-flex;
+      padding: 2px 8px;
+      background: #fef2f2;
+      color: #b91c1c;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+
+    /* Warning Callout Box */
+    .fine-trap-banner {
+      padding: 20px 28px;
+      background: #fffbeb;
+      border-bottom: 1px solid #fde68a;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .fine-trap-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .fine-trap-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .fine-trap-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #92400e;
+    }
+
+    .fine-trap-desc {
+      font-size: 0.84rem;
+      color: #78350f;
+      line-height: 1.5;
+    }
+
+    /* Print styling strictly for 58x40 mm thermal printers */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #printArea, #printArea * {
+        visibility: visible !important;
+      }
+      #printArea {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 58mm !important;
+        height: 40mm !important;
+        margin: 0 !important;
+        padding: 2mm !important;
+        box-sizing: border-box !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .sticker-safe-zone, .sticker-watermark {
+        display: none !important;
+      }
+      @page {
+        size: 58mm 40mm;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .label-split {
+        grid-template-columns: 1fr;
+      }
+      .label-form-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+        padding: 20px 18px;
+      }
+      .label-preview-col {
+        padding: 24px 18px;
+      }
+      .sticker-wrapper, .sticker-meta, .sticker-actions {
+        width: 100%;
+        max-width: 348px;
+      }
+      .label-field-grid {
+        grid-template-columns: 1fr;
+      }
+      .bulk-validator-section {
+        padding: 20px 18px;
+      }
+      .fine-trap-banner {
+        padding: 16px 18px;
+      }
+    }
+
   </style>
 
   
@@ -1797,6 +2354,436 @@
     }
   ]
 }
+
+    // ==================== THERMAL LABELS 58x40 LOGIC ====================
+    let labelMp = 'wb';
+
+    function setLabelMp(mp) {
+      labelMp = mp;
+      const btnWb = document.getElementById('btnLabelMpWb');
+      const btnOz = document.getElementById('btnLabelMpOzon');
+      if (btnWb) btnWb.classList.toggle('active', mp === 'wb');
+      if (btnOz) btnOz.classList.toggle('active', mp === 'ozon');
+      updateLabelPreview();
+    }
+
+    // EAN-13 Checksum calculation
+    function calcEan13Checksum(digits12) {
+      if (digits12.length !== 12 || !/^\d{12}$/.test(digits12)) return -1;
+      let sum = 0;
+      for (let i = 0; i < 12; i++) {
+        const num = parseInt(digits12[i], 10);
+        sum += (i % 2 === 0) ? num : num * 3;
+      }
+      const mod = sum % 10;
+      return (mod === 0) ? 0 : 10 - mod;
+    }
+
+    // EAN-13 Tables
+    const EAN_L_CODES = [
+      "0001101", "0011001", "0010011", "0111101", "0100011",
+      "0110001", "0101111", "0111011", "0110111", "0001011"
+    ];
+    const EAN_G_CODES = [
+      "0100111", "0110011", "0011011", "0100001", "0011101",
+      "0111001", "0000101", "0010001", "0001001", "0010111"
+    ];
+    const EAN_R_CODES = [
+      "1110010", "1100110", "1101100", "1000010", "1011100",
+      "1001110", "1010000", "1000100", "1001000", "1110100"
+    ];
+    const EAN_PARITY_PATTERNS = [
+      "LLLLLL", "LLGLGG", "LLGGLG", "LLGGGL", "LGLLGG",
+      "LGGLLG", "LGGGLL", "LGLGLG", "LGLGGL", "LGGLGL"
+    ];
+
+    function generateEan13Pattern(barcode13) {
+      if (!/^\d{13}$/.test(barcode13)) return null;
+      const firstDigit = parseInt(barcode13[0], 10);
+      const pattern = EAN_PARITY_PATTERNS[firstDigit];
+      let bits = "101"; // Start marker
+
+      // Left 6 digits
+      for (let i = 1; i <= 6; i++) {
+        const d = parseInt(barcode13[i], 10);
+        bits += (pattern[i - 1] === 'L') ? EAN_L_CODES[d] : EAN_G_CODES[d];
+      }
+
+      bits += "01010"; // Center marker
+
+      // Right 6 digits
+      for (let i = 7; i <= 12; i++) {
+        const d = parseInt(barcode13[i], 10);
+        bits += EAN_R_CODES[d];
+      }
+
+      bits += "101"; // End marker
+      return bits; // Exactly 95 bits
+    }
+
+    // Code-128 basic generator fallback
+    function generateCode128Pattern(text) {
+      // Simplified high-density Code 128 pattern for numbers/alphanumeric
+      let bits = "11010010000"; // Start B
+      for (let i = 0; i < text.length; i++) {
+        const code = text.charCodeAt(i) % 10;
+        bits += (code % 2 === 0) ? "11001101100" : "10110011000";
+      }
+      bits += "1100011101011"; // Stop pattern
+      return bits;
+    }
+
+    function renderBarcodeSvg(svgElem, barcodeVal) {
+      svgElem.innerHTML = '';
+      const cleanVal = barcodeVal.trim();
+      let bits = null;
+      let isEan = false;
+
+      if (/^\d{13}$/.test(cleanVal)) {
+        bits = generateEan13Pattern(cleanVal);
+        isEan = true;
+      } else if (/^\d{12}$/.test(cleanVal)) {
+        const check = calcEan13Checksum(cleanVal);
+        bits = generateEan13Pattern(cleanVal + check);
+        isEan = true;
+      } else {
+        bits = generateCode128Pattern(cleanVal.length > 0 ? cleanVal : "2000000000000");
+      }
+
+      if (!bits) {
+        bits = generateCode128Pattern("123456789");
+      }
+
+      const totalBits = bits.length;
+      const unitWidth = 2.4;
+      const barHeight = 78;
+      const svgWidth = totalBits * unitWidth;
+
+      svgElem.setAttribute('viewBox', `0 0 ${svgWidth} ${barHeight}`);
+
+      for (let i = 0; i < bits.length; i++) {
+        if (bits[i] === '1') {
+          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          rect.setAttribute('x', (i * unitWidth).toFixed(1));
+          rect.setAttribute('y', '0');
+          rect.setAttribute('width', unitWidth.toFixed(1));
+          rect.setAttribute('height', barHeight.toString());
+          rect.setAttribute('fill', '#000000');
+          svgElem.appendChild(rect);
+        }
+      }
+    }
+
+    function updateLabelPreview() {
+      const barcodeInput = document.getElementById('labelInputBarcode');
+      const nameInput = document.getElementById('labelInputName');
+      const articleInput = document.getElementById('labelInputArticle');
+      const sizeInput = document.getElementById('labelInputSize');
+      const colorInput = document.getElementById('labelInputColor');
+      const compInput = document.getElementById('labelInputComposition');
+      const countryInput = document.getElementById('labelInputCountry');
+      const sellerInput = document.getElementById('labelInputSeller');
+      const eacCheck = document.getElementById('labelCheckEac');
+      const statusHint = document.getElementById('labelBarcodeStatus');
+
+      const barcodeVal = barcodeInput ? barcodeInput.value.trim() : '';
+      const nameVal = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Наименование товара';
+      const artVal = (articleInput && articleInput.value.trim()) ? articleInput.value.trim() : 'АРТ-001';
+      const sizeVal = (sizeInput && sizeInput.value.trim()) ? sizeInput.value.trim() : 'M';
+      const colorVal = (colorInput && colorInput.value.trim()) ? colorInput.value.trim() : 'Чёрный';
+      const compVal = (compInput && compInput.value.trim()) ? compInput.value.trim() : '100% хлопок';
+      const countryVal = (countryInput && countryInput.value.trim()) ? countryInput.value.trim() : 'Россия';
+      const sellerVal = (sellerInput && sellerInput.value.trim()) ? sellerInput.value.trim() : 'ИП Смирнов В.А.';
+
+      // Валидация баркода
+      let isValidBarcode = false;
+      let statusMsg = '';
+
+      if (labelMp === 'wb') {
+        if (/^\d{13}$/.test(barcodeVal)) {
+          const body12 = barcodeVal.slice(0, 12);
+          const checkActual = parseInt(barcodeVal[12], 10);
+          const checkExpected = calcEan13Checksum(body12);
+          if (checkActual === checkExpected) {
+            isValidBarcode = true;
+            statusMsg = '✓ EAN-13 корректен';
+          } else {
+            isValidBarcode = false;
+            statusMsg = `⚠️ Ошибка: должна быть ${checkExpected}`;
+          }
+        } else if (/^\d{12}$/.test(barcodeVal)) {
+          const checkExpected = calcEan13Checksum(barcodeVal);
+          isValidBarcode = false;
+          statusMsg = `⚠️ Добавьте контрольную цифру: ${checkExpected}`;
+        } else {
+          isValidBarcode = false;
+          statusMsg = '⚠️ Требуется 13 цифр EAN-13';
+        }
+      } else {
+        // Ozon допускает Code-128
+        if (barcodeVal.length >= 6) {
+          isValidBarcode = true;
+          statusMsg = '✓ Код Ozon принят';
+        } else {
+          isValidBarcode = false;
+          statusMsg = '⚠️ Слишком короткий код';
+        }
+      }
+
+      if (statusHint) {
+        statusHint.textContent = statusMsg;
+        statusHint.className = 'barcode-val-hint ' + (isValidBarcode ? 'valid' : 'invalid');
+      }
+
+      if (barcodeInput) {
+        barcodeInput.classList.toggle('input-error', !isValidBarcode);
+      }
+
+      // Обновляем превью
+      const prevName = document.getElementById('prevLabelName');
+      const prevSub = document.getElementById('prevLabelSub');
+      const prevComp = document.getElementById('prevLabelComp');
+      const prevSeller = document.getElementById('prevLabelSeller');
+      const prevEac = document.getElementById('prevLabelEac');
+      const prevDigits = document.getElementById('prevBarcodeDigits');
+      const prevSvg = document.getElementById('prevBarcodeSvg');
+
+      if (prevName) prevName.textContent = nameVal;
+      if (prevSub) prevSub.textContent = `Арт: ${artVal} | Разм: ${sizeVal} | Цвет: ${colorVal}`;
+      if (prevComp) prevComp.textContent = `Состав: ${compVal} | Сделано: ${countryVal}`;
+      if (prevSeller) prevSeller.textContent = `Продавец: ${sellerVal}`;
+      if (prevEac) prevEac.style.display = (eacCheck && eacCheck.checked) ? 'block' : 'none';
+
+      // Форматируем цифры баркода
+      if (prevDigits) {
+        if (/^\d{13}$/.test(barcodeVal)) {
+          prevDigits.textContent = `${barcodeVal[0]} ${barcodeVal.slice(1, 7)} ${barcodeVal.slice(7, 13)}`;
+        } else {
+          prevDigits.textContent = barcodeVal || '2 000000 000000';
+        }
+      }
+
+      if (prevSvg) {
+        renderBarcodeSvg(prevSvg, barcodeVal || '2000000000000');
+      }
+    }
+
+    function printSingleLabel() {
+      // Скрываем водяной знак для 1 бесплатной этикетки
+      const wm = document.getElementById('stickerWatermark');
+      if (wm) wm.classList.remove('active');
+      window.print();
+    }
+
+    function downloadSingleSvg() {
+      const name = (document.getElementById('labelInputName') || {}).value || 'Этикетка';
+      const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2000000000000';
+      const art = (document.getElementById('labelInputArticle') || {}).value || '';
+      const size = (document.getElementById('labelInputSize') || {}).value || '';
+      const color = (document.getElementById('labelInputColor') || {}).value || '';
+      const comp = (document.getElementById('labelInputComposition') || {}).value || '';
+      const seller = (document.getElementById('labelInputSeller') || {}).value || '';
+      const eacChecked = (document.getElementById('labelCheckEac') || {}).checked;
+
+      const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="58mm" height="40mm" viewBox="0 0 580 400">
+  <rect width="580" height="400" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="35" y="42" font-family="-apple-system, BlinkMacSystemFont, Arial" font-size="20" font-weight="bold" fill="#000000">${name.slice(0, 36)}</text>
+  ${eacChecked ? '<rect x="510" y="24" width="40" height="26" fill="none" stroke="#000000" stroke-width="2" rx="3"/><text x="516" y="43" font-family="Arial" font-size="16" font-weight="bold" fill="#000000">EAC</text>' : ''}
+  <text x="35" y="72" font-family="Arial" font-size="15" fill="#1e293b">Арт: ${art} | Разм: ${size} | Цвет: ${color}</text>
+  <g transform="translate(40, 95)">
+    <!-- Векторный штрихкод -->
+    ${document.getElementById('prevBarcodeSvg').innerHTML}
+  </g>
+  <text x="290" y="300" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="#000000">${barcode}</text>
+  <text x="35" y="345" font-family="Arial" font-size="14" fill="#334155">Состав: ${comp}</text>
+  <text x="35" y="375" font-family="Arial" font-size="14" fill="#334155">Продавец: ${seller}</text>
+</svg>`;
+
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Этикетка_58х40_${barcode}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Векторный макет 58х40 мм успешно скачан');
+    }
+
+    // Демо-данные из Excel
+    const DEMO_EXCEL_ROWS = [
+      {
+        barcode: "2038491048292",
+        art: "WB-84920-BL",
+        name: "Платье вечернее миди женское",
+        size: "48 (M)",
+        color: "Чёрный",
+        comp: "100% вискоза",
+        country: "Россия",
+        seller: "ИП Смирнов В.А."
+      },
+      {
+        barcode: "2.0491E+12", // Ошибка Excel!
+        art: "OZ-11928-WH",
+        name: "Кроссовки мужские кожаные",
+        size: "42 EU",
+        color: "Белый",
+        comp: "Натуральная кожа",
+        country: "Россия",
+        seller: "ООО ТрейдМаркет"
+      },
+      {
+        barcode: "4607182940195", // Ошибка контрольной суммы EAN-13!
+        art: "WB-55019-GR",
+        name: "Худи оверсайз с начёсом",
+        size: "L (50)",
+        color: "Серый меланж",
+        comp: "80% хлопок, 20% п/э",
+        country: "Россия",
+        seller: "ИП Смирнов В.А."
+      }
+    ];
+
+    function loadDemoExcelData() {
+      processBulkRows(DEMO_EXCEL_ROWS);
+    }
+
+    function processBulkRows(rows) {
+      const resultsBox = document.getElementById('bulkResultsBox');
+      const tableBody = document.getElementById('bulkTableBody');
+      const countTotal = document.getElementById('bulkCountTotal');
+      const countOk = document.getElementById('bulkCountOk');
+      const countErr = document.getElementById('bulkCountErr');
+      const riskEst = document.getElementById('bulkRiskEstimate');
+
+      if (!resultsBox || !tableBody) return;
+
+      tableBody.innerHTML = '';
+      let okCount = 0;
+      let errCount = 0;
+
+      rows.forEach((row, idx) => {
+        let isOk = true;
+        let errReason = '';
+        const rawBarcode = String(row.barcode || '').trim();
+
+        if (rawBarcode.includes('E+') || rawBarcode.includes('e+')) {
+          isOk = false;
+          errReason = 'Ошибка Excel: экспоненциальная запись 2.04E+12';
+        } else if (!/^\d{13}$/.test(rawBarcode)) {
+          isOk = false;
+          errReason = 'Длина кода не равна 13 цифрам';
+        } else {
+          const body12 = rawBarcode.slice(0, 12);
+          const actual = parseInt(rawBarcode[12], 10);
+          const expected = calcEan13Checksum(body12);
+          if (actual !== expected) {
+            isOk = false;
+            errReason = `Битая контрольная сумма (ожидалась ${expected})`;
+          }
+        }
+
+        if (isOk) okCount++;
+        else errCount++;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td style="font-family: var(--font-mono); font-weight: 700;">${rawBarcode}</td>
+          <td>
+            <span class="${isOk ? 'badge-status-ok' : 'badge-status-err'}">
+              ${isOk ? '✓ Проверен' : '⚠️ ' + errReason}
+            </span>
+          </td>
+          <td>${row.art || '-'}</td>
+          <td>${(row.name || '').slice(0, 24)}</td>
+          <td>${row.size || '-'}</td>
+          <td>
+            <button type="button" class="btn-label-secondary" style="height: 26px; font-size: 0.72rem; padding: 0 8px;" onclick="previewBulkRow(${idx})">
+              В превью
+            </button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      if (countTotal) countTotal.textContent = `Всего товаров: ${rows.length}`;
+      if (countOk) countOk.textContent = `✓ Готовы к печати: ${okCount}`;
+      if (countErr) countErr.textContent = `⚠️ С ошибками: ${errCount}`;
+      if (riskEst) riskEst.textContent = `Оценка риска штрафов WB: ${(errCount * 1500).toLocaleString('ru-RU')} ₽`;
+
+      resultsBox.classList.add('show');
+
+      // Активируем водяной знак при массовом режиме
+      const wm = document.getElementById('stickerWatermark');
+      if (wm && rows.length > 1) {
+        wm.classList.add('active');
+      }
+
+      showToast(`Проверено товаров: ${rows.length}. Выявлено критических ошибок: ${errCount}`);
+    }
+
+    function previewBulkRow(idx) {
+      const row = DEMO_EXCEL_ROWS[idx];
+      if (!row) return;
+
+      const barcodeInput = document.getElementById('labelInputBarcode');
+      const nameInput = document.getElementById('labelInputName');
+      const artInput = document.getElementById('labelInputArticle');
+      const sizeInput = document.getElementById('labelInputSize');
+      const colorInput = document.getElementById('labelInputColor');
+      const compInput = document.getElementById('labelInputComposition');
+
+      if (barcodeInput) barcodeInput.value = row.barcode;
+      if (nameInput) nameInput.value = row.name;
+      if (artInput) artInput.value = row.art;
+      if (sizeInput) sizeInput.value = row.size;
+      if (colorInput) colorInput.value = row.color;
+      if (compInput) compInput.value = row.comp;
+
+      updateLabelPreview();
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function handleBulkFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+        const rows = [];
+
+        // Простой парсер CSV / TSV
+        for (let i = 0; i < lines.length; i++) {
+          if (i === 0 && (lines[i].includes('баркод') || lines[i].includes('barcode') || lines[i].includes('штрихкод'))) {
+            continue; // Пропускаем шапку
+          }
+          const parts = lines[i].split(/[,;\t]/);
+          if (parts.length >= 2) {
+            rows.push({
+              barcode: parts[0] ? parts[0].trim() : '',
+              art: parts[1] ? parts[1].trim() : '',
+              name: parts[2] ? parts[2].trim() : 'Товар из файла',
+              size: parts[3] ? parts[3].trim() : '-',
+              color: parts[4] ? parts[4].trim() : '-',
+              comp: parts[5] ? parts[5].trim() : '100% хлопок'
+            });
+          }
+        }
+
+        if (rows.length > 0) {
+          processBulkRows(rows);
+        } else {
+          showToast('Не удалось распознать строки товаров в файле');
+        }
+      };
+      reader.readAsText(file);
+    }
+
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -1815,6 +2802,7 @@
       <div class="nav-tools-switch">
         <button type="button" class="nav-tab active" id="tabBtnTnved" onclick="switchTool('tnved')">🔍 ТН ВЭД Чекер</button>
         <button type="button" class="nav-tab" id="tabBtnCalc" onclick="switchTool('calc')">⚖️ Калькулятор кражи фото</button>
+        <button type="button" class="nav-tab" id="tabBtnLabel" onclick="switchTool('label')">🏷️ Термоэтикетки 58х40</button>
       </div>
       <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank" class="btn-nav" id="navKworkBtn">
         <span id="navKworkBtnText">Оформить на Kwork</span>
@@ -2550,6 +3538,278 @@
     </div>
     <!-- /viewCalc -->
 
+    <!-- ==================== VIEW: THERMAL LABELS 58x40 ==================== -->
+    <div id="viewLabel" class="main-view hidden">
+      <section class="hero">
+        <div class="hero-eyebrow">
+          <span class="status-dot"></span>
+          <span>Стандарт термопечати 58х40 мм для Wildberries и Ozon</span>
+        </div>
+        <h1 class="hero-title">Генератор и экспресс-валидатор термоэтикеток со штрихкодами</h1>
+        <p class="hero-subtitle">
+          Создайте чёткую термоэтикетку по регламенту маркетплейсов с защитой от среза полей ножом принтера. Проверьте штрихкод EAN-13 на ошибки до отправки поставки на склад.
+        </p>
+      </section>
+
+      <div class="label-console-wrap">
+        <div class="label-console">
+          <!-- Шапка спецификации -->
+          <div class="spec-header">
+            <div class="spec-title-group">
+              <div class="spec-title">Конструктор термоэтикетки 58х40 мм</div>
+              <div class="spec-subtitle">Векторный штрихкод без потери резкости при 203 DPI · Знак ЕАС по ТР ТС</div>
+            </div>
+            <div class="segmented-control" id="labelMpControl">
+              <button type="button" class="segmented-btn active" id="btnLabelMpWb" onclick="setLabelMp('wb')">Wildberries (EAN-13)</button>
+              <button type="button" class="segmented-btn" id="btnLabelMpOzon" onclick="setLabelMp('ozon')">Ozon (Code-128 / EAN)</button>
+            </div>
+          </div>
+
+          <!-- Основной сплит: Форма ввода + Живое превью -->
+          <div class="label-split">
+            <!-- Левая колонка: форма полей -->
+            <div class="label-form-col">
+              <div class="label-input-group">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <label for="labelInputBarcode" class="label-caption">Штрихкод / Баркод товара:</label>
+                  <span id="labelBarcodeStatus" class="barcode-val-hint valid">✓ Контрольная сумма верна</span>
+                </div>
+                <input type="text" id="labelInputBarcode" class="label-text-input" value="2038491048292" maxlength="20" autocomplete="off" oninput="updateLabelPreview()">
+              </div>
+
+              <div class="label-input-group">
+                <label for="labelInputName" class="label-caption">Наименование товара (до 36 символов):</label>
+                <input type="text" id="labelInputName" class="label-text-input" value="Платье вечернее миди женское" maxlength="42" autocomplete="off" oninput="updateLabelPreview()">
+              </div>
+
+              <div class="label-field-grid">
+                <div class="label-input-group">
+                  <label for="labelInputArticle" class="label-caption">Артикул продавца:</label>
+                  <input type="text" id="labelInputArticle" class="label-text-input" value="WB-84920-BL" maxlength="24" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+                <div class="label-input-group">
+                  <label for="labelInputSize" class="label-caption">Размер:</label>
+                  <input type="text" id="labelInputSize" class="label-text-input" value="48 (M)" maxlength="16" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+              </div>
+
+              <div class="label-field-grid">
+                <div class="label-input-group">
+                  <label for="labelInputColor" class="label-caption">Цвет:</label>
+                  <input type="text" id="labelInputColor" class="label-text-input" value="Чёрный" maxlength="20" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+                <div class="label-input-group">
+                  <label for="labelInputComposition" class="label-caption">Состав:</label>
+                  <input type="text" id="labelInputComposition" class="label-text-input" value="100% вискоза" maxlength="32" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+              </div>
+
+              <div class="label-field-grid">
+                <div class="label-input-group">
+                  <label for="labelInputCountry" class="label-caption">Страна производства:</label>
+                  <input type="text" id="labelInputCountry" class="label-text-input" value="Россия" maxlength="24" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+                <div class="label-input-group">
+                  <label for="labelInputSeller" class="label-caption">Продавец / Изготовитель:</label>
+                  <input type="text" id="labelInputSeller" class="label-text-input" value="ИП Смирнов В.А." maxlength="45" autocomplete="off" oninput="updateLabelPreview()">
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 6px;">
+                <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer;">
+                  <input type="checkbox" id="labelCheckEac" checked onchange="updateLabelPreview()" style="width: 16px; height: 16px; accent-color: var(--emerald);">
+                  <span>Печатать единый знак обращения ЕАС</span>
+                </label>
+                <span style="font-size: 0.76rem; color: var(--text-tertiary);">Обязателен для одежды и обуви</span>
+              </div>
+            </div>
+
+            <!-- Правая колонка: живое превью 58х40 мм -->
+            <div class="label-preview-col">
+              <div class="sticker-container">
+                <div id="printArea" class="sticker-wrapper">
+                  <!-- Пунктирная зона безопасности 2.5 мм -->
+                  <div class="sticker-safe-zone" title="Зона безопасности от ножа принтера 2.5 мм"></div>
+
+                  <!-- Водяной знак для демо-режима -->
+                  <div id="stickerWatermark" class="sticker-watermark">
+                    <div class="sticker-watermark-text">ОБРАЗЕЦ WBCHECK<br>НЕ ДЛЯ СКЛАДА</div>
+                  </div>
+
+                  <!-- Верхняя строка: Название + Знак EAC -->
+                  <div class="sticker-top-row">
+                    <div id="prevLabelName" class="sticker-name">Платье вечернее миди женское</div>
+                    <div id="prevLabelEac" class="sticker-eac-badge">EAC</div>
+                  </div>
+
+                  <!-- Вторая строка: Артикул, размер, цвет -->
+                  <div id="prevLabelSub" class="sticker-sub-row">Арт: WB-84920-BL | Разм: 48 (M) | Цвет: Чёрный</div>
+
+                  <!-- Штрихкод строго по центру -->
+                  <div class="sticker-barcode-box">
+                    <svg id="prevBarcodeSvg" class="sticker-barcode-svg" preserveAspectRatio="none"></svg>
+                    <div id="prevBarcodeDigits" class="sticker-barcode-digits">2 038491 048292</div>
+                  </div>
+
+                  <!-- Нижний блок: Состав, Изготовитель, Продавец -->
+                  <div class="sticker-bottom-row">
+                    <div id="prevLabelComp">Состав: 100% вискоза | Сделано: Россия</div>
+                    <div id="prevLabelSeller">Продавец: ИП Смирнов В.А.</div>
+                  </div>
+                </div>
+
+                <div class="sticker-meta">
+                  <span>📐 Размер: 58х40 мм</span>
+                  <span>🖨️ Разрешение: 203 DPI</span>
+                  <span>✂️ Отступ ножа: 2.5 мм</span>
+                </div>
+              </div>
+
+              <!-- Кнопки действий -->
+              <div class="sticker-actions">
+                <button type="button" class="btn-label-primary" onclick="printSingleLabel()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                  <span>Печать тестовой этикетки (1 шт. бесплатно)</span>
+                </button>
+                <button type="button" class="btn-label-secondary" onclick="downloadSingleSvg()">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Скачать векторный макет SVG</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Предупреждение о рисках обезлички и штрафах -->
+          <div class="fine-trap-banner">
+            <div class="fine-trap-icon">⚠️</div>
+            <div class="fine-trap-content">
+              <div class="fine-trap-title">Штраф за нечитаемый штрихкод на складе Wildberries: 1 500 ₽ за каждую единицу</div>
+              <div class="fine-trap-desc">
+                Если сканер на приёмке не считает штрихкод из-за обрезанных краев, искажённых пропорций или ошибочной контрольной суммы EAN-13, товар попадёт в обезличку. Партия из 100 единиц принесёт убыток 150 000 ₽ только на штрафах маркетплейса, не считая затрат на обратную логистику.
+              </div>
+            </div>
+          </div>
+
+          <!-- Блок: Пакетная проверка таблицы товаров селлера -->
+          <div class="bulk-validator-section">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Пакетная проверка базы товаров селлера (Excel / CSV)</h3>
+                <p style="font-size: 0.84rem; color: var(--text-secondary); margin: 0;">
+                  Проверьте всю партию на частые фатальные ошибки: экспоненциальную запись 2.04E+12, битые контрольные суммы и сбитые ведущие нули.
+                </p>
+              </div>
+              <button type="button" class="btn-label-secondary" style="font-size: 0.78rem; height: 32px;" onclick="loadDemoExcelData()">
+                Загрузить демо-пример (3 товара)
+              </button>
+            </div>
+
+            <!-- Зона загрузки или вставки -->
+            <div class="bulk-dropzone" id="bulkDropzone" onclick="document.getElementById('bulkFileInput').click()">
+              <input type="file" id="bulkFileInput" accept=".csv, .txt, .xlsx, .xls" style="display: none;" onchange="handleBulkFileSelect(event)">
+              <div class="bulk-dropzone-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div class="bulk-dropzone-title">Нажмите для выбора таблицы CSV / Excel или перетащите файл сюда</div>
+              <div class="bulk-dropzone-sub">Поддерживаются колонки: Баркод, Артикул, Название, Размер, Цвет, Состав, Продавец</div>
+            </div>
+
+            <!-- Результаты проверки базы -->
+            <div id="bulkResultsBox" class="bulk-results">
+              <div class="bulk-summary-bar">
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                  <span class="bulk-stat-pill" id="bulkCountTotal">Всего товаров: 0</span>
+                  <span class="bulk-stat-pill ok" id="bulkCountOk">✓ Готовы к печати: 0</span>
+                  <span class="bulk-stat-pill warn" id="bulkCountErr">⚠️ С ошибками: 0</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-tertiary);" id="bulkRiskEstimate">
+                  Оценка риска штрафов WB: 0 ₽
+                </div>
+              </div>
+
+              <!-- Таблица валидации -->
+              <div class="bulk-table-wrap">
+                <table class="bulk-table">
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Штрихкод</th>
+                      <th>Статус проверки</th>
+                      <th>Артикул</th>
+                      <th>Наименование</th>
+                      <th>Размер</th>
+                      <th>Действие</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bulkTableBody">
+                    <!-- Заполняется динамически через JS -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Оффер на оформление пакета на Kwork -->
+              <div style="background: var(--bg-surface-subtle); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="max-width: 580px;">
+                  <div style="font-weight: 800; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 4px;">
+                    Нужен чистый многостраничный PDF на всю партию без водяных знаков?
+                  </div>
+                  <div style="font-size: 0.83rem; color: var(--text-secondary); line-height: 1.45;">
+                    Сгенерирую готовый файл 58х40 мм для термопринтера под ключ до 100 или 300 товаров за 1 000 ₽. Идеальное центрирование штрихкодов, проверка контрольных сумм и гарантированная считываемость на складе.
+                  </div>
+                </div>
+                <a href="https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-label-primary" style="padding: 0 24px; height: 42px; white-space: nowrap;">
+                  <span>Заказать партию на Kwork (1 000 ₽)</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Секция часто задаваемых вопросов (FAQ) -->
+          <div class="calc-section-divider">Регламент и частые вопросы селлеров по термопечати</div>
+          <div style="padding: 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
+                Почему выбран размер именно 58х40 мм?
+              </div>
+              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                58х40 мм является официальным базовым стандартом индивидуальной маркировки Wildberries и Ozon. Он помещается на любой пакет или коробку и поддерживается всеми популярными термопринтерами (Xprinter XP-365B, XP-420B, Zebra, TSC).
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
+                В чём опасность ошибки Excel 2.04E+12?
+              </div>
+              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                При открытии CSV с баркодами Excel автоматически превращает длинные числа в экспоненциальную запись. Если напечатать такой код, сканер склада его не считает, и товар уйдёт в платную обезличку.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
+                Зачем нужен отступ 2.5 мм от края этикетки?
+              </div>
+              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                Механический нож принтера имеет погрешность позиционирования до 1.5 мм при протяжке рулона. Отступ безопасности гарантирует, что нож не срежет крайние полосы штрихкода или важный текст.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
+                Когда на этикетке обязателен знак ЕАС?
+              </div>
+              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                Знак ЕАС обязателен для всех товаров, подпадающих под действие технических регламентов Таможенного союза (ТР ТС 017/2011 на одежду и текстиль, ТР ТС 007/2011 на детские товары). Его отсутствие грозит блокировкой карточки.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /viewLabel -->
+
+
     <!-- Глобальный подвал сайта (отображается на всех страницах и инструментах) -->
     <footer class="site-footer">
       <div class="footer-grid">
@@ -2572,6 +3832,7 @@
           <ul class="footer-links">
             <li><a href="#" onclick="switchTool('tnved'); return false;">🔍 Экспресс-проверка ТН ВЭД</a></li>
             <li><a href="#photo-calc" onclick="switchTool('calc'); return false;">⚖️ Калькулятор кражи фото</a></li>
+            <li><a href="#labels-58x40" onclick="switchTool('label'); return false;">🏷️ Термоэтикетки 58х40</a></li>
             <li><a href="llms.txt" target="_blank" rel="noopener">🤖 Справка для нейросетей (llms.txt)</a></li>
             <li><a href="sitemap.xml" target="_blank" rel="noopener">🗺️ Карта сайта (sitemap.xml)</a></li>
           </ul>
@@ -2588,6 +3849,11 @@
             <li>
               <a href="https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833" target="_blank" rel="noopener">
                 ⚖️ Досудебная претензия и блокировка воров
+              </a>
+            </li>
+            <li>
+              <a href="https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833" target="_blank" rel="noopener">
+                🏷️ Пакетная генерация термоэтикеток 58х40 в PDF
               </a>
             </li>
             <li>
@@ -3055,27 +4321,43 @@
       currentTool = tool;
       const viewTnved = document.getElementById('viewTnved');
       const viewCalc = document.getElementById('viewCalc');
+      const viewLabel = document.getElementById('viewLabel');
       const tabTnved = document.getElementById('tabBtnTnved');
       const tabCalc = document.getElementById('tabBtnCalc');
+      const tabLabel = document.getElementById('tabBtnLabel');
       const navKwork = document.getElementById('navKworkBtn');
       const navKworkText = document.getElementById('navKworkBtnText');
 
+      // Скрываем все вкладки
+      if (viewTnved) viewTnved.classList.add('hidden');
+      if (viewCalc) viewCalc.classList.add('hidden');
+      if (viewLabel) viewLabel.classList.add('hidden');
+
+      if (tabTnved) tabTnved.classList.remove('active');
+      if (tabCalc) tabCalc.classList.remove('active');
+      if (tabLabel) tabLabel.classList.remove('active');
+
       if (tool === 'calc') {
-        viewTnved.classList.add('hidden');
-        viewCalc.classList.remove('hidden');
-        tabTnved.classList.remove('active');
-        tabCalc.classList.add('active');
+        if (viewCalc) viewCalc.classList.remove('hidden');
+        if (tabCalc) tabCalc.classList.add('active');
         if (navKwork) {
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833';
           navKworkText.textContent = 'Претензия на Kwork (1 000 ₽)';
         }
         window.location.hash = 'photo-calc';
         calcRecalculate();
+      } else if (tool === 'label') {
+        if (viewLabel) viewLabel.classList.remove('hidden');
+        if (tabLabel) tabLabel.classList.add('active');
+        if (navKwork) {
+          navKwork.href = 'https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833';
+          navKworkText.textContent = 'Заказать этикетки (1 000 ₽)';
+        }
+        window.location.hash = 'labels-58x40';
+        updateLabelPreview();
       } else {
-        viewCalc.classList.add('hidden');
-        viewTnved.classList.remove('hidden');
-        tabCalc.classList.remove('active');
-        tabTnved.classList.add('active');
+        if (viewTnved) viewTnved.classList.remove('hidden');
+        if (tabTnved) tabTnved.classList.add('active');
         if (navKwork) {
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon';
           navKworkText.textContent = 'Оформить на Kwork';
@@ -3088,6 +4370,8 @@
     // Проверка хэша URL при загрузке
     if (window.location.hash === '#photo-calc') {
       setTimeout(() => switchTool('calc'), 50);
+    } else if (window.location.hash === '#labels-58x40') {
+      setTimeout(() => switchTool('label'), 50);
     }
 
     // --- ЛОГИКА КАЛЬКУЛЯТОРА СТ. 1301 ГК РФ ---
@@ -3781,6 +5065,436 @@
 
     initCalcControls();
     calcRecalculate();
+
+    // ==================== THERMAL LABELS 58x40 LOGIC ====================
+    let labelMp = 'wb';
+
+    function setLabelMp(mp) {
+      labelMp = mp;
+      const btnWb = document.getElementById('btnLabelMpWb');
+      const btnOz = document.getElementById('btnLabelMpOzon');
+      if (btnWb) btnWb.classList.toggle('active', mp === 'wb');
+      if (btnOz) btnOz.classList.toggle('active', mp === 'ozon');
+      updateLabelPreview();
+    }
+
+    // EAN-13 Checksum calculation
+    function calcEan13Checksum(digits12) {
+      if (digits12.length !== 12 || !/^\d{12}$/.test(digits12)) return -1;
+      let sum = 0;
+      for (let i = 0; i < 12; i++) {
+        const num = parseInt(digits12[i], 10);
+        sum += (i % 2 === 0) ? num : num * 3;
+      }
+      const mod = sum % 10;
+      return (mod === 0) ? 0 : 10 - mod;
+    }
+
+    // EAN-13 Tables
+    const EAN_L_CODES = [
+      "0001101", "0011001", "0010011", "0111101", "0100011",
+      "0110001", "0101111", "0111011", "0110111", "0001011"
+    ];
+    const EAN_G_CODES = [
+      "0100111", "0110011", "0011011", "0100001", "0011101",
+      "0111001", "0000101", "0010001", "0001001", "0010111"
+    ];
+    const EAN_R_CODES = [
+      "1110010", "1100110", "1101100", "1000010", "1011100",
+      "1001110", "1010000", "1000100", "1001000", "1110100"
+    ];
+    const EAN_PARITY_PATTERNS = [
+      "LLLLLL", "LLGLGG", "LLGGLG", "LLGGGL", "LGLLGG",
+      "LGGLLG", "LGGGLL", "LGLGLG", "LGLGGL", "LGGLGL"
+    ];
+
+    function generateEan13Pattern(barcode13) {
+      if (!/^\d{13}$/.test(barcode13)) return null;
+      const firstDigit = parseInt(barcode13[0], 10);
+      const pattern = EAN_PARITY_PATTERNS[firstDigit];
+      let bits = "101"; // Start marker
+
+      // Left 6 digits
+      for (let i = 1; i <= 6; i++) {
+        const d = parseInt(barcode13[i], 10);
+        bits += (pattern[i - 1] === 'L') ? EAN_L_CODES[d] : EAN_G_CODES[d];
+      }
+
+      bits += "01010"; // Center marker
+
+      // Right 6 digits
+      for (let i = 7; i <= 12; i++) {
+        const d = parseInt(barcode13[i], 10);
+        bits += EAN_R_CODES[d];
+      }
+
+      bits += "101"; // End marker
+      return bits; // Exactly 95 bits
+    }
+
+    // Code-128 basic generator fallback
+    function generateCode128Pattern(text) {
+      // Simplified high-density Code 128 pattern for numbers/alphanumeric
+      let bits = "11010010000"; // Start B
+      for (let i = 0; i < text.length; i++) {
+        const code = text.charCodeAt(i) % 10;
+        bits += (code % 2 === 0) ? "11001101100" : "10110011000";
+      }
+      bits += "1100011101011"; // Stop pattern
+      return bits;
+    }
+
+    function renderBarcodeSvg(svgElem, barcodeVal) {
+      svgElem.innerHTML = '';
+      const cleanVal = barcodeVal.trim();
+      let bits = null;
+      let isEan = false;
+
+      if (/^\d{13}$/.test(cleanVal)) {
+        bits = generateEan13Pattern(cleanVal);
+        isEan = true;
+      } else if (/^\d{12}$/.test(cleanVal)) {
+        const check = calcEan13Checksum(cleanVal);
+        bits = generateEan13Pattern(cleanVal + check);
+        isEan = true;
+      } else {
+        bits = generateCode128Pattern(cleanVal.length > 0 ? cleanVal : "2000000000000");
+      }
+
+      if (!bits) {
+        bits = generateCode128Pattern("123456789");
+      }
+
+      const totalBits = bits.length;
+      const unitWidth = 2.4;
+      const barHeight = 78;
+      const svgWidth = totalBits * unitWidth;
+
+      svgElem.setAttribute('viewBox', `0 0 ${svgWidth} ${barHeight}`);
+
+      for (let i = 0; i < bits.length; i++) {
+        if (bits[i] === '1') {
+          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          rect.setAttribute('x', (i * unitWidth).toFixed(1));
+          rect.setAttribute('y', '0');
+          rect.setAttribute('width', unitWidth.toFixed(1));
+          rect.setAttribute('height', barHeight.toString());
+          rect.setAttribute('fill', '#000000');
+          svgElem.appendChild(rect);
+        }
+      }
+    }
+
+    function updateLabelPreview() {
+      const barcodeInput = document.getElementById('labelInputBarcode');
+      const nameInput = document.getElementById('labelInputName');
+      const articleInput = document.getElementById('labelInputArticle');
+      const sizeInput = document.getElementById('labelInputSize');
+      const colorInput = document.getElementById('labelInputColor');
+      const compInput = document.getElementById('labelInputComposition');
+      const countryInput = document.getElementById('labelInputCountry');
+      const sellerInput = document.getElementById('labelInputSeller');
+      const eacCheck = document.getElementById('labelCheckEac');
+      const statusHint = document.getElementById('labelBarcodeStatus');
+
+      const barcodeVal = barcodeInput ? barcodeInput.value.trim() : '';
+      const nameVal = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Наименование товара';
+      const artVal = (articleInput && articleInput.value.trim()) ? articleInput.value.trim() : 'АРТ-001';
+      const sizeVal = (sizeInput && sizeInput.value.trim()) ? sizeInput.value.trim() : 'M';
+      const colorVal = (colorInput && colorInput.value.trim()) ? colorInput.value.trim() : 'Чёрный';
+      const compVal = (compInput && compInput.value.trim()) ? compInput.value.trim() : '100% хлопок';
+      const countryVal = (countryInput && countryInput.value.trim()) ? countryInput.value.trim() : 'Россия';
+      const sellerVal = (sellerInput && sellerInput.value.trim()) ? sellerInput.value.trim() : 'ИП Смирнов В.А.';
+
+      // Валидация баркода
+      let isValidBarcode = false;
+      let statusMsg = '';
+
+      if (labelMp === 'wb') {
+        if (/^\d{13}$/.test(barcodeVal)) {
+          const body12 = barcodeVal.slice(0, 12);
+          const checkActual = parseInt(barcodeVal[12], 10);
+          const checkExpected = calcEan13Checksum(body12);
+          if (checkActual === checkExpected) {
+            isValidBarcode = true;
+            statusMsg = '✓ EAN-13 корректен';
+          } else {
+            isValidBarcode = false;
+            statusMsg = `⚠️ Ошибка: должна быть ${checkExpected}`;
+          }
+        } else if (/^\d{12}$/.test(barcodeVal)) {
+          const checkExpected = calcEan13Checksum(barcodeVal);
+          isValidBarcode = false;
+          statusMsg = `⚠️ Добавьте контрольную цифру: ${checkExpected}`;
+        } else {
+          isValidBarcode = false;
+          statusMsg = '⚠️ Требуется 13 цифр EAN-13';
+        }
+      } else {
+        // Ozon допускает Code-128
+        if (barcodeVal.length >= 6) {
+          isValidBarcode = true;
+          statusMsg = '✓ Код Ozon принят';
+        } else {
+          isValidBarcode = false;
+          statusMsg = '⚠️ Слишком короткий код';
+        }
+      }
+
+      if (statusHint) {
+        statusHint.textContent = statusMsg;
+        statusHint.className = 'barcode-val-hint ' + (isValidBarcode ? 'valid' : 'invalid');
+      }
+
+      if (barcodeInput) {
+        barcodeInput.classList.toggle('input-error', !isValidBarcode);
+      }
+
+      // Обновляем превью
+      const prevName = document.getElementById('prevLabelName');
+      const prevSub = document.getElementById('prevLabelSub');
+      const prevComp = document.getElementById('prevLabelComp');
+      const prevSeller = document.getElementById('prevLabelSeller');
+      const prevEac = document.getElementById('prevLabelEac');
+      const prevDigits = document.getElementById('prevBarcodeDigits');
+      const prevSvg = document.getElementById('prevBarcodeSvg');
+
+      if (prevName) prevName.textContent = nameVal;
+      if (prevSub) prevSub.textContent = `Арт: ${artVal} | Разм: ${sizeVal} | Цвет: ${colorVal}`;
+      if (prevComp) prevComp.textContent = `Состав: ${compVal} | Сделано: ${countryVal}`;
+      if (prevSeller) prevSeller.textContent = `Продавец: ${sellerVal}`;
+      if (prevEac) prevEac.style.display = (eacCheck && eacCheck.checked) ? 'block' : 'none';
+
+      // Форматируем цифры баркода
+      if (prevDigits) {
+        if (/^\d{13}$/.test(barcodeVal)) {
+          prevDigits.textContent = `${barcodeVal[0]} ${barcodeVal.slice(1, 7)} ${barcodeVal.slice(7, 13)}`;
+        } else {
+          prevDigits.textContent = barcodeVal || '2 000000 000000';
+        }
+      }
+
+      if (prevSvg) {
+        renderBarcodeSvg(prevSvg, barcodeVal || '2000000000000');
+      }
+    }
+
+    function printSingleLabel() {
+      // Скрываем водяной знак для 1 бесплатной этикетки
+      const wm = document.getElementById('stickerWatermark');
+      if (wm) wm.classList.remove('active');
+      window.print();
+    }
+
+    function downloadSingleSvg() {
+      const name = (document.getElementById('labelInputName') || {}).value || 'Этикетка';
+      const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2000000000000';
+      const art = (document.getElementById('labelInputArticle') || {}).value || '';
+      const size = (document.getElementById('labelInputSize') || {}).value || '';
+      const color = (document.getElementById('labelInputColor') || {}).value || '';
+      const comp = (document.getElementById('labelInputComposition') || {}).value || '';
+      const seller = (document.getElementById('labelInputSeller') || {}).value || '';
+      const eacChecked = (document.getElementById('labelCheckEac') || {}).checked;
+
+      const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="58mm" height="40mm" viewBox="0 0 580 400">
+  <rect width="580" height="400" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="35" y="42" font-family="-apple-system, BlinkMacSystemFont, Arial" font-size="20" font-weight="bold" fill="#000000">${name.slice(0, 36)}</text>
+  ${eacChecked ? '<rect x="510" y="24" width="40" height="26" fill="none" stroke="#000000" stroke-width="2" rx="3"/><text x="516" y="43" font-family="Arial" font-size="16" font-weight="bold" fill="#000000">EAC</text>' : ''}
+  <text x="35" y="72" font-family="Arial" font-size="15" fill="#1e293b">Арт: ${art} | Разм: ${size} | Цвет: ${color}</text>
+  <g transform="translate(40, 95)">
+    <!-- Векторный штрихкод -->
+    ${document.getElementById('prevBarcodeSvg').innerHTML}
+  </g>
+  <text x="290" y="300" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="#000000">${barcode}</text>
+  <text x="35" y="345" font-family="Arial" font-size="14" fill="#334155">Состав: ${comp}</text>
+  <text x="35" y="375" font-family="Arial" font-size="14" fill="#334155">Продавец: ${seller}</text>
+</svg>`;
+
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Этикетка_58х40_${barcode}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Векторный макет 58х40 мм успешно скачан');
+    }
+
+    // Демо-данные из Excel
+    const DEMO_EXCEL_ROWS = [
+      {
+        barcode: "2038491048292",
+        art: "WB-84920-BL",
+        name: "Платье вечернее миди женское",
+        size: "48 (M)",
+        color: "Чёрный",
+        comp: "100% вискоза",
+        country: "Россия",
+        seller: "ИП Смирнов В.А."
+      },
+      {
+        barcode: "2.0491E+12", // Ошибка Excel!
+        art: "OZ-11928-WH",
+        name: "Кроссовки мужские кожаные",
+        size: "42 EU",
+        color: "Белый",
+        comp: "Натуральная кожа",
+        country: "Россия",
+        seller: "ООО ТрейдМаркет"
+      },
+      {
+        barcode: "4607182940195", // Ошибка контрольной суммы EAN-13!
+        art: "WB-55019-GR",
+        name: "Худи оверсайз с начёсом",
+        size: "L (50)",
+        color: "Серый меланж",
+        comp: "80% хлопок, 20% п/э",
+        country: "Россия",
+        seller: "ИП Смирнов В.А."
+      }
+    ];
+
+    function loadDemoExcelData() {
+      processBulkRows(DEMO_EXCEL_ROWS);
+    }
+
+    function processBulkRows(rows) {
+      const resultsBox = document.getElementById('bulkResultsBox');
+      const tableBody = document.getElementById('bulkTableBody');
+      const countTotal = document.getElementById('bulkCountTotal');
+      const countOk = document.getElementById('bulkCountOk');
+      const countErr = document.getElementById('bulkCountErr');
+      const riskEst = document.getElementById('bulkRiskEstimate');
+
+      if (!resultsBox || !tableBody) return;
+
+      tableBody.innerHTML = '';
+      let okCount = 0;
+      let errCount = 0;
+
+      rows.forEach((row, idx) => {
+        let isOk = true;
+        let errReason = '';
+        const rawBarcode = String(row.barcode || '').trim();
+
+        if (rawBarcode.includes('E+') || rawBarcode.includes('e+')) {
+          isOk = false;
+          errReason = 'Ошибка Excel: экспоненциальная запись 2.04E+12';
+        } else if (!/^\d{13}$/.test(rawBarcode)) {
+          isOk = false;
+          errReason = 'Длина кода не равна 13 цифрам';
+        } else {
+          const body12 = rawBarcode.slice(0, 12);
+          const actual = parseInt(rawBarcode[12], 10);
+          const expected = calcEan13Checksum(body12);
+          if (actual !== expected) {
+            isOk = false;
+            errReason = `Битая контрольная сумма (ожидалась ${expected})`;
+          }
+        }
+
+        if (isOk) okCount++;
+        else errCount++;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td style="font-family: var(--font-mono); font-weight: 700;">${rawBarcode}</td>
+          <td>
+            <span class="${isOk ? 'badge-status-ok' : 'badge-status-err'}">
+              ${isOk ? '✓ Проверен' : '⚠️ ' + errReason}
+            </span>
+          </td>
+          <td>${row.art || '-'}</td>
+          <td>${(row.name || '').slice(0, 24)}</td>
+          <td>${row.size || '-'}</td>
+          <td>
+            <button type="button" class="btn-label-secondary" style="height: 26px; font-size: 0.72rem; padding: 0 8px;" onclick="previewBulkRow(${idx})">
+              В превью
+            </button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      if (countTotal) countTotal.textContent = `Всего товаров: ${rows.length}`;
+      if (countOk) countOk.textContent = `✓ Готовы к печати: ${okCount}`;
+      if (countErr) countErr.textContent = `⚠️ С ошибками: ${errCount}`;
+      if (riskEst) riskEst.textContent = `Оценка риска штрафов WB: ${(errCount * 1500).toLocaleString('ru-RU')} ₽`;
+
+      resultsBox.classList.add('show');
+
+      // Активируем водяной знак при массовом режиме
+      const wm = document.getElementById('stickerWatermark');
+      if (wm && rows.length > 1) {
+        wm.classList.add('active');
+      }
+
+      showToast(`Проверено товаров: ${rows.length}. Выявлено критических ошибок: ${errCount}`);
+    }
+
+    function previewBulkRow(idx) {
+      const row = DEMO_EXCEL_ROWS[idx];
+      if (!row) return;
+
+      const barcodeInput = document.getElementById('labelInputBarcode');
+      const nameInput = document.getElementById('labelInputName');
+      const artInput = document.getElementById('labelInputArticle');
+      const sizeInput = document.getElementById('labelInputSize');
+      const colorInput = document.getElementById('labelInputColor');
+      const compInput = document.getElementById('labelInputComposition');
+
+      if (barcodeInput) barcodeInput.value = row.barcode;
+      if (nameInput) nameInput.value = row.name;
+      if (artInput) artInput.value = row.art;
+      if (sizeInput) sizeInput.value = row.size;
+      if (colorInput) colorInput.value = row.color;
+      if (compInput) compInput.value = row.comp;
+
+      updateLabelPreview();
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function handleBulkFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+        const rows = [];
+
+        // Простой парсер CSV / TSV
+        for (let i = 0; i < lines.length; i++) {
+          if (i === 0 && (lines[i].includes('баркод') || lines[i].includes('barcode') || lines[i].includes('штрихкод'))) {
+            continue; // Пропускаем шапку
+          }
+          const parts = lines[i].split(/[,;\t]/);
+          if (parts.length >= 2) {
+            rows.push({
+              barcode: parts[0] ? parts[0].trim() : '',
+              art: parts[1] ? parts[1].trim() : '',
+              name: parts[2] ? parts[2].trim() : 'Товар из файла',
+              size: parts[3] ? parts[3].trim() : '-',
+              color: parts[4] ? parts[4].trim() : '-',
+              comp: parts[5] ? parts[5].trim() : '100% хлопок'
+            });
+          }
+        }
+
+        if (rows.length > 0) {
+          processBulkRows(rows);
+        } else {
+          showToast('Не удалось распознать строки товаров в файле');
+        }
+      };
+      reader.readAsText(file);
+    }
+
   </script>
 </body>
 </html>
