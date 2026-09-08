@@ -1339,12 +1339,14 @@
     /* Flat Segmented Button */
     .segmented-control {
       display: inline-flex;
+      align-self: flex-start;
+      width: fit-content;
       background: var(--bg-surface-subtle);
       padding: 3px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-hairline);
-      gap: 2px;
-      max-width: 420px;
+      gap: 3px;
+      box-sizing: border-box;
     }
 
     .segmented-btn {
@@ -1359,6 +1361,12 @@
       transition: var(--transition-fast);
       font-family: inherit;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-sizing: border-box;
+      line-height: 1.4;
     }
 
     .segmented-btn:hover {
@@ -1368,7 +1376,7 @@
     .segmented-btn.active {
       background: #ffffff;
       color: var(--text-primary);
-      box-shadow: var(--shadow-xs);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
       font-weight: 700;
     }
 
@@ -1556,12 +1564,15 @@
     }
 
     .claim-segmented {
-      height: 38px;
+      display: inline-flex;
+      align-self: flex-start;
+      width: fit-content;
+      max-width: 100%;
     }
 
-    .claim-segmented .segment-btn {
-      padding: 0 14px;
-      font-size: 0.8rem;
+    .claim-segmented .segmented-btn {
+      padding: 8px 14px;
+      font-size: 0.82rem;
     }
 
     .claim-textarea {
@@ -1628,6 +1639,17 @@
       .claim-textarea {
         padding: 14px 16px;
       }
+      .claim-segmented {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+      }
+      .claim-segmented .segmented-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 4px;
+        font-size: 0.78rem;
+      }
     }
 
   </style>
@@ -1638,7 +1660,7 @@
   <meta name="author" content="Юридический консалтинг и сертификация для селлеров маркетплейсов">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Open Graph / Facebook / Telegram / WhatsApp -->
+  <!-- Open Graph / Telegram / Social -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://wbcheck.ru/">
@@ -2425,24 +2447,27 @@
               <div class="claim-config-field">
                 <label class="claim-field-label">Цель и стратегия досудебного требования:</label>
                 <div class="segmented-control claim-segmented" id="claimGoalControl">
-                  <button type="button" class="segment-btn active" id="btnGoalSettle" onclick="setClaimGoal('settle')">Мировое (удаление + выплата)</button>
-                  <button type="button" class="segment-btn" id="btnGoalUltimatum" onclick="setClaimGoal('ultimatum')">Ультиматум (удаление за 24 ч)</button>
-                  <button type="button" class="segment-btn" id="btnGoalLicense" onclick="setClaimGoal('license')">Выкуп лицензии</button>
+                  <button type="button" class="segmented-btn active" id="btnGoalSettle" onclick="setClaimGoal('settle')">Мировое</button>
+                  <button type="button" class="segmented-btn" id="btnGoalUltimatum" onclick="setClaimGoal('ultimatum')">Ультиматум</button>
+                  <button type="button" class="segmented-btn" id="btnGoalLicense" onclick="setClaimGoal('license')">Лицензия</button>
+                </div>
+                <div class="stat-desc" id="claimGoalDesc" style="margin-top: 4px; font-size: 0.78rem;">
+                  Мировое соглашение: удаление фото из карточки и досудебная компенсация.
                 </div>
               </div>
               <div class="claim-config-field claim-config-field-sm">
                 <label class="claim-field-label">Срок на ответ нарушителя:</label>
                 <div class="segmented-control claim-segmented" id="claimDeadlineControl">
-                  <button type="button" class="segment-btn active" id="btnDeadline24" onclick="setClaimDeadline(24)">24 часа</button>
-                  <button type="button" class="segment-btn" id="btnDeadline48" onclick="setClaimDeadline(48)">48 часов</button>
+                  <button type="button" class="segmented-btn active" id="btnDeadline24" onclick="setClaimDeadline(24)">24 часа</button>
+                  <button type="button" class="segmented-btn" id="btnDeadline48" onclick="setClaimDeadline(48)">48 часов</button>
                 </div>
               </div>
             </div>
 
             <div class="claim-config-row">
               <div class="claim-config-field" style="width: 100%;">
-                <label for="claimContacts" class="claim-field-label">Ваш контакт для связи в чате (Telegram / WhatsApp / телефон):</label>
-                <input type="text" id="claimContacts" class="claim-config-input" placeholder="Например: Telegram @seller_pro или WhatsApp +7 (999) 000-00-00" autocomplete="off">
+                <label for="claimContacts" class="claim-field-label">Ваш контакт для связи в чате (телефон, Email или Telegram):</label>
+                <input type="text" id="claimContacts" class="claim-config-input" placeholder="Например: +7 (999) 000-00-00, pretenziya@seller.ru или Telegram @seller_law" autocomplete="off">
               </div>
             </div>
           </div>
@@ -3236,6 +3261,12 @@
         const btn = document.getElementById(id);
         if (btn) btn.classList.toggle('active', g === goal);
       });
+      const desc = document.getElementById('claimGoalDesc');
+      if (desc) {
+        if (goal === 'settle') desc.textContent = 'Мировое соглашение: удаление фото из карточки и досудебная компенсация.';
+        else if (goal === 'ultimatum') desc.textContent = 'Ультиматум: требование удалить ворованные фото за 24 ч без выкупа, иначе жалоба в арбитраж и суд.';
+        else if (goal === 'license') desc.textContent = 'Лицензия: официальное предложение выкупить права на использование инфографики.';
+      }
       calcRecalculate();
     }
 
@@ -3263,7 +3294,7 @@
       const origSku = (origInput && origInput.value.trim()) ? origInput.value.trim() : '[УКАЖИТЕ ВАШ ОРИГИНАЛЬНЫЙ АРТИКУЛ]';
 
       const contactsInput = document.getElementById('claimContacts');
-      const contacts = (contactsInput && contactsInput.value.trim()) ? contactsInput.value.trim() : 'ответьте в этот чат продавца';
+      const contacts = (contactsInput && contactsInput.value.trim()) ? contactsInput.value.trim() : 'ответьте в этот чат продавца либо направьте ответ на официальный email правообладателя';
 
       let title = 'ДОСУДЕБНОЕ ПРЕДУПРЕЖДЕНИЕ О НАРУШЕНИИ АВТОРСКИХ ПРАВ';
       if (claimGoal === 'ultimatum') {
