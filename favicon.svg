@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Shield with Emerald Accent -->
+  <path d="M32 4L10 13.6V29.2C10 43.2 19.4 55.6 32 60C44.6 55.6 54 43.2 54 29.2V13.6L32 4Z" fill="#0f172a" stroke="#059669" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Checkmark -->
+  <path d="M21 31L28 38L43 23" stroke="#10b981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Small Code Accent -->
+  <path d="M16 26L13 29L16 32" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  <path d="M48 26L51 29L48 32" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+</svg>

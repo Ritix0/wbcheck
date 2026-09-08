@@ -1,0 +1,23 @@
+# robots.txt for TN VED Express Checker
+User-agent: *
+Allow: /
+
+# AI Search & LLM Crawlers (GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block mass raw training crawlers if needed
+User-agent: CCBot
+Disallow: /

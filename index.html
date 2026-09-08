@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WBCheck.ru — Экспресс-поисковик ТН ВЭД: Отказное письмо или Сертификат для Wildberries и Ozon</title>
+  <meta name="description" content="Бесплатная мгновенная проверка товаров по кодам ТН ВЭД и Постановлению Правительства № 2425. Узнайте за 1 секунду, нужен ли сертификат на товар или достаточно отказного письма.">
+
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+      /* Fresh, Crisp Light Theme Surfaces */
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-subtle: #f1f5f9;
+      --bg-surface-hover: #f8fafc;
+      --bg-surface-active: #e2e8f0;
+
+      /* Borders & Dividers */
+      --border-hairline: #e2e8f0;
+      --border-hairline-hover: #cbd5e1;
+      --border-strong: #0f172a;
+
+      /* Slate & Graphite Typography */
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #64748b;
+      --text-muted: #94a3b8;
+
+      /* Fresh Emerald Accents (No Certificate Needed) */
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --emerald-bg: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+
+      /* Amber Warnings (Moderation Traps) */
+      --amber: #d97706;
+      --amber-dark: #92400e;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-pill: 9999px;
+
+      --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.08), 0 6px 12px -4px rgba(15, 23, 42, 0.04);
+
+      --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--text-primary);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(5, 150, 105, 0.05) 0%, transparent 600px),
+        radial-gradient(circle at 85% 180px, rgba(15, 23, 42, 0.02) 0%, transparent 500px);
+      background-repeat: no-repeat;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Навигация */
+    .nav {
+      height: 60px;
+      border-bottom: 1px solid var(--border-hairline);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .logo-version {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      border-left: 1px solid var(--border-hairline);
+      padding-left: 10px;
+    }
+
+    .btn-nav {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: #ffffff;
+      padding: 7px 15px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-nav:hover {
+      background: #f8fafc;
+      border-color: var(--border-hairline-hover);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 52px 0 28px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-xs);
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 6px var(--emerald);
+      animation: pulse-dot 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.8vw, 2.9rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.16;
+      max-width: 880px;
+      margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.55;
+      margin-bottom: 30px;
+    }
+
+    /* Spotlight Search Console */
+    .search-console {
+      max-width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 0 18px;
+      height: 56px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-fast);
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: var(--border-strong);
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08), 0 8px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .search-icon {
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      margin-right: 12px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .search-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+    }
+
+    .btn-clear:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-subtle);
+    }
+
+    .kbd-hint {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      border: 1px solid #cbd5e1;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #f8fafc;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    /* Minimal Category Filter Tabs */
+    .quick-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      font-size: 0.83rem;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition-fast);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: #f8fafc;
+      border-color: var(--border-hairline-hover);
+    }
+
+    .tab-btn.active {
+      color: #ffffff;
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Inspection Spec View (Top Result) */
+    .inspection-wrap {
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 36px;
+      margin-top: 28px;
+    }
+
+    .inspection-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--emerald-dark);
+      background: var(--emerald-bg);
+      border: 1px solid var(--emerald-border);
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      transition: var(--transition-fast);
+    }
+
+    .status-pill.status-amber {
+      color: var(--amber-dark);
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+    }
+
+    .status-pill.status-amber .status-dot {
+      background: var(--amber);
+      box-shadow: 0 0 6px var(--amber);
+    }
+
+    .inspection-category {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    .inspection-title {
+      font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+
+    /* Data Grid (Seamless Horizontal Spec Rows) */
+    .spec-grid {
+      border-top: 1px solid var(--border-hairline);
+      margin-bottom: 26px;
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-hairline);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .logo-version {
+        display: none;
+      }
+      .btn-nav {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .hero {
+        padding: 36px 0 20px;
+      }
+      .hero-title {
+        font-size: 1.85rem;
+      }
+      .hero-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 24px;
+      }
+      .search-input-wrap {
+        height: 50px;
+        padding: 0 14px;
+      }
+      .search-input {
+        font-size: 0.95rem;
+      }
+      .kbd-hint {
+        display: none;
+      }
+      .spec-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 12px 0;
+      }
+      .btn-copy-ghost {
+        width: fit-content;
+      }
+      .action-dock {
+        padding: 20px;
+      }
+      .btn-dock-action {
+        width: 100%;
+        justify-content: center;
+      }
+      .directory-table {
+        min-width: 650px;
+      }
+    }
+
+    .spec-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+    }
+
+    .spec-val {
+      font-family: var(--font-mono);
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .spec-desc {
+      grid-column: 2 / -1;
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .spec-desc {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .btn-copy-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 6px 12px;
+      min-height: 36px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .btn-copy-ghost:hover {
+      background: #f8fafc;
+      color: var(--text-primary);
+      border-color: var(--border-hairline-hover);
+    }
+
+    /* Editorial Warning / Law Notes */
+    .editorial-note {
+      display: flex;
+      gap: 12px;
+      padding: 16px 18px;
+      border-left: 3px solid #f59e0b;
+      background: var(--amber-bg);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 26px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .editorial-note svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--amber);
+    }
+
+    .editorial-note strong {
+      color: var(--amber-dark);
+      font-weight: 700;
+    }
+
+    .editorial-note p {
+      color: #78350f;
+      margin-top: 2px;
+    }
+
+    /* Action Dock Bar (Lead Magnet to Kwork) */
+    .action-dock {
+      padding: 24px 28px;
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-top: 2px solid var(--emerald);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .action-dock-info {
+      max-width: 600px;
+    }
+
+    .action-dock-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .action-dock-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .btn-dock-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text-primary);
+      color: #ffffff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      min-height: 46px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+      white-space: nowrap;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+    }
+
+    .btn-dock-action:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.22);
+      color: #ffffff;
+    }
+
+    .btn-reset-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-hairline);
+      padding: 8px 16px;
+      min-height: 40px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .btn-reset-ghost:hover {
+      color: var(--text-primary);
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    /* Section Headings */
+    .section-header-clean {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-heading {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+    }
+
+    .section-subheading {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .registry-count {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      background: var(--bg-surface-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Interactive Directory Table */
+    .directory-wrap {
+      margin-top: 64px;
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 44px;
+    }
+
+    .directory-table-container {
+      width: 100%;
+      overflow-x: auto;
+      background: #ffffff;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .directory-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .directory-table th {
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      padding: 12px 18px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-hairline);
+      font-weight: 700;
+    }
+
+    .directory-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .directory-row:last-child {
+      border-bottom: none;
+    }
+
+    .directory-row:hover {
+      background: #f8fafc;
+    }
+
+    .directory-row.selected {
+      background: #f0fdf4;
+    }
+
+    .cell-name {
+      padding: 14px 18px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cell-code {
+      padding: 14px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .cell-code span {
+      background: #f1f5f9;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cell-cat {
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .cell-status {
+      padding: 14px 18px;
+      text-align: right;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--emerald-dark);
+      white-space: nowrap;
+    }
+
+    /* 4-Column Pitfalls Layout */
+    .pitfalls-wrap {
+      margin-top: 64px;
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 44px;
+    }
+
+    .pitfalls-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .pitfalls-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .pitfalls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pitfall-item {
+      border-top: 2px solid var(--border-hairline);
+      padding-top: 18px;
+    }
+
+    .pitfall-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--emerald);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .pitfall-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    .pitfall-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FAQ Typographic Rows */
+    .faq-wrap {
+      margin-top: 64px;
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 44px;
+    }
+
+    .faq-accordion {
+      margin-top: 16px;
+    }
+
+    .faq-row {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      transition: color 0.15s ease;
+    }
+
+    .faq-trigger:hover {
+      color: var(--emerald-dark);
+    }
+
+    .faq-icon {
+      transition: transform 0.2s ease, color 0.2s ease;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-left: 16px;
+    }
+
+    .faq-row.open .faq-icon {
+      transform: rotate(45deg);
+      color: var(--emerald);
+    }
+
+    .faq-content {
+      display: none;
+      padding-bottom: 20px;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .faq-row.open .faq-content {
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 70px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer a {
+      color: var(--text-primary);
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+
+    .footer a:hover {
+      color: var(--emerald);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text-primary);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.85rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+
+  
+  <!-- SEO & OpenGraph Meta Tags -->
+  <meta name="keywords" content="отказное письмо wildberries, отказное письмо ozon, коды тн вэд отказное письмо, постановление 2425, нужен ли сертификат для вайлдберриз, сертификация товаров маркетплейсы, проверить тн вэд">
+  <meta name="author" content="Юрист по маркетплейсам и сертификации">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Экспресс-поисковик ТН ВЭД: Отказное письмо или Сертификат для Wildberries и Ozon">
+  <meta property="og:description" content="Бесплатная мгновенная проверка товаров по кодам ТН ВЭД ЕАЭС и Постановлению № 2425. База проверенных товаров без сертификата.">
+  <meta property="og:site_name" content="ТН ВЭД Чекер">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Экспресс-поисковик ТН ВЭД: Отказное письмо или Сертификат">
+  <meta name="twitter:description" content="Бесплатная мгновенная проверка товаров по кодам ТН ВЭД для Wildberries и Ozon.">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon#webapp",
+      "name": "Экспресс-поисковик ТН ВЭД: Отказное письмо или Сертификат для Wildberries и Ozon",
+      "url": "https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Бесплатная мгновенная проверка товаров по кодам ТН ВЭД ЕАЭС и Постановлению Правительства РФ № 2425. Определение необходимости сертификата соответствия, декларации или отказного письма для маркетплейсов.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Правовой консалтинг и сертификация для селлеров маркетплейсов",
+        "url": "https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Может ли самозанятый оформить отказное письмо?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Самозанятые граждане имеют законное право продавать товары собственного производства (декор, свечи, бижутерия, сувениры) на маркетплейсах с отказным письмом, если эта продукция не подлежит обязательной сертификации."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой срок действия у отказного информационного письма?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Отказное письмо бессрочно. Оно действует до момента внесения изменений в Постановление Правительства № 2425 или принятия нового технического регламента Таможенного союза на соответствующую категорию."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что отвечать покупателю в отзывах, если он требует сертификат?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Официально сообщите, что продукция не подлежит обязательной оценке соответствия согласно ПП РФ № 2425, и укажите номер и дату вашего зарегистрированного на маркетплейсе отказного письма."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как прикрепить отказное письмо в кабинетах Wildberries и Ozon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На Wildberries: раздел «Товары» -> «Документы» -> «Добавить документ» (тип «Отказное письмо») и привязать к карточке. На Ozon: раздел «Товары и цены» -> «Сертификаты» -> «Добавить сертификат» (тип «Отказное письмо») и привязать нужные SKU."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- Навигация -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <img src="favicon-32x32.png" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
+        <span>WBCheck</span>
+        <span class="logo-version">ТН ВЭД · ПП РФ № 2425</span>
+      </div>
+      <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank" class="btn-nav">
+        <span>Оформить на Kwork</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero & Spotlight Console -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span class="status-dot"></span>
+        <span>Экспресс-проверка товаров для Wildberries и Ozon</span>
+      </div>
+      <h1 class="hero-title">Нужен ли сертификат или достаточно отказного письма?</h1>
+      <p class="hero-subtitle">Мгновенный поиск по кодам ТН ВЭД ЕАЭС, Постановлению № 2425 и техническим регламентам. Без звонков менеджеров и скрытых оплат.</p>
+
+      <div class="search-console">
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Введите товар или код ТН ВЭД (нажмите / для поиска)..." autocomplete="off" aria-label="Поиск товара или кода ТН ВЭД">
+          <div class="search-actions">
+            <button id="searchClear" class="btn-clear" aria-label="Очистить поиск" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <kbd class="kbd-hint">/</kbd>
+          </div>
+        </div>
+
+        <div class="quick-tabs" id="quickTabs" role="tablist" aria-label="Фильтр по категориям">
+          <button type="button" class="tab-btn active" data-category="all" role="tab" aria-selected="true">Все категории (30)</button>
+          <button type="button" class="tab-btn" data-category="Дом, декор и подарки" role="tab" aria-selected="false">Дом и декор (8)</button>
+          <button type="button" class="tab-btn" data-category="Украшения и аксессуары" role="tab" aria-selected="false">Украшения и аксессуары (5)</button>
+          <button type="button" class="tab-btn" data-category="Чехлы и электроника" role="tab" aria-selected="false">Чехлы и электроника (4)</button>
+          <button type="button" class="tab-btn" data-category="Зоотовары" role="tab" aria-selected="false">Зоотовары (3)</button>
+          <button type="button" class="tab-btn" data-category="Красота и уход" role="tab" aria-selected="false">Красота и уход (3)</button>
+          <button type="button" class="tab-btn" data-category="Творчество и рукоделие" role="tab" aria-selected="false">Творчество (3)</button>
+          <button type="button" class="tab-btn" data-category="Канцелярия" role="tab" aria-selected="false">Канцелярия (1)</button>
+          <button type="button" class="tab-btn" data-category="Дом, кухня и быт" role="tab" aria-selected="false">Кухня и быт (2)</button>
+          <button type="button" class="tab-btn" data-category="Дача и сад" role="tab" aria-selected="false">Дача и сад (1)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Инспекционная спецификация (Data Grid) -->
+    <section class="inspection-wrap" id="inspectionSection" aria-live="polite">
+      <div class="inspection-status-bar">
+        <div class="status-pill" id="statusPill">
+          <span class="status-dot"></span>
+          <span id="statusText">СЕРТИФИКАТ НЕ ТРЕБУЕТСЯ · ОТКАЗНОЕ ПИСЬМО</span>
+        </div>
+        <div class="inspection-category" id="resCategory">Категория: Аксессуары и украшения</div>
+      </div>
+
+      <h2 class="inspection-title" id="resTitle">Бижутерия для взрослых (кольца, серьги, браслеты, колье)</h2>
+
+      <!-- Спецификация кодов -->
+      <div class="spec-grid">
+        <div class="spec-row">
+          <span class="spec-label">Код ТН ВЭД ЕАЭС</span>
+          <span class="spec-val" id="resTnved">7117 19 000 0</span>
+          <button class="btn-copy-ghost" onclick="copyValue('resTnved')" aria-label="Скопировать код ТН ВЭД">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Копировать</span>
+          </button>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Код ОКПД 2</span>
+          <span class="spec-val" id="resOkpd2">32.13.10.000</span>
+          <button class="btn-copy-ghost" onclick="copyValue('resOkpd2')" aria-label="Скопировать код ОКПД 2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Копировать</span>
+          </button>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Правовое основание</span>
+          <div class="spec-desc" id="resLaw">
+            Продукция отсутствует в Едином перечне ПП РФ № 2425 и не подпадает под действие ТР ТС 017/2011 (ст. 23 Федерального закона № 184-ФЗ «О техническом регулировании»). Достаточно информационного (отказного) письма.
+          </div>
+        </div>
+      </div>
+
+      <!-- Редакционная сноска: Ловушка модерации -->
+      <div class="editorial-note" id="resWarningBox">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <div>
+          <strong id="warningTitle">Ловушка модерации WB и Ozon:</strong>
+          <p id="resWarningText">Категорически нельзя указывать в карточке слова «детская бижутерия» или возраст до 14 лет. Любая продукция для детей требует обязательной сертификации по ТР ТС 007/2011!</p>
+        </div>
+      </div>
+
+      <!-- Action Dock Bar (Kwork) -->
+      <div class="action-dock">
+        <div class="action-dock-info">
+          <div class="action-dock-title" id="dockTitle">Официальное отказное письмо с реквизитами вашего ИП или ООО</div>
+          <p class="action-dock-text" id="dockText">
+            Справочник подтвердил статус товара. Для модерации маркетплейсов без риска штрафа до 100 000 ₽ оформите официальный документ аккредитованного органа под ключ.
+          </p>
+          <div id="resetSearchWrap" style="display:none;">
+            <button type="button" class="btn-reset-ghost" id="btnResetSearch">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              Сбросить поиск и показать реестр
+            </button>
+          </div>
+        </div>
+        <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank" class="btn-dock-action" id="dockBtn">
+          <span>Оформить под ключ за 1 000 ₽</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Интерактивный реестр 30 категорий (Data Table) -->
+    <section class="directory-wrap">
+      <div class="section-header-clean">
+        <div>
+          <h2 class="section-heading">Реестр проверенных категорий без сертификации</h2>
+          <p class="section-subheading">Нажмите на любую строку для мгновенной загрузки подробной правовой спецификации</p>
+        </div>
+        <div class="registry-count" id="registryCount">30 категорий в базе</div>
+      </div>
+
+      <div class="directory-table-container">
+        <table class="directory-table">
+          <thead>
+            <tr>
+              <th style="width:40%;">Наименование товара</th>
+              <th style="width:25%;">Код ТН ВЭД ЕАЭС</th>
+              <th style="width:20%;">Категория</th>
+              <th style="width:15%; text-align:right;">Статус</th>
+            </tr>
+          </thead>
+          <tbody id="directoryBody">
+            <tr class="directory-row selected" data-id="1" tabindex="0" role="button" aria-label="Показать спецификацию для Бижутерия для взрослых (кольца, серьги, браслеты, колье)">
+              <td class="cell-name">Бижутерия для взрослых (кольца, серьги, браслеты, колье)</td>
+              <td class="cell-code"><span>7117 19 000 0</span></td>
+              <td class="cell-cat">Украшения и аксессуары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="2" tabindex="0" role="button" aria-label="Показать спецификацию для Чехлы и бамперы для смартфонов, планшетов, наушников">
+              <td class="cell-name">Чехлы и бамперы для смартфонов, планшетов, наушников</td>
+              <td class="cell-code"><span>3926 90 970 9</span></td>
+              <td class="cell-cat">Чехлы и электроника</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="3" tabindex="0" role="button" aria-label="Показать спецификацию для Защитные стекла и гидрогелевые пленки для экранов">
+              <td class="cell-name">Защитные стекла и гидрогелевые пленки для экранов</td>
+              <td class="cell-code"><span>7007 19 800 9</span></td>
+              <td class="cell-cat">Чехлы и электроника</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="4" tabindex="0" role="button" aria-label="Показать спецификацию для Сувениры и фигурки из гипса, керамики, эпоксидной смолы">
+              <td class="cell-name">Сувениры и фигурки из гипса, керамики, эпоксидной смолы</td>
+              <td class="cell-code"><span>6810 99 000 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="5" tabindex="0" role="button" aria-label="Показать спецификацию для Фоторамки и постеры в рамах (дерево, металл, пластик)">
+              <td class="cell-name">Фоторамки и постеры в рамах (дерево, металл, пластик)</td>
+              <td class="cell-code"><span>4414 90 800 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="6" tabindex="0" role="button" aria-label="Показать спецификацию для Зеркала настенные и настольные без подсветки">
+              <td class="cell-name">Зеркала настенные и настольные без подсветки</td>
+              <td class="cell-code"><span>7009 92 000 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="7" tabindex="0" role="button" aria-label="Показать спецификацию для Канцелярия для офиса и взрослых (папки, скрепки, степлеры)">
+              <td class="cell-name">Канцелярия для офиса и взрослых (папки, скрепки, степлеры)</td>
+              <td class="cell-code"><span>3926 10 000 0</span></td>
+              <td class="cell-cat">Канцелярия</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="8" tabindex="0" role="button" aria-label="Показать спецификацию для Расчески, гребни, щетки для волос ручные (для взрослых)">
+              <td class="cell-name">Расчески, гребни, щетки для волос ручные (для взрослых)</td>
+              <td class="cell-code"><span>9615 11 000 0</span></td>
+              <td class="cell-cat">Красота и уход</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="9" tabindex="0" role="button" aria-label="Показать спецификацию для Аксессуары для волос для взрослых (крабики, резинки, заколки)">
+              <td class="cell-name">Аксессуары для волос для взрослых (крабики, резинки, заколки)</td>
+              <td class="cell-code"><span>9615 90 000 0</span></td>
+              <td class="cell-cat">Украшения и аксессуары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="10" tabindex="0" role="button" aria-label="Показать спецификацию для Искусственные цветы, растения, венки, сухоцветы">
+              <td class="cell-name">Искусственные цветы, растения, венки, сухоцветы</td>
+              <td class="cell-code"><span>6702 10 000 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="11" tabindex="0" role="button" aria-label="Показать спецификацию для Елочные украшения и новогодний декор без подсветки">
+              <td class="cell-name">Елочные украшения и новогодний декор без подсветки</td>
+              <td class="cell-code"><span>9505 10 900 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="12" tabindex="0" role="button" aria-label="Показать спецификацию для Швейная фурнитура (пуговицы, молнии, кнопки, крючки)">
+              <td class="cell-name">Швейная фурнитура (пуговицы, молнии, кнопки, крючки)</td>
+              <td class="cell-code"><span>9606 21 000 0</span></td>
+              <td class="cell-cat">Творчество и рукоделие</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="13" tabindex="0" role="button" aria-label="Показать спецификацию для Пряжа для ручного вязания и швейные нитки">
+              <td class="cell-name">Пряжа для ручного вязания и швейные нитки</td>
+              <td class="cell-code"><span>5511 10 000 0</span></td>
+              <td class="cell-cat">Творчество и рукоделие</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="14" tabindex="0" role="button" aria-label="Показать спецификацию для Зонты от дождя и солнца для взрослых">
+              <td class="cell-name">Зонты от дождя и солнца для взрослых</td>
+              <td class="cell-code"><span>6601 91 000 0</span></td>
+              <td class="cell-cat">Украшения и аксессуары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="15" tabindex="0" role="button" aria-label="Показать спецификацию для Солнцезащитные очки бытовые (без диоптрий)">
+              <td class="cell-name">Солнцезащитные очки бытовые (без диоптрий)</td>
+              <td class="cell-code"><span>9004 10 100 0</span></td>
+              <td class="cell-cat">Украшения и аксессуары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="16" tabindex="0" role="button" aria-label="Показать спецификацию для Свечи интерьерные восковые, соевые, парафиновые">
+              <td class="cell-name">Свечи интерьерные восковые, соевые, парафиновые</td>
+              <td class="cell-code"><span>3406 00 000 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="17" tabindex="0" role="button" aria-label="Показать спецификацию для Массажеры ручные механические (гуаша, ролики, щетки)">
+              <td class="cell-name">Массажеры ручные механические (гуаша, ролики, щетки)</td>
+              <td class="cell-code"><span>9019 10 900 1</span></td>
+              <td class="cell-cat">Красота и уход</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="18" tabindex="0" role="button" aria-label="Показать спецификацию для Амуниция и одежда для домашних животных (поводки, ошейники)">
+              <td class="cell-name">Амуниция и одежда для домашних животных (поводки, ошейники)</td>
+              <td class="cell-code"><span>4201 00 000 0</span></td>
+              <td class="cell-cat">Зоотовары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="19" tabindex="0" role="button" aria-label="Показать спецификацию для Лежанки, домики и когтеточки для кошек и собак">
+              <td class="cell-name">Лежанки, домики и когтеточки для кошек и собак</td>
+              <td class="cell-code"><span>9403 89 000 0</span></td>
+              <td class="cell-cat">Зоотовары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="20" tabindex="0" role="button" aria-label="Показать спецификацию для Игрушки для домашних животных (дразнилки, мячи, косточки)">
+              <td class="cell-name">Игрушки для домашних животных (дразнилки, мячи, косточки)</td>
+              <td class="cell-code"><span>3926 90 970 9</span></td>
+              <td class="cell-cat">Зоотовары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="21" tabindex="0" role="button" aria-label="Показать спецификацию для Коврики для компьютерной мыши">
+              <td class="cell-name">Коврики для компьютерной мыши</td>
+              <td class="cell-code"><span>4016 99 970 8</span></td>
+              <td class="cell-cat">Чехлы и электроника</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="22" tabindex="0" role="button" aria-label="Показать спецификацию для Подставки и держатели для смартфонов (механические)">
+              <td class="cell-name">Подставки и держатели для смартфонов (механические)</td>
+              <td class="cell-code"><span>3926 90 970 9</span></td>
+              <td class="cell-cat">Чехлы и электроника</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="23" tabindex="0" role="button" aria-label="Показать спецификацию для Садово-огородный ручной инвентарь (лопатки, грабли, совки)">
+              <td class="cell-name">Садово-огородный ручной инвентарь (лопатки, грабли, совки)</td>
+              <td class="cell-code"><span>8201 10 000 0</span></td>
+              <td class="cell-cat">Дача и сад</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="24" tabindex="0" role="button" aria-label="Показать спецификацию для Алмазная мозаика, картины по номерам для взрослых (14+)">
+              <td class="cell-name">Алмазная мозаика, картины по номерам для взрослых (14+)</td>
+              <td class="cell-code"><span>9503 00 700 0</span></td>
+              <td class="cell-cat">Творчество и рукоделие</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="25" tabindex="0" role="button" aria-label="Показать спецификацию для Брелоки для ключей (металл, пластик, силикон, ткань)">
+              <td class="cell-name">Брелоки для ключей (металл, пластик, силикон, ткань)</td>
+              <td class="cell-code"><span>7326 90 980 7</span></td>
+              <td class="cell-cat">Украшения и аксессуары</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="26" tabindex="0" role="button" aria-label="Показать спецификацию для Зубочистки, бамбуковые шпажки, палочки для суши">
+              <td class="cell-name">Зубочистки, бамбуковые шпажки, палочки для суши</td>
+              <td class="cell-code"><span>4421 91 000 0</span></td>
+              <td class="cell-cat">Дом, кухня и быт</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="27" tabindex="0" role="button" aria-label="Показать спецификацию для Шкатулки для украшений, декоративные сундучки">
+              <td class="cell-name">Шкатулки для украшений, декоративные сундучки</td>
+              <td class="cell-code"><span>4420 90 990 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="28" tabindex="0" role="button" aria-label="Показать спецификацию для Кисти, спонжи, щеточки для макияжа (ручные)">
+              <td class="cell-name">Кисти, спонжи, щеточки для макияжа (ручные)</td>
+              <td class="cell-code"><span>9603 30 900 0</span></td>
+              <td class="cell-cat">Красота и уход</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="29" tabindex="0" role="button" aria-label="Показать спецификацию для Шторы для ванной комнаты полимерные (PEVA / EVA) и кольца">
+              <td class="cell-name">Шторы для ванной комнаты полимерные (PEVA / EVA) и кольца</td>
+              <td class="cell-code"><span>3924 90 000 9</span></td>
+              <td class="cell-cat">Дом, кухня и быт</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+            <tr class="directory-row " data-id="30" tabindex="0" role="button" aria-label="Показать спецификацию для Магниты сувенирные на холодильник">
+              <td class="cell-name">Магниты сувенирные на холодильник</td>
+              <td class="cell-code"><span>8505 11 000 0</span></td>
+              <td class="cell-cat">Дом, декор и подарки</td>
+              <td class="cell-status">Отказное письмо</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Топ-4 причин отклонения документов -->
+    <section class="pitfalls-wrap">
+      <div class="section-header-clean">
+        <div>
+          <h2 class="section-heading">Причины отклонения отказных писем модерацией</h2>
+          <p class="section-subheading">На что обращают внимание алгоритмы и специалисты Wildberries и Ozon при проверке файлов</p>
+        </div>
+      </div>
+
+      <div class="pitfalls-grid">
+        <div class="pitfall-item">
+          <span class="pitfall-num">01</span>
+          <div class="pitfall-title">Ссылка на старое ПП № 982</div>
+          <p class="pitfall-desc">Постановление № 982 отменено в 2022 году. Если в письме нет ссылки на актуальное Постановление № 2425, документ отклоняется автоматически.</p>
+        </div>
+        <div class="pitfall-item">
+          <span class="pitfall-num">02</span>
+          <div class="pitfall-title">Несовпадение названий карточки</div>
+          <p class="pitfall-desc">Если в письме указан «Сувенир из гипса», а в карточке написано «Детская развивающая игрушка», товар снимут за отсутствие детского сертификата ТР ТС 008/2011.</p>
+        </div>
+        <div class="pitfall-item">
+          <span class="pitfall-num">03</span>
+          <div class="pitfall-title">Неполный 4-значный код ТН ВЭД</div>
+          <p class="pitfall-desc">Маркетплейс требует строго 10-значный код ТН ВЭД ЕАЭС. Ошибка в классификаторе блокирует сохранение карточки в каталоге.</p>
+        </div>
+        <div class="pitfall-item">
+          <span class="pitfall-num">04</span>
+          <div class="pitfall-title">Отсутствие реквизитов продавца</div>
+          <p class="pitfall-desc">Попытка прикрепить чужой скан без совпадения ИНН кабинета или без договора поставки влечет блокировку по оферте продавца и штраф.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Typographic Rows -->
+    <section class="faq-wrap">
+      <div class="section-header-clean">
+        <div>
+          <h2 class="section-heading">Частые вопросы селлеров</h2>
+          <p class="section-subheading">Нормативные нюансы и правила загрузки документов в личные кабинеты</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Может ли самозанятый оформить отказное письмо?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            Да. Самозанятые граждане имеют законное право продавать товары собственного производства (декор, свечи, бижутерия, сувениры) на маркетплейсах с отказным письмом, если эта продукция не подлежит обязательной сертификации.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Какой срок действия у отказного информационного письма?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            Отказное письмо бессрочно. Оно действует до момента внесения изменений в Постановление Правительства № 2425 или принятия нового технического регламента Таможенного союза на соответствующую категорию.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Что отвечать покупателю в отзывах, если он требует сертификат?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            Официально сообщите, что продукция не подлежит обязательной оценке соответствия согласно ПП РФ № 2425, и укажите номер и дату вашего зарегистрированного на маркетплейсе отказного письма.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Как прикрепить отказное письмо в кабинетах Wildberries и Ozon?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            На Wildberries: раздел «Товары» -> «Документы» -> «Добавить документ» (тип «Отказное письмо») и привязать к карточке.<br>
+            На Ozon: раздел «Товары и цены» -> «Сертификаты» -> «Добавить сертификат» (тип «Отказное письмо») и привязать нужные SKU.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>Сервис носит справочно-информационный характер в соответствии со ст. 23 Федерального закона № 184-ФЗ и ПП РФ № 2425.</div>
+      <div>
+        Разработка официальных документов под ключ: 
+        <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon" target="_blank">Заказать на бирже Kwork</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Код скопирован в буфер обмена</div>
+
+  <!-- База данных и логика -->
+  <script>
+    const database = [
+  {
+    "id": 1,
+    "name": "Бижутерия для взрослых (кольца, серьги, браслеты, колье)",
+    "category": "Аксессуары и украшения",
+    "tnved": "7117 19 000 0",
+    "okpd2": "32.13.10.000",
+    "law": "Продукция отсутствует в Едином перечне обязательной сертификации ПП РФ № 2425 и не подпадает под ТР ТС 017/2011 (ст. 23 ФЗ № 184). Достаточно отказного письма.",
+    "warning": "Категорически нельзя указывать «детская бижутерия» или возраст до 14 лет. Детские украшения требуют сертификата по ТР ТС 007/2011! Не должна содержать драгметаллы.",
+    "keywords": "бижутерия кольцо кольца серьги сережки браслет колье подвеска цепочка брошь бусы чокер кулон",
+    "groupCategory": "Украшения и аксессуары"
+  },
+  {
+    "id": 2,
+    "name": "Чехлы и бамперы для смартфонов, планшетов, наушников",
+    "category": "Электроника и аксессуары",
+    "tnved": "3926 90 970 9",
+    "okpd2": "22.29.29.000",
+    "law": "Изделия хозяйственно-бытового назначения из полимерных материалов. Не содержат электросхем (нет ТР ТС 004/2011 и 020/2011). Отсутствуют в ПП РФ № 2425.",
+    "warning": "Чехлы со встроенным аккумулятором (Powerbank) или беспроводной зарядкой требуют обязательного декларирования по ТР ТС 020/2011 и ТР ЕАЭС 037/2016!",
+    "keywords": "чехол чехлы бампер накладка кейс силиконовый чехол чехол для смартфона айфон iphone samsung xiaomi airpods",
+    "groupCategory": "Чехлы и электроника"
+  },
+  {
+    "id": 3,
+    "name": "Защитные стекла и гидрогелевые пленки для экранов",
+    "category": "Электроника и аксессуары",
+    "tnved": "7007 19 800 9",
+    "okpd2": "23.12.12.000",
+    "law": "Пассивные защитные элементы из закаленного стекла и полимеров. Отсутствуют в списках обязательной сертификации ПП РФ № 2425.",
+    "warning": "Если в комплект вкладываются спиртовые салфетки объемом более 100 мл, маркетплейс может запросить паспорт безопасности химической продукции (MSDS).",
+    "keywords": "защитное стекло пленка гидрогелевая пленка бронестекло защита экрана",
+    "groupCategory": "Чехлы и электроника"
+  },
+  {
+    "id": 4,
+    "name": "Сувениры и фигурки из гипса, керамики, эпоксидной смолы",
+    "category": "Декор и подарки",
+    "tnved": "6810 99 000 0",
+    "okpd2": "23.69.19.000",
+    "law": "Декоративные интерьерные изделия без контакта с пищей. Вне перечней обязательной сертификации ПП РФ № 2425.",
+    "warning": "Не называйте товар в карточке «детский набор для творчества» или «игрушка из гипса» - робот WB заблокирует карточку с требованием детского сертификата ТР ТС 008/2011!",
+    "keywords": "сувениры фигурка статуэтка гипс смола эпоксидная смола подставка кашпо интерьер декор подсвечник",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 5,
+    "name": "Фоторамки и постеры в рамах (дерево, металл, пластик)",
+    "category": "Интерьер и декор",
+    "tnved": "4414 90 800 0",
+    "okpd2": "16.29.14.192",
+    "law": "Не относятся к мебельной продукции (ТР ТС 025/2012 не действует). Отсутствуют в единых перечнях ПП РФ № 2425.",
+    "warning": "Цифровые электронные фоторамки со встроенным экраном требуют обязательной сертификации по ТР ТС 004/2011 и ТР ТС 020/2011.",
+    "keywords": "фоторамка рамка для фото постер картина в раме багет рамка деревянная",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 6,
+    "name": "Зеркала настенные и настольные без подсветки",
+    "category": "Интерьер и дом",
+    "tnved": "7009 92 000 0",
+    "okpd2": "23.12.13.000",
+    "law": "Пассивные изделия из листового стекла. Отсутствуют в списках обязательного подтверждения соответствия ПП РФ № 2425.",
+    "warning": "Зеркала с встроенной LED-подсветкой, сенсорной кнопкой или подогревом полотна требуют обязательной сертификации по ТР ТС 004/2011 и 020/2011!",
+    "keywords": "зеркало зеркала настенное настольное гримерное зеркало в раме",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 7,
+    "name": "Канцелярия для офиса и взрослых (папки, скрепки, степлеры)",
+    "category": "Канцелярские товары",
+    "tnved": "3926 10 000 0",
+    "okpd2": "22.29.25.000",
+    "law": "Офисные принадлежности общего назначения для взрослых. Не входят в единые перечни ПП РФ № 2425.",
+    "warning": "Школьно-письменные товары для детей (школьные тетради, пластилин, детские краски) требуют декларации или сертификата по ТР ТС 007/2011!",
+    "keywords": "канцелярия папка скоросшиватель скрепки степлер дырокол органайзер лоток для бумаг скобы",
+    "groupCategory": "Канцелярия"
+  },
+  {
+    "id": 8,
+    "name": "Расчески, гребни, щетки для волос ручные (для взрослых)",
+    "category": "Красота и уход",
+    "tnved": "9615 11 000 0",
+    "okpd2": "32.99.52.110",
+    "law": "Галантерейные изделия личной гигиены без электропривода. Отсутствуют в ПП РФ № 2425 и ТР ТС.",
+    "warning": "Детские расчески для малышей до 3 лет требуют СГР по ТР ТС 007/2011. Электрические расчески-выпрямители подлежат сертификации по ТР ТС 004/2011.",
+    "keywords": "расческа гребень щетка для волос брашинг гребешок массажная расческа",
+    "groupCategory": "Красота и уход"
+  },
+  {
+    "id": 9,
+    "name": "Аксессуары для волос для взрослых (крабики, резинки, заколки)",
+    "category": "Аксессуары",
+    "tnved": "9615 90 000 0",
+    "okpd2": "32.99.52.120",
+    "law": "Мелкая галантерея из пластмассы и текстиля. Не относится к готовой одежде (ТР ТС 017/2011 не применяется). Отсутствует в ПП РФ № 2425.",
+    "warning": "Заколки и резинки с маркировкой «для детей в садик» отправляются модерацией Ozon на проверку по детскому регламенту ТР ТС 007/2011.",
+    "keywords": "крабик заколка резинка для волос ободок невидимка шпилька твистер бант",
+    "groupCategory": "Украшения и аксессуары"
+  },
+  {
+    "id": 10,
+    "name": "Искусственные цветы, растения, венки, сухоцветы",
+    "category": "Декор и интерьер",
+    "tnved": "6702 10 000 0",
+    "okpd2": "32.99.55.000",
+    "law": "Интерьерный декор из полимеров и ткани. Не требует фитосанитарного контроля и сертификатов соответствия.",
+    "warning": "Живой стабилизированный мох в карточке товара обязательно должен маркироваться как «декоративный интерьерный декор», а не живое растение.",
+    "keywords": "искусственные цветы растения сухоцветы букет искусственный венок зелень декор",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 11,
+    "name": "Елочные украшения и новогодний декор без подсветки",
+    "category": "Праздники и подарки",
+    "tnved": "9505 10 900 0",
+    "okpd2": "32.99.51.110",
+    "law": "Праздничные украшения прямо исключены из сферы действия детского регламента ТР ТС 008/2011 (Приложение 1). Вне перечней ПП РФ № 2425.",
+    "warning": "Электрические гирлянды, светодиодные фигуры и светящиеся шары подлежат обязательной сертификации по ТР ТС 004/2011 и ТР ТС 020/2011!",
+    "keywords": "елочные игрушки шары новогодние мишура дождик верхушка на елку новогодний декор",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 12,
+    "name": "Швейная фурнитура (пуговицы, молнии, кнопки, крючки)",
+    "category": "Рукоделие и шитье",
+    "tnved": "9606 21 000 0",
+    "okpd2": "32.99.53.110",
+    "law": "Вспомогательные швейные изделия, не являющиеся готовой одеждой легпрома (ТР ТС 017/2011 не применяется). Вне списков ПП РФ № 2425.",
+    "warning": "Не путайте фурнитуру с готовыми поясными ремнями и шнурками, которые могут классифицироваться как кожгалантерея.",
+    "keywords": "пуговицы молния молнии кнопки крючки люверсы пряжки швейная фурнитура застежка",
+    "groupCategory": "Творчество и рукоделие"
+  },
+  {
+    "id": 13,
+    "name": "Пряжа для ручного вязания и швейные нитки",
+    "category": "Рукоделие и шитье",
+    "tnved": "5511 10 000 0",
+    "okpd2": "13.10.61.110",
+    "law": "Расфасованная для розничной продажи пряжа и бытовые нитки исключены из обязательных перечней ТР ТС 017/2011 и ПП РФ № 2425.",
+    "warning": "Готовые ткани в рулонах и трикотажные полотна подлежат обязательному декларированию по ТР ТС 017/2011!",
+    "keywords": "пряжа нитки для вязания нитки швейные моток пряжи шерсть акрил мулине",
+    "groupCategory": "Творчество и рукоделие"
+  },
+  {
+    "id": 14,
+    "name": "Зонты от дождя и солнца для взрослых",
+    "category": "Аксессуары",
+    "tnved": "6601 91 000 0",
+    "okpd2": "32.99.21.110",
+    "law": "Галантерейные изделия, исключенные из легпрома ТР ТС 017/2011. Отсутствуют в списках обязательной сертификации ПП РФ № 2425.",
+    "warning": "Детские зонтики с мультяшными рисунками попадают под действие регламента на детские товары ТР ТС 007/2011.",
+    "keywords": "зонт зонты зонт трость складной зонт автомат от дождя от солнца",
+    "groupCategory": "Украшения и аксессуары"
+  },
+  {
+    "id": 15,
+    "name": "Солнцезащитные очки бытовые (без диоптрий)",
+    "category": "Аксессуары",
+    "tnved": "9004 10 100 0",
+    "okpd2": "32.50.42.120",
+    "law": "Не являются медицинскими изделиями (не требуют регистрационного удостоверения Минздрава). Отсутствуют в перечнях ПП РФ № 2425.",
+    "warning": "Очки для коррекции зрения с диоптриями являются медицинскими изделиями и требуют строгого регистрационного удостоверения Росздравнадзора!",
+    "keywords": "солнцезащитные очки темные очки очки от солнца поляризационные очки оправа",
+    "groupCategory": "Украшения и аксессуары"
+  },
+  {
+    "id": 16,
+    "name": "Свечи интерьерные восковые, соевые, парафиновые",
+    "category": "Интерьер и подарки",
+    "tnved": "3406 00 000 0",
+    "okpd2": "32.99.54.000",
+    "law": "Хозяйственно-бытовые изделия для освещения и ароматизации воздуха. Не входят в единые перечни ПП РФ № 2425.",
+    "warning": "Массажные свечи, растопленный состав которых наносится на кожу человека, классифицируются как косметика и требуют декларации ТР ТС 009/2011!",
+    "keywords": "свечи восковые свечи соевые свечи ароматические свечи насыпные свечи подсвечник",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 17,
+    "name": "Массажеры ручные механические (гуаша, ролики, щетки)",
+    "category": "Красота и здоровье",
+    "tnved": "9019 10 900 1",
+    "okpd2": "32.50.21.129",
+    "law": "Механические приспособления без электромотора и питания. Отсутствуют в списках ПП РФ № 2425.",
+    "warning": "Строго запрещено писать лечебные свойства («лечит остеохондроз», «медицинский прибор»). Иначе товар заблокируют без мед. удостоверения!",
+    "keywords": "массажер гуаша скребок гуаша ролик кварцевый нефритовый ролик сухая щетка массажер для лица",
+    "groupCategory": "Красота и уход"
+  },
+  {
+    "id": 18,
+    "name": "Амуниция и одежда для домашних животных (поводки, ошейники)",
+    "category": "Зоотовары",
+    "tnved": "4201 00 000 0",
+    "okpd2": "15.12.19.100",
+    "law": "Регламент легпрома ТР ТС 017/2011 действует только на продукцию ДЛЯ ЛЮДЕЙ. Вне списков ПП РФ № 2425.",
+    "warning": "Ошейники от блох и клещей с лекарственной пропиткой являются ветеринарными инсектицидными препаратами и требуют обязательной регистрации!",
+    "keywords": "поводок ошейник шлейка намордник одежда для собак попона комбинезон для животных",
+    "groupCategory": "Зоотовары"
+  },
+  {
+    "id": 19,
+    "name": "Лежанки, домики и когтеточки для кошек и собак",
+    "category": "Зоотовары",
+    "tnved": "9403 89 000 0",
+    "okpd2": "31.09.13.190",
+    "law": "Мебельный техрегламент ТР ТС 025/2012 распространяется исключительно на людей. Отсутствуют в списках ПП РФ № 2425.",
+    "warning": "Лежанки и матрасы с встроенным электрическим подогревом от розетки требуют сертификации по ТР ТС 004/2011!",
+    "keywords": "лежанка домик для кошки когтеточка лежак для собаки матрас для животных пуфик",
+    "groupCategory": "Зоотовары"
+  },
+  {
+    "id": 20,
+    "name": "Игрушки для домашних животных (дразнилки, мячи, косточки)",
+    "category": "Зоотовары",
+    "tnved": "3926 90 970 9",
+    "okpd2": "22.29.29.000",
+    "law": "Регламент ТР ТС 008/2011 действует только на игрушки для детей (до 14 лет). Зоотовары полностью освобождены от сертификации.",
+    "warning": "В названии карточки обязательно должно присутствовать слово «для кошек» или «для собак». Без этого карточку может заблокировать алгоритм WB!",
+    "keywords": "игрушки для кошек игрушки для собак мячик дразнилка косточка грызунок пищалка",
+    "groupCategory": "Зоотовары"
+  },
+  {
+    "id": 21,
+    "name": "Коврики для компьютерной мыши",
+    "category": "Электроника и компьютеры",
+    "tnved": "4016 99 970 8",
+    "okpd2": "22.19.73.000",
+    "law": "Пассивные аксессуары рабочего места из ткани и вспененной резины. Отсутствуют в списках ПП РФ № 2425.",
+    "warning": "Коврики со встроенной светодиодной подсветкой по периметру или беспроводной зарядкой Qi требуют сертификации по ТР ТС 020/2011!",
+    "keywords": "коврик для мыши коврик игровой большой коврик deskpad подложка на стол",
+    "groupCategory": "Чехлы и электроника"
+  },
+  {
+    "id": 22,
+    "name": "Подставки и держатели для смартфонов (механические)",
+    "category": "Электроника и аксессуары",
+    "tnved": "3926 90 970 9",
+    "okpd2": "22.29.29.000",
+    "law": "Механические фиксаторы из пластика и металла без микросхем. Не входят в единые перечни ПП РФ № 2425.",
+    "warning": "Автомобильные держатели с функцией MagSafe или беспроводной индукционной зарядкой требуют обязательной сертификации по ТР ТС 020/2011.",
+    "keywords": "подставка для телефона держатель автодержатель стойка для планшета попсокет",
+    "groupCategory": "Чехлы и электроника"
+  },
+  {
+    "id": 23,
+    "name": "Садово-огородный ручной инвентарь (лопатки, грабли, совки)",
+    "category": "Дача и сад",
+    "tnved": "8201 10 000 0",
+    "okpd2": "25.73.10.000",
+    "law": "Ручной немеханизированный инструмент исключен из техрегламента ТР ТС 010/2011. Отсутствует в ПП РФ № 2425.",
+    "warning": "Электрические или бензиновые инструменты (секаторы, триммеры, кусторезы) подлежат обязательной сертификации машин и оборудования.",
+    "keywords": "лопатка грабли совок секатор ручной рыхлитель садовый инвентарь тяпка",
+    "groupCategory": "Дача и сад"
+  },
+  {
+    "id": 24,
+    "name": "Алмазная мозаика, картины по номерам для взрослых (14+)",
+    "category": "Хобби и творчество",
+    "tnved": "9503 00 700 0",
+    "okpd2": "32.99.59.000",
+    "law": "Наборы для творчества взрослых старше 14 лет исключены из сферы действия детского ТР ТС 008/2011. Отсутствуют в ПП РФ № 2425.",
+    "warning": "Если написать в названии «развивающий набор для детей от 3 лет», товар заблокируют без сертификата на игрушки по ТР ТС 008/2011!",
+    "keywords": "алмазная мозаика картина по номерам живопись стразы вышивка творчество набор",
+    "groupCategory": "Творчество и рукоделие"
+  },
+  {
+    "id": 25,
+    "name": "Брелоки для ключей (металл, пластик, силикон, ткань)",
+    "category": "Аксессуары",
+    "tnved": "7326 90 980 7",
+    "okpd2": "25.99.29.190",
+    "law": "Мелкая сувенирная галантерея. Не подлежит обязательному подтверждению соответствия по ПП РФ № 2425.",
+    "warning": "Брелоки с электронными Bluetooth-маячками и чипами поиска ключей требуют нотификации ФСБ и сертификата соответствия связи!",
+    "keywords": "брелок брелоки брелок для ключей брелок для авто подвеска на ключи карабин",
+    "groupCategory": "Украшения и аксессуары"
+  },
+  {
+    "id": 26,
+    "name": "Зубочистки, бамбуковые шпажки, палочки для суши",
+    "category": "Дом и кухня",
+    "tnved": "4421 91 000 0",
+    "okpd2": "16.29.14.190",
+    "law": "Хозяйственные изделия однократного применения из древесины и бамбука. Отсутствуют в обязательных списках ПП РФ № 2425.",
+    "warning": "ВНИМАНИЕ: столовая посуда и приборы из нержавеющей стали, фарфора и стекла требуют обязательного декларирования по ПП РФ № 2425!",
+    "keywords": "зубочистки шпажки палочки для суши деревянные шпажки бамбуковые палочки",
+    "groupCategory": "Дом, кухня и быт"
+  },
+  {
+    "id": 27,
+    "name": "Шкатулки для украшений, декоративные сундучки",
+    "category": "Интерьер и подарки",
+    "tnved": "4420 90 990 0",
+    "okpd2": "16.29.14.130",
+    "law": "Декоративные изделия для хранения мелочей из дерева, картона и МДФ. Не относятся к мебели по ТР ТС 025/2012.",
+    "warning": "Оружейные металлические шкафы и огнестойкие сейфы подлежат обязательной сертификации ГОСТ Р.",
+    "keywords": "шкатулка сундучок коробка для украшений органайзер для украшений кейс для колец",
+    "groupCategory": "Дом, декор и подарки"
+  },
+  {
+    "id": 28,
+    "name": "Кисти, спонжи, щеточки для макияжа (ручные)",
+    "category": "Красота и косметика",
+    "tnved": "9603 30 900 0",
+    "okpd2": "32.99.59.000",
+    "law": "Принадлежности для нанесения макияжа, не являющиеся косметическими средствами (нет ТР ТС 009/2011). Вне ПП РФ № 2425.",
+    "warning": "Спонжи с заводской влажной пропиткой косметическим кремом или тоником подлежат обязательной декларации по ТР ТС 009/2011!",
+    "keywords": "кисти для макияжа спонж бьютиблендер кисть для пудры аппликатор щеточка для бровей",
+    "groupCategory": "Красота и уход"
+  },
+  {
+    "id": 29,
+    "name": "Шторы для ванной комнаты полимерные (PEVA / EVA) и кольца",
+    "category": "Дом и ванная",
+    "tnved": "3924 90 000 9",
+    "okpd2": "22.29.23.110",
+    "law": "Санитарно-гигиенические полимерные изделия. Исключены из текстильного легпрома ТР ТС 017/2011. Вне ПП РФ № 2425.",
+    "warning": "Тканевые шторы из полиэстера и текстильные коврики для ванной подлежат обязательному декларированию по ТР ТС 017/2011!",
+    "keywords": "штора для ванной занавеска в ванную кольца для шторы водонепроницаемая шторка",
+    "groupCategory": "Дом, кухня и быт"
+  },
+  {
+    "id": 30,
+    "name": "Магниты сувенирные на холодильник",
+    "category": "Сувениры и декор",
+    "tnved": "8505 11 000 0",
+    "okpd2": "25.99.29.190",
+    "law": "Пассивная рекламная и сувенирная продукция. Не входит в единые перечни обязательной оценки соответствия ПП РФ № 2425.",
+    "warning": "Магнитные детские конструкторы подлежат жесточайшей сертификации по ТР ТС 008/2011 из-за риска проглатывания магнитов детьми!",
+    "keywords": "магнит на холодильник сувенирный магнит виниловый магнит магнитик",
+    "groupCategory": "Дом, декор и подарки"
+  }
+];
+
+    // Клавиатурная раскладка QWERTY -> ЙЦУКЕН
+    const EN_TO_RU = {
+      'q':'й','w':'ц','e':'у','r':'к','t':'е','y':'н','u':'г','i':'ш','o':'щ','p':'з','[':'х',']':'ъ',
+      'a':'ф','s':'ы','d':'в','f':'а','g':'п','h':'р','j':'о','k':'л','l':'д',';':'ж','\'':'э',
+      'z':'я','x':'ч','c':'с','v':'м','b':'и','n':'т','m':'ь',',':'б','.':'ю','/':'.'
+    };
+
+    function fixLayout(str) {
+      return str.split('').map(c => EN_TO_RU[c.toLowerCase()] || c).join('');
+    }
+
+    // Стемминг окончаний русского языка
+    function stemRussian(word) {
+      if (!word || word.length < 3) return word;
+      return word
+        .replace(/(ов|ев|ей|ом|ем|ам|ям|ами|ями|ах|ях|ую|юю|ою|ею|ому|ему|ым|им|ых|их|ого|его|ое|ее|ые|ие|ый|ий|ая|яя)$/i, '')
+        .replace(/(а|е|и|о|у|ы|э|ю|я|ь)$/i, '')
+        .replace(/(ок|ек|ик)$/i, '');
+    }
+
+    // Расстояние Левенштейна для поиска с опечатками
+    function levenshtein(a, b) {
+      if (a === b) return 0;
+      if (!a.length) return b.length;
+      if (!b.length) return a.length;
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    // Словарь синонимов селлеров маркетплейсов
+    const SYNONYMS = {
+      'айфон': ['чехол', 'стекло', 'аксессуары', 'смартфон'],
+      'iphone': ['чехол', 'стекло', 'аксессуары', 'смартфон'],
+      'телефон': ['чехол', 'стекло', 'подставка', 'бампер'],
+      'смартфон': ['чехол', 'стекло', 'подставка', 'бампер'],
+      'наушники': ['чехол', 'кейс', 'airpods'],
+      'кот': ['животные', 'зоотовары', 'лежанка', 'когтеточка', 'игрушки'],
+      'кошка': ['животные', 'зоотовары', 'лежанка', 'когтеточка', 'игрушки'],
+      'собака': ['животные', 'зоотовары', 'амуниция', 'поводок', 'ошейник'],
+      'питомец': ['зоотовары', 'животные'],
+      'украшения': ['бижутерия', 'кольцо', 'серьги', 'браслет', 'колье', 'шкатулка'],
+      'косметика': ['кисти', 'спонж', 'макияж', 'массажер', 'расческа'],
+      'бьюти': ['кисти', 'спонж', 'макияж', 'гуаша'],
+      'канцелярка': ['канцелярия', 'папки', 'скрепки', 'офис'],
+      'вязание': ['пряжа', 'нитки', 'рукоделие'],
+      'шитье': ['фурнитура', 'пуговицы', 'молнии', 'рукоделие'],
+      'суши': ['палочки', 'зубочистки', 'шпажки'],
+      'елка': ['новогодний', 'декор', 'игрушки']
+    };
+
+    // Проверка на запрещенные / обязательные к сертификации товары
+    const CERT_TRAP_WORDS = [
+      { pattern: /детск|для\s*детей|ребен|малыш|новорожд/i, reason: 'Товары для детей и подростков подлежат обязательной сертификации по ТР ТС 007/2011 или 008/2011! Отказное письмо для них оформить нельзя.' },
+      { pattern: /аккумул|powerbank|повербанк|зарядк|220|сетев|блок\s*питан/i, reason: 'Электроника со встроенным аккумулятором или питанием от сети 220V подлежит обязательному подтверждению по ТР ТС 004/2011, 020/2011 и ТР ЕАЭС 037/2016!' },
+      { pattern: /крем|сыворотк|шампун|помад|парфюм|дух[ие]/i, reason: 'Парфюмерно-косметическая продукция подлежит обязательному декларированию соответствия по ТР ТС 009/2011!' },
+      { pattern: /бад|витамин|детск.*питан|чай|кофе/i, reason: 'Пищевая продукция и БАД подлежат обязательной оценке по ТР ТС 021/2011 (декларация или СГР)!' }
+    ];
+
+    // DOM элементы
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const quickTabs = document.getElementById('quickTabs');
+    const directoryBody = document.getElementById('directoryBody');
+    const registryCount = document.getElementById('registryCount');
+    const resetSearchWrap = document.getElementById('resetSearchWrap');
+    const btnResetSearch = document.getElementById('btnResetSearch');
+    const toast = document.getElementById('toast');
+
+    // Элементы карточки инспекции
+    const resCategory = document.getElementById('resCategory');
+    const resTitle = document.getElementById('resTitle');
+    const resTnved = document.getElementById('resTnved');
+    const resOkpd2 = document.getElementById('resOkpd2');
+    const resLaw = document.getElementById('resLaw');
+    const resWarningBox = document.getElementById('resWarningBox');
+    const warningTitle = document.getElementById('warningTitle');
+    const resWarningText = document.getElementById('resWarningText');
+    const statusPill = document.getElementById('statusPill');
+    const statusText = document.getElementById('statusText');
+    const dockTitle = document.getElementById('dockTitle');
+    const dockText = document.getElementById('dockText');
+    const dockBtn = document.getElementById('dockBtn');
+
+    let selectedId = 1;
+    let activeCategory = 'all';
+
+    // Рендер каталога
+    function renderDirectory(items) {
+      if (items.length === 0) {
+        directoryBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 36px 20px; color: var(--text-tertiary); line-height: 1.6;">Товары по вашему запросу не найдены в базе отказных писем.<br>Возможно, для этой продукции требуется обязательный сертификат или декларация (ТР ТС).</td></tr>';
+        registryCount.textContent = '0 товаров найдено';
+        return;
+      }
+
+      directoryBody.innerHTML = items.map(item => `
+        <tr class="directory-row ${item.id === selectedId ? 'selected' : ''}" data-id="${item.id}" tabindex="0" role="button" aria-label="Показать спецификацию для ${item.name}">
+          <td class="cell-name">${item.name}</td>
+          <td class="cell-code"><span>${item.tnved}</span></td>
+          <td class="cell-cat">${item.groupCategory || item.category}</td>
+          <td class="cell-status">Отказное письмо</td>
+        </tr>
+      `).join('');
+
+      registryCount.textContent = `${items.length} товаров в списке`;
+    }
+
+    // Выбор элемента
+    function selectItem(id, scrollToSpec = false) {
+      const item = database.find(x => x.id === id);
+      if (!item) return;
+
+      selectedId = id;
+
+      resCategory.textContent = 'Категория: ' + (item.groupCategory || item.category);
+      resTitle.textContent = item.name;
+      resTnved.textContent = item.tnved;
+      resOkpd2.textContent = item.okpd2;
+      resLaw.textContent = item.law;
+      resWarningText.textContent = item.warning;
+
+      // Сброс бейджей
+      statusPill.className = 'status-pill';
+      statusText.textContent = 'СЕРТИФИКАТ НЕ ТРЕБУЕТСЯ · ОТКАЗНОЕ ПИСЬМО';
+      warningTitle.textContent = 'Ловушка модерации WB и Ozon:';
+      resWarningBox.style.display = 'flex';
+
+      // Подсветка строки в таблице
+      document.querySelectorAll('.directory-row').forEach(row => {
+        row.classList.toggle('selected', parseInt(row.dataset.id) === id);
+      });
+
+      if (scrollToSpec) {
+        document.getElementById('inspectionSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Умный поиск с учетом раскладки, опечаток, стемминга и синонимов
+    function smartFilter(rawQuery, categoryFilter) {
+      let pool = database;
+      if (categoryFilter && categoryFilter !== 'all') {
+        pool = pool.filter(item => (item.groupCategory || item.category) === categoryFilter);
+      }
+
+      const q = rawQuery.trim().toLowerCase();
+      if (!q) return pool;
+
+      // Вариант с исправленной раскладкой
+      const qFixed = fixLayout(q);
+
+      // Проверка на жесткие ловушки обязательной сертификации
+      for (const trap of CERT_TRAP_WORDS) {
+        if (trap.pattern.test(q) || trap.pattern.test(qFixed)) {
+          return { trap: trap.reason };
+        }
+      }
+
+      // Разбиваем на токены
+      const tokens = q.split(/\s+/).filter(Boolean);
+      const fixedTokens = qFixed.split(/\s+/).filter(Boolean);
+
+      const scoredItems = [];
+
+      for (const item of pool) {
+        let score = 0;
+        const nameLower = item.name.toLowerCase();
+        const tnvedRaw = item.tnved.replace(/\s/g, '');
+        const okpdRaw = item.okpd2.replace(/\s/g, '');
+        const keywords = (item.keywords || '').toLowerCase();
+        const fullText = nameLower + ' ' + keywords + ' ' + (item.groupCategory || '').toLowerCase();
+        const textWords = fullText.split(/[\s,()\-\/]+/).filter(w => w.length > 1);
+
+        // 1. Прямой поиск по кодам ТН ВЭД / ОКПД 2
+        const cleanQ = q.replace(/[^0-9]/g, '');
+        if (cleanQ.length >= 3) {
+          if (tnvedRaw.includes(cleanQ)) score += 100;
+          if (okpdRaw.includes(cleanQ)) score += 90;
+        }
+
+        // 2. Точное совпадение подстроки
+        if (fullText.includes(q)) score += 80;
+        if (qFixed !== q && fullText.includes(qFixed)) score += 75;
+
+        // 3. Токенный скоринг со стеммингом и синонимами
+        let matchedTokens = 0;
+
+        for (let i = 0; i < tokens.length; i++) {
+          const t = tokens[i];
+          const tFix = fixedTokens[i] || t;
+          const stemT = stemRussian(t);
+          const stemFix = stemRussian(tFix);
+
+          let tokenMatched = false;
+
+          // Проверка стемминга
+          for (const word of textWords) {
+            const stemW = stemRussian(word);
+            if (word.startsWith(t) || word.startsWith(tFix)) {
+              score += 40;
+              tokenMatched = true;
+              break;
+            }
+            if (stemW === stemT || stemW === stemFix || (stemT.length >= 3 && stemW.startsWith(stemT))) {
+              score += 30;
+              tokenMatched = true;
+              break;
+            }
+            // Проверка на опечатку (Levenshtein distance <= 1 для слов от 5 букв)
+            if (t.length >= 5 && Math.abs(t.length - word.length) <= 1) {
+              if (levenshtein(t, word) <= 1 || levenshtein(tFix, word) <= 1) {
+                score += 25;
+                tokenMatched = true;
+                break;
+              }
+            }
+          }
+
+          // Проверка синонимов
+          if (!tokenMatched) {
+            const synList = SYNONYMS[t] || SYNONYMS[tFix] || [];
+            for (const syn of synList) {
+              if (fullText.includes(syn)) {
+                score += 20;
+                tokenMatched = true;
+                break;
+              }
+            }
+          }
+
+          if (tokenMatched) matchedTokens++;
+        }
+
+        // Бонус за совпадение всех введенных слов
+        if (tokens.length > 1 && matchedTokens === tokens.length) {
+          score += 50;
+        }
+
+        if (score > 0) {
+          scoredItems.push({ item, score });
+        }
+      }
+
+      scoredItems.sort((a, b) => b.score - a.score);
+      return scoredItems.map(x => x.item);
+    }
+
+    // Обработка поискового ввода
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.trim();
+      searchClear.style.display = q.length > 0 ? 'flex' : 'none';
+
+      if (!q) {
+        let pool = database;
+        if (activeCategory !== 'all') {
+          pool = pool.filter(x => (x.groupCategory || x.category) === activeCategory);
+        }
+        renderDirectory(pool);
+        resetSearchWrap.style.display = 'none';
+        if (pool.length > 0) selectItem(pool[0].id);
+        return;
+      }
+
+      resetSearchWrap.style.display = 'block';
+
+      const results = smartFilter(q, activeCategory);
+
+      // Обработка предупреждения о ловушке сертификации
+      if (results && results.trap) {
+        directoryBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 36px 20px; color: var(--amber-dark); line-height: 1.6; font-weight: 500;">Внимание! По данному запросу продукция подлежит обязательной сертификации или декларированию.<br>Отказное письмо для этого товара не применяется.</td></tr>';
+        registryCount.textContent = 'Отказное письмо не применяется';
+
+        resCategory.textContent = 'Предупреждение модерации';
+        resTitle.textContent = 'Товар по запросу «' + e.target.value + '» требует обязательный сертификат';
+        resTnved.textContent = 'ТР ТС / ТР ЕАЭС';
+        resOkpd2.textContent = 'Сертификация / Декларация';
+        resLaw.textContent = results.trap;
+        statusPill.className = 'status-pill status-amber';
+        statusText.textContent = 'ТРЕБУЕТСЯ ОБЯЗАТЕЛЬНЫЙ СЕРТИФИКАТ ИЛИ ДЕКЛАРАЦИЯ';
+        warningTitle.textContent = 'Запрещено продавать без сертификата:';
+        resWarningText.textContent = 'Попытка загрузить отказное письмо на эту продукцию приведет к отклонению карточки модерацией Wildberries / Ozon и штрафу до 300 000 ₽ по КоАП РФ ст. 14.43.';
+        
+        dockTitle.textContent = 'Оформим сертификат соответствия или декларацию ТР ТС';
+        dockText.textContent = 'Напишите нам состав и назначение товара на Kwork. Юрист проверит точный регламент (ТР ТС 007, 008, 004, 020) и поможет официально оформить документ аккредитованной лаборатории.';
+        dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
+        return;
+      }
+
+      renderDirectory(results);
+
+      if (results.length > 0) {
+        selectItem(results[0].id);
+      } else {
+        resCategory.textContent = 'Результат проверки';
+        resTitle.textContent = 'По запросу «' + e.target.value + '» совпадений в перечне отказных писем нет';
+        resTnved.textContent = 'Требуется анализ';
+        resOkpd2.textContent = 'ТР ТС / ТР ЕАЭС';
+        resLaw.textContent = 'Товар может подпадать под обязательную сертификацию или декларирование соответствия (ТР ТС 004/2011, 008/2011, 017/2011, 020/2011, ПП РФ № 2425). Для точного определения нужен анализ состава и характеристик.';
+        statusPill.className = 'status-pill status-amber';
+        statusText.textContent = 'ТРЕБУЕТСЯ ПРОВЕРКА ПО ТЕХРЕГЛАМЕНТАМ';
+        warningTitle.textContent = 'Внимание:';
+        resWarningText.textContent = 'Не продавайте несертифицированный товар вслепую! Штраф Роспотребнадзора по КоАП РФ ст. 14.43 составляет до 300 000 ₽ с блокировкой кабинета на маркетплейсе.';
+        
+        dockTitle.textContent = 'Бесплатно подберем код ТН ВЭД и проверим сертификацию';
+        dockText.textContent = 'Напишите нам категорию и состав товара на Kwork. Юрист проверит продукцию по всем 50+ техническим регламентам и оформит документ за 1 день.';
+        dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
+      }
+    });
+
+    // Обработка клика по категориям
+    quickTabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      const cat = btn.dataset.category;
+      activeCategory = cat;
+
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+
+      const results = smartFilter(searchInput.value, activeCategory);
+      if (!results.trap) {
+        renderDirectory(results);
+        if (results.length > 0) {
+          selectItem(results[0].id);
+        }
+      }
+    });
+
+    // Очистка поиска
+    searchClear.addEventListener('click', resetSearch);
+    btnResetSearch.addEventListener('click', resetSearch);
+
+    function resetSearch() {
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      resetSearchWrap.style.display = 'none';
+      activeCategory = 'all';
+      document.querySelectorAll('.tab-btn').forEach((b, idx) => {
+        b.classList.toggle('active', idx === 0);
+        b.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+      });
+      renderDirectory(database);
+      selectItem(1);
+      searchInput.focus();
+    }
+
+    // Клик по строке таблицы
+    directoryBody.addEventListener('click', (e) => {
+      const row = e.target.closest('.directory-row');
+      if (!row) return;
+      const id = parseInt(row.dataset.id);
+      selectItem(id, true);
+    });
+
+    directoryBody.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const row = e.target.closest('.directory-row');
+        if (!row) return;
+        e.preventDefault();
+        const id = parseInt(row.dataset.id);
+        selectItem(id, true);
+      }
+    });
+
+    // Горячая клавиша / для поиска
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === searchInput) {
+        resetSearch();
+        searchInput.blur();
+      }
+    });
+
+    // Копирование кодов
+    function copyValue(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Код ' + text + ' скопирован!');
+      });
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // Аккордеон FAQ
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const row = trigger.parentElement;
+        const isOpen = row.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+
+    // Старт
+    renderDirectory(database);
+    selectItem(1);
+
+  </script>
+</body>
+</html>
