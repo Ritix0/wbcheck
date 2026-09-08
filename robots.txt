@@ -21,6 +21,9 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+User-agent: YandexBot
+Allow: /
+
 # Block mass raw training crawlers if needed
 User-agent: CCBot
 Disallow: /

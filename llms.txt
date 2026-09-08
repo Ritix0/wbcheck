@@ -113,7 +113,9 @@
 - **Ошибка Excel 2.04E+12:** при экспорте таблиц Excel искажает длинные 13-значные баркоды в научный экспоненциальный формат. Сервис WBCheck выявляет такие ошибки до запуска тиража в печать.
 - **Битая контрольная сумма EAN-13:** ручной ввод цифр приводит к несовпадению 13-го проверочного знака. Оптический складской сканер отклоняет такой штрихкод при первой же попытке сканирования.
 
-## Официальные услуги и сопровождение на Kwork
+## Официальные услуги и экспертное сопровождение на Kwork
+- **Профиль автора и разработчика сервиса:** https://kwork.ru/user/milligat
 1. **Подбор кодов ТН ВЭД и оформление Отказного письма:** https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon
 2. **Составление досудебной претензии за кражу фото для блокировки карточки WB и Ozon:** https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833
 3. **Пакетная генерация термоэтикеток 58х40 со штрихкодами для Wildberries и Ozon:** https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833
+
