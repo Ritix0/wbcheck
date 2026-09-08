@@ -1,4 +1,4 @@
-# robots.txt for TN VED Express Checker
+# robots.txt for WBCheck.ru
 User-agent: *
 Allow: /
 
@@ -18,6 +18,12 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 # Block mass raw training crawlers if needed
 User-agent: CCBot
 Disallow: /
+
+Host: wbcheck.ru
+Sitemap: https://wbcheck.ru/sitemap.xml
