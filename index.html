@@ -3259,10 +3259,16 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
                   <span id="btnPrintLabelText">Печать тестовой этикетки (1 шт. бесплатно)</span>
                 </button>
-                <button type="button" class="btn-label-secondary" onclick="downloadSingleSvg()">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  <span id="btnDownloadLabelText">Скачать векторный макет SVG</span>
-                </button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%;">
+                  <button type="button" class="btn-label-secondary" style="padding: 0 10px; font-size: 0.78rem;" onclick="downloadSingleSvg()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span id="btnDownloadLabelText">Скачать макет SVG</span>
+                  </button>
+                  <button type="button" class="btn-label-secondary" style="padding: 0 10px; font-size: 0.78rem;" onclick="downloadSinglePng()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    <span>Скачать фото PNG</span>
+                  </button>
+                </div>
               </div>
 
               <div id="freeLimitBadge" style="font-size: 0.76rem; color: var(--text-tertiary); text-align: center; line-height: 1.4;">
@@ -3944,10 +3950,17 @@
     let activeCategory = 'all';
 
 
-    // --- ПЕРЕКЛЮЧЕНИЕ МЕЖДУ ИНСТРУМЕНТАМИ (ТН ВЭД / КАЛЬКУЛЯТОР ФОТО) ---
+    // --- ПЕРЕКЛЮЧЕНИЕ МЕЖДУ ИНСТРУМЕНТАМИ (ТН ВЭД / КАЛЬКУЛЯТОР ФОТО / ЭТИКЕТКИ) ---
     let currentTool = 'tnved';
+    let labelMp = 'wb';
+    let freeLabelsDownloaded = 0;
+    try {
+      if (localStorage.getItem('wbcheck_free_label_used') === '1') {
+        freeLabelsDownloaded = 1;
+      }
+    } catch (e) {}
 
-    function switchTool(tool) {
+    function switchTool(tool, shouldScroll = true) {
       currentTool = tool;
       const viewTnved = document.getElementById('viewTnved');
       const viewCalc = document.getElementById('viewCalc');
@@ -3974,7 +3987,9 @@
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833';
           navKworkText.textContent = 'Претензия на Kwork (1 000 ₽)';
         }
-        window.location.hash = 'photo-calc';
+        if (window.location.hash !== '#photo-calc') {
+          history.replaceState(null, '', '#photo-calc');
+        }
         calcRecalculate();
       } else if (tool === 'label') {
         if (viewLabel) viewLabel.classList.remove('hidden');
@@ -3983,7 +3998,9 @@
           navKwork.href = 'https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833';
           navKworkText.textContent = 'Заказать этикетки (1 000 ₽)';
         }
-        window.location.hash = 'labels-58x40';
+        if (window.location.hash !== '#labels-58x40') {
+          history.replaceState(null, '', '#labels-58x40');
+        }
         updateLabelPreview();
       } else {
         if (viewTnved) viewTnved.classList.remove('hidden');
@@ -3992,16 +4009,24 @@
           navKwork.href = 'https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon';
           navKworkText.textContent = 'Оформить на Kwork';
         }
-        window.location.hash = '';
+        if (window.location.hash !== '') {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (shouldScroll) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
-    // Проверка хэша URL при загрузке
-    if (window.location.hash === '#photo-calc') {
-      setTimeout(() => switchTool('calc'), 50);
-    } else if (window.location.hash === '#labels-58x40') {
-      setTimeout(() => switchTool('label'), 50);
+    // Мгновенная проверка хэша URL при загрузке без задержек и мерцаний
+    function applyRouteFromHash(shouldScroll = false) {
+      if (window.location.hash === '#photo-calc') {
+        switchTool('calc', shouldScroll);
+      } else if (window.location.hash === '#labels-58x40') {
+        switchTool('label', shouldScroll);
+      } else {
+        switchTool('tnved', shouldScroll);
+      }
     }
 
     // --- ЛОГИКА КАЛЬКУЛЯТОРА СТ. 1301 ГК РФ ---
@@ -4697,15 +4722,6 @@
     calcRecalculate();
 
         // ==================== THERMAL LABELS 58x40 LOGIC ====================
-    let labelMp = 'wb';
-    let freeLabelsDownloaded = 0;
-
-    // Проверяем сохраненное состояние бесплатных загрузок
-    try {
-      if (localStorage.getItem('wbcheck_free_label_used') === '1') {
-        freeLabelsDownloaded = 1;
-      }
-    } catch (e) {}
 
     function setLabelMp(mp) {
       labelMp = mp;
@@ -5134,8 +5150,10 @@
       }, 350);
     }
 
-    // Точное векторное скачивание SVG один-в-один как на экране
-    function downloadSingleSvg() {
+    // Генерация чистого масштабируемого SVG для термопринтера и браузера
+    function generateLabelSvgString() {
+      updateLabelPreview();
+
       const name = (document.getElementById('labelInputName') || {}).value || 'Товар';
       const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2038491048292';
       const art = (document.getElementById('labelInputArticle') || {}).value || '';
@@ -5158,31 +5176,45 @@
     <text x="290" y="197" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="16" font-weight="800" fill="#dc2626" letter-spacing="1.5">НЕ ДЛЯ СКЛАДА</text>
   </g>` : '';
 
-      const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="58mm" height="40mm" viewBox="0 0 580 400">
+      return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 400" width="100%" height="100%">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    .lbl-title { font-size: 20px; font-weight: 800; fill: #000000; }
+    .lbl-sub { font-size: 15px; font-weight: 600; fill: #1e293b; }
+    .lbl-digits { font-family: "SF Mono", Monaco, Consolas, "Liberation Mono", monospace; font-size: 21px; font-weight: bold; letter-spacing: 2px; }
+    .lbl-bottom { font-size: 14px; fill: #1e293b; }
+  </style>
   <rect width="580" height="400" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="8"/>
   <rect x="25" y="20" width="530" height="360" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4"/>
   
   <!-- Верхняя строка: Название и знаки -->
-  <text x="35" y="44" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="20" font-weight="800" fill="#000000">${name.slice(0, 34)}</text>
-  ${isOzon ? '<rect x="445" y="22" width="52" height="26" fill="#005bff" rx="3"/><text x="454" y="41" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="#ffffff">OZON</text>' : ''}
-  ${eacChecked ? '<rect x="505" y="22" width="45" height="26" fill="none" stroke="#000000" stroke-width="2" rx="3"/><text x="512" y="41" font-family="Arial, sans-serif" font-size="15" font-weight="900" fill="#000000">EAC</text>' : ''}
+  <text x="35" y="46" class="lbl-title">${name.slice(0, 34)}</text>
+  ${isOzon ? '<rect x="445" y="24" width="52" height="26" fill="#005bff" rx="3"/><text x="454" y="43" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="#ffffff">OZON</text>' : ''}
+  ${eacChecked ? '<rect x="505" y="24" width="45" height="26" fill="none" stroke="#000000" stroke-width="2" rx="3"/><text x="512" y="43" font-family="Arial, sans-serif" font-size="15" font-weight="900" fill="#000000">EAC</text>' : ''}
 
   <!-- Вторая строка: Артикул, размер, цвет -->
-  <text x="35" y="76" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="15" font-weight="600" fill="#1e293b">Арт: ${art} | Разм: ${size} | Цвет: ${color}</text>
+  <text x="35" y="80" class="lbl-sub">Арт: ${art} | Разм: ${size} | Цвет: ${color}</text>
 
   <!-- Векторный штрихкод строго по центру -->
-  <g transform="translate(65, 96) scale(1.95, 1.45)">
+  <g transform="translate(65, 100) scale(1.95, 1.45)">
     ${svgInner}
   </g>
-  <text x="290" y="246" text-anchor="middle" font-family="monospace" font-size="21" font-weight="bold" fill="#000000" letter-spacing="2">${isOzon ? 'OZON: ' + barcode : barcode}</text>
+  <text x="290" y="250" text-anchor="middle" class="lbl-digits">${isOzon ? 'OZON: ' + barcode : barcode}</text>
 
   <!-- Нижний блок -->
-  <text x="35" y="328" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="14" fill="#1e293b">Состав: ${comp} | Сделано: ${country}</text>
-  <text x="35" y="358" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="14" fill="#1e293b">Продавец: ${seller}</text>
+  <text x="35" y="332" class="lbl-bottom">Состав: ${comp} | Сделано: ${country}</text>
+  <text x="35" y="362" class="lbl-bottom">Продавец: ${seller}</text>
 
   ${watermarkXml}
 </svg>`;
+    }
+
+    // Скачивание масштабируемого векторного макета SVG
+    function downloadSingleSvg() {
+      const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2038491048292';
+      const isLocked = (freeLabelsDownloaded >= 1);
+      const svgContent = generateLabelSvgString();
 
       const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
       const url = URL.createObjectURL(blob);
@@ -5198,10 +5230,54 @@
         freeLabelsDownloaded = 1;
         try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
         updateLabelPreview();
-        showToast('1 бесплатный векторный макет SVG скачан. Для партии без водяных знаков оформите кворк.');
+        showToast('1 бесплатный векторный макет SVG скачан.');
       } else {
         showFreemiumTrapModal('скачивание повторной этикетки');
       }
+    }
+
+    // Скачивание сверхчёткого растрового изображения PNG (300 DPI)
+    function downloadSinglePng() {
+      const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2038491048292';
+      const isLocked = (freeLabelsDownloaded >= 1);
+      const svgContent = generateLabelSvgString();
+
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1160;
+        canvas.height = 800;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 1160, 800);
+        ctx.drawImage(img, 0, 0, 1160, 800);
+        URL.revokeObjectURL(url);
+
+        canvas.toBlob(function(pngBlob) {
+          if (!pngBlob) return;
+          const pngUrl = URL.createObjectURL(pngBlob);
+          const a = document.createElement('a');
+          a.href = pngUrl;
+          a.download = `Этикетка_58х40_${barcode}${isLocked ? '_ОБРАЗЕЦ' : ''}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(pngUrl);
+
+          if (!isLocked) {
+            freeLabelsDownloaded = 1;
+            try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
+            updateLabelPreview();
+            showToast('1 бесплатная этикетка PNG (300 DPI) скачана.');
+          } else {
+            showFreemiumTrapModal('скачивание повторной этикетки');
+          }
+        }, 'image/png');
+      };
+      img.src = url;
     }
 
     // Модальное окно лимита и предложение Kwork #25
@@ -5529,6 +5605,11 @@
       };
       reader.readAsText(file);
     }
+
+    // Инициализация маршрута и превью при полной готовности DOM и скриптов
+    updateLabelPreview();
+    applyRouteFromHash(false);
+    window.addEventListener('hashchange', () => applyRouteFromHash(true));
 
   </script>
 </body>
