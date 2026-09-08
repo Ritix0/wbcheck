@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WBCheck.ru — Проверка ТН ВЭД, Калькулятор кражи фото, Дизайн карточек WB, Этикетки 58х40 и QR-вкладыши</title>
+  <title>WBCheck.ru: Проверка ТН ВЭД, Калькулятор кражи фото, Дизайн карточек WB, Этикетки 58х40 и QR-вкладыши</title>
   <meta name="description" content="Бесплатные сервисы для селлеров Wildberries и Ozon: онлайн-поисковик ТН ВЭД по ПП РФ № 2425, калькулятор компенсации за кражу фото по ст. 1301 ГК РФ, аудит и дизайн продающих карточек WB с разбором слепых зон и болей из отзывов, генератор этикеток 58х40 и векторных QR-кодов.">
   <meta name="keywords" content="wbcheck, дизайн карточек wildberries, инфографика для маркетплейсов, карточки товаров вайлдберриз, слепые зоны wildberries, аудит карточки товара, продающая инфографика wb, промпты для карточек wb, отказное письмо вайлдберриз, коды тн вэд озон, калькулятор кражи фото, компенсация ст 1301 гк рф, генератор этикеток 58х40, термоэтикетки wildberries ozon, печать штрихкодов ean-13, генератор qr кодов для вкладышей">
   <link rel="canonical" href="https://wbcheck.ru/">
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wbcheck.ru/">
   <meta property="og:site_name" content="WBCheck.ru">
-  <meta property="og:title" content="WBCheck.ru — Экспресс-инструменты, инфографика WB и сервисы для селлеров">
+  <meta property="og:title" content="WBCheck.ru: Экспресс-инструменты, инфографика WB и сервисы для селлеров">
   <meta property="og:description" content="Бесплатный подбор ТН ВЭД, расчёт компенсации за кражу фото, дизайн продающих карточек WB, термоэтикетки 58х40 и векторные QR-вкладыши.">
   <meta property="og:image" content="https://wbcheck.ru/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WBCheck.ru — Экспресс-инструменты для селлеров WB и Ozon">
+  <meta name="twitter:title" content="WBCheck.ru: Экспресс-инструменты для селлеров WB и Ozon">
   <meta name="twitter:description" content="Бесплатный подбор ТН ВЭД, расчёт компенсации за кражу фото, дизайн продающих карточек WB, термоэтикетки 58х40 и векторные QR-вкладыши.">
   <meta name="twitter:image" content="https://wbcheck.ru/og-image.png">
 
@@ -34,7 +34,7 @@
         "@type": "WebApplication",
         "@id": "https://wbcheck.ru/#webapp",
         "url": "https://wbcheck.ru/",
-        "name": "WBCheck.ru — Экспресс-сервисы для селлеров Wildberries и Ozon",
+        "name": "WBCheck.ru: Экспресс-сервисы для селлеров Wildberries и Ozon",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
         "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -2799,7 +2799,7 @@
       height: auto;
       padding: 10px 16px;
       line-height: 1.35;
-      background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);
+      background: var(--text-primary);
       color: #ffffff;
       border: none;
       border-radius: var(--radius-sm);
@@ -2811,7 +2811,7 @@
       justify-content: center;
       text-align: center;
       gap: 8px;
-      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition-fast);
       text-decoration: none;
       font-family: inherit;
@@ -2819,8 +2819,9 @@
     }
 
     .btn-qr-kwork:hover {
+      background: #1e293b;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.22);
       color: #ffffff;
     }
 
@@ -2896,9 +2897,9 @@
       gap: 8px;
       font-size: 0.8rem;
       font-weight: 700;
-      color: #7c3aed;
-      background: #f5f3ff;
-      border: 1px solid #ddd6fe;
+      color: var(--emerald-dark);
+      background: var(--emerald-bg);
+      border: 1px solid var(--emerald-border);
       padding: 4px 14px;
       border-radius: var(--radius-pill);
       box-shadow: var(--shadow-xs);
@@ -2930,7 +2931,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #7c3aed;
+      background: var(--text-primary);
       color: #ffffff;
       font-size: 0.88rem;
       font-weight: 700;
@@ -2938,13 +2939,14 @@
       border-radius: var(--radius-sm);
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition-fast);
       text-decoration: none;
     }
     .btn-card-primary:hover {
-      background: #6d28d9;
+      background: #1e293b;
       transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
     }
     .btn-card-secondary {
       display: inline-flex;
@@ -3215,8 +3217,7 @@
       position: absolute;
       bottom: 12px;
       left: 10px;
-      background: #d946ef;
-      background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+      background: #ef4444;
       color: #ffffff;
       padding: 3px 8px;
       border-radius: 6px;
@@ -3231,14 +3232,15 @@
       right: 10px;
       width: 36px;
       height: 36px;
-      background: #a855f7;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
       font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     .wb-dots {
       position: absolute;
@@ -3290,7 +3292,7 @@
       gap: 8px;
     }
     .wb-app-price-main {
-      color: #c084fc;
+      color: #ffffff;
       font-weight: 800;
       font-size: 1.05rem;
     }
@@ -3363,13 +3365,13 @@
     .prompt-title {
       font-size: 1.15rem;
       font-weight: 800;
-      color: #7c3aed;
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .btn-copy-prompt {
-      background: #7c3aed;
+      background: var(--text-primary);
       color: #ffffff;
       border: none;
       padding: 8px 18px;
@@ -3382,10 +3384,10 @@
       gap: 6px;
       transition: var(--transition-fast);
       font-family: inherit;
-      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+      box-shadow: var(--shadow-sm);
     }
     .btn-copy-prompt:hover {
-      background: #6d28d9;
+      background: #1e293b;
     }
     .prompt-text-block {
       background: #f8fafc;
@@ -3453,7 +3455,7 @@
     .portfolio-tag {
       font-size: 0.7rem;
       font-weight: 700;
-      color: #7c3aed;
+      color: var(--emerald-dark);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -3566,14 +3568,14 @@
       width: 17px;
       height: 17px;
       cursor: pointer;
-      accent-color: #7c3aed;
+      accent-color: var(--emerald);
     }
     .check-score-box {
       margin-top: 18px;
       padding: 14px 18px;
       border-radius: var(--radius-md);
-      background: #f5f3ff;
-      border: 1px solid #ddd6fe;
+      background: var(--emerald-bg);
+      border: 1px solid var(--emerald-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -3628,7 +3630,7 @@
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://wbcheck.ru/">
   <meta property="og:site_name" content="WBCheck.ru">
-  <meta property="og:title" content="WBCheck.ru — Сервисы селлера: ТН ВЭД, Калькулятор фото, Этикетки 58х40 и QR для вкладышей">
+  <meta property="og:title" content="WBCheck.ru: Сервисы селлера: ТН ВЭД, Калькулятор фото, Этикетки 58х40 и QR для вкладышей">
   <meta property="og:description" content="Бесплатные сервисы для продавцов Wildberries и Ozon: проверка кодов ТН ВЭД (ПП РФ № 2425), расчёт компенсации за кражу фото (ст. 1301 ГК РФ), конструктор этикеток 58х40 и генератор дизайнерских QR-кодов для вкладышей.">
   <meta property="og:image" content="https://wbcheck.ru/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -3638,7 +3640,7 @@
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://wbcheck.ru/">
-  <meta name="twitter:title" content="WBCheck.ru — Сервисы селлера: ТН ВЭД, Калькулятор фото, Этикетки 58х40 и QR для вкладышей">
+  <meta name="twitter:title" content="WBCheck.ru: Сервисы селлера: ТН ВЭД, Калькулятор фото, Этикетки 58х40 и QR для вкладышей">
   <meta name="twitter:description" content="Бесплатные сервисы для продавцов Wildberries и Ozon: проверка кодов ТН ВЭД (ПП РФ № 2425), расчёт компенсации за кражу фото (ст. 1301 ГК РФ), конструктор этикеток 58х40 и генератор дизайнерских QR-кодов для вкладышей.">
   <meta name="twitter:image" content="https://wbcheck.ru/og-image.png">
 
@@ -4326,7 +4328,7 @@
                 Средняя судебная практика по коммерческим спорам (от 15 000 до 35 000 ₽ за слайд)
               </div>
             </div>
-            <div class="stat-val" id="calcStatCourt">60 000 – 140 000 ₽</div>
+            <div class="stat-val" id="calcStatCourt">60 000 - 140 000 ₽</div>
           </div>
 
           <!-- Итог 3: Судебные издержки -->
@@ -4370,7 +4372,7 @@
                 Сумма для досудебной выплаты: нарушителю выгоднее выплатить её добровольно, чем потерять карточку с отзывами и оплачивать суд
               </div>
             </div>
-            <div class="stat-val" id="calcStatSettle" style="color: var(--emerald); font-size: 1.25rem;">30 000 – 40 000 ₽</div>
+            <div class="stat-val" id="calcStatSettle" style="color: var(--emerald); font-size: 1.25rem;">30 000 - 40 000 ₽</div>
           </div>
 
         </div>
@@ -4450,7 +4452,7 @@
           <div class="action-dock-info">
             <div class="action-dock-title">Нарушитель игнорирует сообщения в чате?</div>
             <div class="action-dock-text">
-              Если нарушитель не отвечает, юридический отдел Wildberries или Ozon принудительно заблокирует карточку-клон за 24–48 часов по официальной претензии с нормами закона и подтверждёнными исходниками (RAW, Figma, EXIF).
+              Если нарушитель не отвечает, юридический отдел Wildberries или Ozon принудительно заблокирует карточку-клон за 24-48 часов по официальной претензии с нормами закона и подтверждёнными исходниками (RAW, Figma, EXIF).
             </div>
           </div>
           <a href="https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833" target="_blank" class="btn-dock-action">
@@ -4485,7 +4487,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-content">
-                При подаче мотивированной претензии через форму контроля качества Ozon направляет нарушителю официальный запрос с требованием предоставить документы авторства в течение 3–7 рабочих дней. Если нарушитель не может подтвердить права исходниками, Ozon деактивирует карточку и скрывает её с витрины маркетплейса.
+                При подаче мотивированной претензии через форму контроля качества Ozon направляет нарушителю официальный запрос с требованием предоставить документы авторства в течение 3-7 рабочих дней. Если нарушитель не может подтвердить права исходниками, Ozon деактивирует карточку и скрывает её с витрины маркетплейса.
               </div>
             </div>
 
@@ -4667,7 +4669,7 @@
               </div>
 
               <div id="freeLimitBadge" style="font-size: 0.76rem; color: var(--text-tertiary); text-align: center; line-height: 1.4;">
-                Бесплатный режим: тестовый образец с водяным знаком для калибровки термопринтера. Чистые файлы — на Kwork
+                Бесплатный режим: тестовый образец с водяным знаком для калибровки термопринтера. Чистые файлы: на Kwork
               </div>
             </div>
           </div>
@@ -4793,47 +4795,61 @@
             </div>
           </div>
 
-          <!-- Секция часто задаваемых вопросов (FAQ) -->
-          <div class="calc-section-divider">Регламент и частые вопросы селлеров по термопечати</div>
-          <div style="padding: 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Почему выбран размер именно 58х40 мм?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                58х40 мм является официальным базовым стандартом индивидуальной маркировки Wildberries и Ozon. Он помещается на любой пакет или коробку и поддерживается всеми популярными термопринтерами (Xprinter XP-365B, XP-420B, Zebra, TSC).
-              </div>
-            </div>
+        </div>
+      </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                В чём разница между кодами для Wildberries и Ozon?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Wildberries требует числовой штрихкод стандарта EAN-13 строго из 13 цифр с обязательным расчётом контрольной суммы. Ozon поддерживает стандарт Code-128, в котором можно кодировать как цифры, так и буквы (например OZN-84920-BL).
-              </div>
-            </div>
+      <!-- FAQ по термопечати и этикеткам 58х40 -->
+      <section class="faq-wrap">
+        <div class="section-header-clean">
+          <div>
+            <h2 class="section-heading">Регламент и частые вопросы селлеров по термопечати</h2>
+            <p class="section-subheading">Технические стандарты 58х40 мм, валидация штрихкодов EAN-13 и Code-128 для Wildberries и Ozon</p>
+          </div>
+        </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                В чём опасность ошибки Excel 2.04E+12?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                При открытии CSV с баркодами Excel автоматически превращает длинные числа в экспоненциальную запись. Если напечатать такой код, сканер склада его не считает, и товар уйдёт в платную обезличку.
-              </div>
+        <div class="faq-accordion">
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Почему выбран размер именно 58х40 мм?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              58х40 мм является официальным базовым стандартом индивидуальной маркировки Wildberries и Ozon. Он помещается на любой пакет или коробку и поддерживается всеми популярными термопринтерами (Xprinter XP-365B, XP-420B, Zebra, TSC).
             </div>
+          </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Когда на этикетке обязателен знак ЕАС?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Знак ЕАС обязателен для всех товаров, подпадающих под действие технических регламентов Таможенного союза (ТР ТС 017/2011 на одежду и текстиль, ТР ТС 007/2011 на детские товары). Его отсутствие грозит блокировкой карточки.
-              </div>
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>В чём разница между кодами для Wildberries и Ozon?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Wildberries требует числовой штрихкод стандарта EAN-13 строго из 13 цифр с обязательным расчётом контрольной суммы. Ozon поддерживает стандарт Code-128, в котором можно кодировать как цифры, так и буквы (например OZN-84920-BL).
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>В чём опасность ошибки Excel 2.04E+12?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              При открытии CSV с баркодами Excel автоматически превращает длинные числа в экспоненциальную запись. Если напечатать такой код, сканер склада его не считает, и товар уйдёт в платную обезличку.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Когда на этикетке обязателен знак ЕАС?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Знак ЕАС обязателен для всех товаров, подпадающих под действие технических регламентов Таможенного союза (ТР ТС 017/2011 на одежду и текстиль, ТР ТС 007/2011 на детские товары). Его отсутствие грозит блокировкой карточки.
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
     <!-- /viewLabel -->
 
@@ -4911,16 +4927,16 @@
               <div>
                 <label class="calc-label-clean" style="display: block; margin-bottom: 8px;">Фирменный градиент:</label>
                 <div class="qr-swatches-grid">
-                  <button type="button" class="qr-swatch-btn active" data-theme="wb" title="Wildberries Purple" style="background: linear-gradient(135deg, #7C3AED, #9333EA);" onclick="setQrTheme('wb')"></button>
-                  <button type="button" class="qr-swatch-btn" data-theme="ozon" title="Ozon Blue" style="background: linear-gradient(135deg, #005BFF, #00A2FF);" onclick="setQrTheme('ozon')"></button>
+                  <button type="button" class="qr-swatch-btn active" data-theme="titanium" title="Titanium Slate" style="background: linear-gradient(135deg, #0F172A, #334155);" onclick="setQrTheme('titanium')"></button>
                   <button type="button" class="qr-swatch-btn" data-theme="emerald" title="Fresh Emerald" style="background: linear-gradient(135deg, #059669, #10B981);" onclick="setQrTheme('emerald')"></button>
-                  <button type="button" class="qr-swatch-btn" data-theme="titanium" title="Titanium Slate" style="background: linear-gradient(135deg, #0F172A, #334155);" onclick="setQrTheme('titanium')"></button>
+                  <button type="button" class="qr-swatch-btn" data-theme="ozon" title="Ozon Blue" style="background: linear-gradient(135deg, #005BFF, #00A2FF);" onclick="setQrTheme('ozon')"></button>
                   <button type="button" class="qr-swatch-btn" data-theme="rose" title="Berry Pink" style="background: linear-gradient(135deg, #DB2777, #F43F5E);" onclick="setQrTheme('rose')"></button>
                   <button type="button" class="qr-swatch-btn" data-theme="amber" title="Luxury Gold" style="background: linear-gradient(135deg, #D97706, #F59E0B);" onclick="setQrTheme('amber')"></button>
+                  <button type="button" class="qr-swatch-btn" data-theme="wb" title="Wildberries Burgundy" style="background: linear-gradient(135deg, #831843, #9D174D);" onclick="setQrTheme('wb')"></button>
                   <div class="qr-custom-colors" title="Пользовательские цвета">
                     <span style="font-size: 0.74rem; font-weight: 700; color: var(--text-secondary);">Свои:</span>
-                    <input type="color" id="qrCustomColor1" class="qr-color-input" value="#7C3AED" onchange="applyCustomQrColors()">
-                    <input type="color" id="qrCustomColor2" class="qr-color-input" value="#9333EA" onchange="applyCustomQrColors()">
+                    <input type="color" id="qrCustomColor1" class="qr-color-input" value="#0F172A" onchange="applyCustomQrColors()">
+                    <input type="color" id="qrCustomColor2" class="qr-color-input" value="#334155" onchange="applyCustomQrColors()">
                   </div>
                 </div>
               </div>
@@ -5014,47 +5030,61 @@
             </div>
           </div>
 
-          <!-- Разделитель и экспертный FAQ -->
-          <div class="calc-section-divider">Регламент и правила размещения QR-вкладышей на маркетплейсах</div>
-          <div style="padding: 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Законно ли вкладывать QR-код с контактами службы заботы в заказ на WB?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Да. По закону о защите прав потребителей селлер обязан предоставить покупателю контакты для обращения по гарантии, инструкции и качеству товара. Wildberries штрафует за увод трафика <strong>внутри карточки товара на сайте</strong>, однако вложение гарантийных талонов и буклетов технической поддержки внутрь потребительской упаковки является общепринятым стандартом торговли.
-              </div>
-            </div>
+        </div>
+      </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Почему обычные квадратные QR-коды работают хуже сквирклов?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Чёрно-белые пиксельные коды из бесплатных генераторов ассоциируются у покупателей с техническими бирками или рекламой спама. Дизайнерские сквирклы с мягким радиусом, фирменным градиентом и центральным логотипом выглядят как брендовый премиальный продукт в стиле Apple и вызывают доверие, увеличивая сканируемость в 2.5 раза.
-              </div>
-            </div>
+      <!-- FAQ по QR-вкладышам на маркетплейсах -->
+      <section class="faq-wrap">
+        <div class="section-header-clean">
+          <div>
+            <h2 class="section-heading">Регламент и частые вопросы по QR-вкладышам на маркетплейсах</h2>
+            <p class="section-subheading">Правила Wildberries и Ozon по вкладышам, служба заботы в Telegram, сканируемость сквирклов и печать в типографии</p>
+          </div>
+        </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Не помешает ли центральный логотип сканированию камерой?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Нет. Генератор использует максимальный промышленный алгоритм избыточности Reed-Solomon (Level H), который гарантирует 100% считывание даже при физическом перекрытии до 30% площади кода. Логотип располагается строго в математически безопасной зоне и тестируется камерами перед печатью.
-              </div>
+        <div class="faq-accordion">
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Законно ли вкладывать QR-код с контактами службы заботы в заказ на WB?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Да. По закону о защите прав потребителей селлер обязан предоставить покупателю контакты для обращения по гарантии, инструкции и качеству товара. Wildberries штрафует за увод трафика <strong>внутри карточки товара на сайте</strong>, однако вложение гарантийных талонов и буклетов технической поддержки внутрь потребительской упаковки является общепринятым стандартом торговли.
             </div>
+          </div>
 
-            <div>
-              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--text-primary);">
-                Какой размер вкладыша лучше выбрать для типографии?
-              </div>
-              <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
-                Самые экономичные и популярные форматы: визитка 90х50 мм, открытка А7 (74х105 мм) или вкладыш А6 (105х148 мм). Векторный формат SVG позволяет напечатать вкладыш любого размера с безупречной лазерной чёткостью шрифтов и линий.
-              </div>
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Почему обычные квадратные QR-коды работают хуже сквирклов?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Чёрно-белые пиксельные коды из бесплатных генераторов ассоциируются у покупателей с техническими бирками или рекламой спама. Дизайнерские сквирклы с мягким радиусом, фирменным градиентом и центральным логотипом выглядят как брендовый премиальный продукт в стиле Apple и вызывают доверие, увеличивая сканируемость в 2.5 раза.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Не помешает ли центральный логотип сканированию камерой?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Нет. Генератор использует максимальный промышленный алгоритм избыточности Reed-Solomon (Level H), который гарантирует 100% считывание даже при физическом перекрытии до 30% площади кода. Логотип располагается строго в математически безопасной зоне и тестируется камерами перед печатью.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Какой размер вкладыша лучше выбрать для типографии?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Самые экономичные и популярные форматы: визитка 90х50 мм, открытка А7 (74х105 мм) или вкладыш А6 (105х148 мм). Векторный формат SVG позволяет напечатать вкладыш любого размера с безупречной лазерной чёткостью шрифтов и линий.
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
     <!-- /viewQr -->
 
@@ -5067,7 +5097,7 @@
       <!-- Hero блок -->
       <section class="card-hero">
         <div class="card-badge-trend">
-          <span class="status-dot" style="background: #7c3aed; box-shadow: 0 0 6px #7c3aed;"></span>
+          <span class="status-dot"></span>
           <span>Стандарты мобильной выдачи Wildberries 2026 года</span>
         </div>
         <h1 class="card-hero-title">Как делаются карточки, которые продают, а не сливают рекламный бюджет</h1>
@@ -5084,7 +5114,7 @@
             <span>🖼️</span>
             <span>Портфолио 10 ниш</span>
           </a>
-          <a href="https://kwork.ru/e-commerce-social-network/54537490/sozdam-dizayn-kartochek-dlya-wildberries-i-prodayushchuyu-infografiku?ref=25130833" target="_blank" class="btn-card-secondary" style="border-color: #7c3aed; color: #7c3aed; font-weight: 700;">
+          <a href="https://kwork.ru/e-commerce-social-network/54537490/sozdam-dizayn-kartochek-dlya-wildberries-i-prodayushchuyu-infografiku?ref=25130833" target="_blank" class="btn-card-secondary" style="border-color: var(--emerald-border); color: var(--emerald-dark); font-weight: 700;">
             <span>🚀</span>
             <span>Заказать карточки на Kwork (1 000 ₽)</span>
           </a>
@@ -5276,15 +5306,15 @@
               </div>
             </div>
             <div class="blind-info-item">
-              <span class="blind-dot-icon" style="background: #d946ef;">3</span>
+              <span class="blind-dot-icon" style="background: #ef4444;">3</span>
               <div>
                 <strong>Левый нижний угол фото (плашка скидки):</strong> системные бейджи акций («-65% РАСПРОДАЖА», скидка WB Клуба). Нижний левый триггер обязан быть приподнят.
               </div>
             </div>
             <div class="blind-info-item">
-              <span class="blind-dot-icon" style="background: #a855f7;">4</span>
+              <span class="blind-dot-icon" style="background: #0f172a;">4</span>
               <div>
-                <strong>Правый нижний угол фото (корзина WB):</strong> крупная круглая фиолетовая кнопка быстрого заказа.
+                <strong>Правый нижний угол фото (корзина WB):</strong> круглая кнопка быстрого добавления в корзину.
               </div>
             </div>
             <div class="blind-info-item">
@@ -5362,7 +5392,7 @@
 
         <div class="check-score-box">
           <div>
-            <div style="font-weight: 800; font-size: 1.05rem; color: #5b21b6;">
+            <div style="font-weight: 800; font-size: 1.05rem; color: var(--emerald-dark);">
               Индекс конверсии карточки: <span id="cardScorePercent">60%</span>
             </div>
             <div style="font-size: 0.82rem; color: var(--text-secondary);" id="cardScoreVerdict">
@@ -5503,8 +5533,60 @@
         </div>
       </section>
 
+      <!-- Блок: Частые вопросы по дизайну и инфографике карточек WB -->
+      <section class="faq-wrap">
+        <div class="section-header-clean">
+          <div>
+            <h2 class="section-heading">Частые вопросы по дизайну и инфографике карточек WB</h2>
+            <p class="section-subheading">Технические стандарты 3:4, безопасные зоны от системных кнопок и влияние CTR на ранжирование</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Почему соотношение сторон 3:4 (900х1200 px) обязательно для Wildberries?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Соотношение 3:4 (вертикальный прямоугольник 900х1200 пикселей) является официальным техническим стандартом Wildberries. Если загрузить квадратное изображение 1:1 или произвольный размер, алгоритм WB автоматически обрежет или сожмёт фото под мобильную ленту, исказив пропорции товара и обрезав текст инфографики.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Чем опасны слепые зоны мобильного приложения Wildberries?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              В приложении WB на фото накладываются системные элементы интерфейса: кнопка добавления в избранное (сердечко) в правом верхнем углу (120х120 px), кнопка скрытия с глазом в левом верхнем углу, розовая плашка скидки в левом нижнем углу и фиолетовая кнопка корзины в правом нижнем углу. Если важный текст или гарантия попадут в эти зоны, покупатель их не увидит, что снижает кликабельность (CTR) до 40%.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Как дизайн обложки и отработка болей влияют на позиции в поиске WB?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Поисковые алгоритмы Wildberries напрямую учитывают показатели кликабельности (CTR) из каталога и конверсию в корзину (CR). Когда главная фотография привлекает внимание крупным планом товара и закрывает частые страхи из отзывов (протечки, работа без воды, прочность), карточка получает больше переходов и покупок, быстрее поднимаясь в органический топ выдачи.
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Сколько слайдов должно быть в продающей карусели товара?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              Оптимальная воронка карточки включает от 4 до 6 слайдов: 1-й слайд: конверсионная обложка с доминантой товара 70% и 3-4 ключевыми УТП; 2-3 слайды: детальные характеристики и закрытие болей из отзывов; 4-й слайд: точные размеры и комплектация; 5-й слайд: сценарии использования или подарок; 6-й слайд: гарантия, инструкция и знак ЕАС.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Блок 7: Финальный CTA -->
-      <section style="background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%); border-radius: var(--radius-lg); padding: 36px 32px; color: #ffffff; text-align: center; margin-bottom: 40px; box-shadow: var(--shadow-lg);">
+      <section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-lg); padding: 36px 32px; color: #ffffff; text-align: center; margin-bottom: 40px; box-shadow: var(--shadow-lg); border: 1px solid #334155;">
         <h2 style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px;">
           Хотите карточки, которые выделят товар и поднимут CTR?
         </h2>
@@ -5512,7 +5594,7 @@
           Разрабатываю продающий дизайн с учётом слепых зон Wildberries, психологии покупателей и отстройки от ошибок ваших прямых конкурентов.
         </p>
         <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-          <a href="https://kwork.ru/e-commerce-social-network/54537490/sozdam-dizayn-kartochek-dlya-wildberries-i-prodayushchuyu-infografiku?ref=25130833" target="_blank" style="background: #ffffff; color: #7c3aed; font-size: 0.95rem; font-weight: 800; padding: 12px 28px; border-radius: var(--radius-sm); text-decoration: none; box-shadow: var(--shadow-md); transition: transform 0.15s ease;">
+          <a href="https://kwork.ru/e-commerce-social-network/54537490/sozdam-dizayn-kartochek-dlya-wildberries-i-prodayushchuyu-infografiku?ref=25130833" target="_blank" style="background: var(--emerald); color: #ffffff; font-size: 0.95rem; font-weight: 800; padding: 12px 28px; border-radius: var(--radius-sm); text-decoration: none; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4); transition: transform 0.15s ease;">
             Заказать инфографику на Kwork (от 1 000 ₽)
           </a>
         </div>
@@ -6164,7 +6246,7 @@
       if (desc) {
         desc.textContent = mp === 'wb'
           ? 'Wildberries: рассмотрение жалоб через Цифровой арбитраж в кабинете продавца, 10 дней на ответ нарушителю перед блокировкой.'
-          : 'Ozon: подача претензии через службу контроля качества Ozon Claim, 3–7 дней на ответ до скрытия карточки с витрины.';
+          : 'Ozon: подача претензии через службу контроля качества Ozon Claim, 3-7 дней на ответ до скрытия карточки с витрины.';
       }
       calcRecalculate();
     }
@@ -6278,7 +6360,7 @@
       }
 
       const elCourt = document.getElementById('calcStatCourt');
-      if (elCourt) elCourt.textContent = `${courtLow.toLocaleString('ru-RU')} – ${courtHigh.toLocaleString('ru-RU')} ₽`;
+      if (elCourt) elCourt.textContent = `${courtLow.toLocaleString('ru-RU')} - ${courtHigh.toLocaleString('ru-RU')} ₽`;
 
       const elCosts = document.getElementById('calcStatCosts');
       if (elCosts) elCosts.textContent = `~${totalCosts.toLocaleString('ru-RU')} ₽`;
@@ -6287,13 +6369,13 @@
       if (elRisk) elRisk.textContent = `до ${totalRisk.toLocaleString('ru-RU')} ₽`;
 
       const elSettle = document.getElementById('calcStatSettle');
-      if (elSettle) elSettle.textContent = `${settleLow.toLocaleString('ru-RU')} – ${settleHigh.toLocaleString('ru-RU')} ₽`;
+      if (elSettle) elSettle.textContent = `${settleLow.toLocaleString('ru-RU')} - ${settleHigh.toLocaleString('ru-RU')} ₽`;
 
       const elDeadline = document.getElementById('calcStatDeadline');
       if (elDeadline) {
         elDeadline.textContent = calcMp === 'wb' 
           ? '10 дней (WB Арбитраж)' 
-          : '3–7 дней (Ozon Claim)';
+          : '3-7 дней (Ozon Claim)';
       }
 
       const elDeadlineDesc = document.getElementById('calcStatDeadlineDesc');
@@ -7259,7 +7341,7 @@
       <img id="modalCardImg" src="" alt="Карточка товара Wildberries" class="portfolio-modal-img">
       <div class="portfolio-modal-body">
         <div>
-          <span style="font-size: 0.76rem; font-weight: 700; color: #7c3aed; text-transform: uppercase;">Стандарт WB 3:4 (900х1200 px)</span>
+          <span style="font-size: 0.76rem; font-weight: 700; color: var(--emerald-dark); text-transform: uppercase;">Стандарт WB 3:4 (900х1200 px)</span>
           <h3 id="modalCardTitle" style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin: 6px 0 10px;">Название товара</h3>
           <p id="modalCardDesc" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55;">Описание композиции и ключевые УТП карточки.</p>
         </div>
@@ -7755,19 +7837,19 @@
     qrcode.stringToBytes = qrcode.stringToBytesFuncs['UTF-8'];
 
     // 2. Состояние генератора вкладышей
-    let qrTheme = 'wb';
-    let qrColors = { top: '#7C3AED', bottom: '#9333EA' };
+    let qrTheme = 'titanium';
+    let qrColors = { top: '#0F172A', bottom: '#334155' };
     let qrIcon = 'support';
     let qrCustomLogoImg = null;
     let qrCustomLogoName = '';
 
     const QR_THEMES = {
-      wb: { top: '#7C3AED', bottom: '#9333EA' },
-      ozon: { top: '#005BFF', bottom: '#00A2FF' },
-      emerald: { top: '#059669', bottom: '#10B981' },
       titanium: { top: '#0F172A', bottom: '#334155' },
+      emerald: { top: '#059669', bottom: '#10B981' },
+      ozon: { top: '#005BFF', bottom: '#00A2FF' },
       rose: { top: '#DB2777', bottom: '#F43F5E' },
-      amber: { top: '#D97706', bottom: '#F59E0B' }
+      amber: { top: '#D97706', bottom: '#F59E0B' },
+      wb: { top: '#831843', bottom: '#9D174D' }
     };
 
     const QR_PRESETS = {
@@ -7775,7 +7857,7 @@
         url: 'https://t.me/your_brand_bot',
         brand: 'WILDBERRIES BRAND',
         subtitle: 'Служба заботы о покупателях',
-        theme: 'wb',
+        theme: 'titanium',
         icon: 'support'
       },
       manual: {
@@ -7920,8 +8002,8 @@
       const url = options.url || 'https://wbcheck.ru';
       const brand = options.brand || 'WILDBERRIES BRAND';
       const subtitle = options.subtitle || 'Служба заботы о покупателях';
-      const topColor = options.topColor || '#7C3AED';
-      const bottomColor = options.bottomColor || '#9333EA';
+      const topColor = options.topColor || '#0F172A';
+      const bottomColor = options.bottomColor || '#334155';
       const iconType = options.iconType || 'support';
       const logoImg = options.logoImg || null;
       const isWatermark = options.watermark !== false;
