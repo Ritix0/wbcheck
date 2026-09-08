@@ -661,6 +661,72 @@
       padding-top: 44px;
     }
 
+    .table-expand-wrapper {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .table-expand-wrapper.collapsed .directory-table-container {
+      max-height: 345px;
+      overflow: hidden;
+    }
+
+    .table-fade-overlay {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.65) 45%, #ffffff 96%);
+      pointer-events: none;
+      border-bottom-left-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+    }
+
+    .table-expand-wrapper.collapsed .table-fade-overlay {
+      display: block;
+    }
+
+    .table-expand-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+    .btn-table-expand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-hairline);
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .btn-table-expand:hover {
+      background: #f8fafc;
+      border-color: var(--emerald-border);
+      color: var(--emerald);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .btn-table-expand svg {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-table-expand.expanded svg {
+      transform: rotate(180deg);
+    }
+
     .directory-table-container {
       width: 100%;
       overflow-x: auto;
@@ -1135,8 +1201,9 @@
         <div class="registry-count" id="registryCount">30 категорий в базе</div>
       </div>
 
-      <div class="directory-table-container">
-        <table class="directory-table">
+      <div class="table-expand-wrapper collapsed" id="tableExpandWrapper">
+        <div class="directory-table-container">
+          <table class="directory-table">
           <thead>
             <tr>
               <th style="width:40%;">Наименование товара</th>
@@ -1328,6 +1395,17 @@
             </tr>
           </tbody>
         </table>
+        </div>
+        <div class="table-fade-overlay" id="tableFadeOverlay"></div>
+      </div>
+
+      <div class="table-expand-btn-wrap" id="tableExpandBtnWrap">
+        <button type="button" class="btn-table-expand" id="btnTableExpand" onclick="toggleTableExpand()">
+          <span id="btnTableExpandText">Показать все 30 категорий</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" id="btnTableExpandIcon">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -1866,6 +1944,54 @@
     let selectedId = 1;
     let activeCategory = 'all';
 
+    // Управление сворачиванием / растушёвкой таблицы реестра
+    function toggleTableExpand() {
+      const wrapper = document.getElementById('tableExpandWrapper');
+      const btn = document.getElementById('btnTableExpand');
+      const text = document.getElementById('btnTableExpandText');
+      
+      if (!wrapper) return;
+      const isCollapsed = wrapper.classList.contains('collapsed');
+      
+      if (isCollapsed) {
+        wrapper.classList.remove('collapsed');
+        if (btn) btn.classList.add('expanded');
+        if (text) text.textContent = 'Свернуть реестр';
+      } else {
+        wrapper.classList.add('collapsed');
+        if (btn) btn.classList.remove('expanded');
+        const count = database.length;
+        if (text) text.textContent = `Показать все ${count} категорий`;
+      }
+    }
+
+    function expandTableIfCollapsed() {
+      const wrapper = document.getElementById('tableExpandWrapper');
+      const btn = document.getElementById('btnTableExpand');
+      const text = document.getElementById('btnTableExpandText');
+      if (wrapper && wrapper.classList.contains('collapsed')) {
+        wrapper.classList.remove('collapsed');
+        if (btn) btn.classList.add('expanded');
+        if (text) text.textContent = 'Свернуть реестр';
+      }
+    }
+
+    function updateExpandButtonVisibility(itemCount) {
+      const btnWrap = document.getElementById('tableExpandBtnWrap');
+      const text = document.getElementById('btnTableExpandText');
+      if (!btnWrap) return;
+      if (itemCount <= 6) {
+        btnWrap.style.display = 'none';
+        expandTableIfCollapsed();
+      } else {
+        btnWrap.style.display = 'flex';
+        const wrapper = document.getElementById('tableExpandWrapper');
+        if (wrapper && wrapper.classList.contains('collapsed') && text) {
+          text.textContent = `Показать все ${itemCount} категорий`;
+        }
+      }
+    }
+
     // Рендер каталога
     function renderDirectory(items) {
       if (items.length === 0) {
@@ -1884,6 +2010,7 @@
       `).join('');
 
       registryCount.textContent = `${items.length} товаров в списке`;
+      updateExpandButtonVisibility(items.length);
     }
 
     // Выбор элемента
@@ -2029,6 +2156,10 @@
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.trim();
       searchClear.style.display = q.length > 0 ? 'flex' : 'none';
+
+      if (q.length > 0) {
+        expandTableIfCollapsed();
+      }
 
       if (!q) {
         let pool = database;
