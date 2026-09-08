@@ -132,6 +132,8 @@
       font-size: 0.98rem;
       letter-spacing: -0.01em;
       color: var(--text-primary);
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .logo-version {
@@ -141,6 +143,7 @@
       color: var(--text-tertiary);
       border-left: 1px solid var(--border-hairline);
       padding-left: 10px;
+      white-space: nowrap;
     }
 
     .btn-nav {
@@ -1080,6 +1083,7 @@
       gap: 3px;
       height: 38px;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     .nav-tab {
@@ -1113,6 +1117,12 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
+    .tab-full {
+      display: inline;
+    }
+    .tab-mid {
+      display: none;
+    }
     .tab-short {
       display: none;
     }
@@ -1123,7 +1133,8 @@
       font-weight: 600;
       color: var(--text-primary);
       background: #ffffff;
-      padding: 0 16px;
+      padding: 0 14px;
+      flex-shrink: 0;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-hairline);
       box-shadow: var(--shadow-xs);
@@ -1152,7 +1163,29 @@
       display: none;
     }
 
-    @media (max-width: 768px) {
+    /* Ноутбуки и средние экраны (до 1060px): убираем мелкие подписи и сокращаем табы */
+    @media (max-width: 1060px) {
+      .logo-version {
+        display: none;
+      }
+      .tab-full {
+        display: none;
+      }
+      .tab-mid {
+        display: inline;
+      }
+      .nav-tab {
+        padding: 0 10px;
+        font-size: 0.8rem;
+      }
+      .btn-nav {
+        padding: 0 10px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Планшеты и мобильные устройства (до 860px): перенос табов на вторую строку */
+    @media (max-width: 860px) {
       .nav {
         padding: 8px 0;
         min-height: auto;
@@ -1164,9 +1197,6 @@
       }
       .logo {
         font-size: 0.95rem;
-      }
-      .logo-version {
-        display: none;
       }
       .btn-nav {
         font-size: 0.76rem;
@@ -1187,7 +1217,7 @@
         padding: 0 4px;
         font-size: 0.76rem;
       }
-      .tab-full {
+      .tab-mid {
         display: none;
       }
       .tab-short {
@@ -1943,12 +1973,12 @@
     .sticker-watermark {
       position: absolute;
       inset: 0;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
       pointer-events: none;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.35);
     }
 
     .sticker-watermark-text {
@@ -1956,14 +1986,15 @@
       font-size: 13px;
       line-height: 1.35;
       font-weight: 900;
-      color: rgba(220, 38, 38, 0.65);
-      border: 2px dashed rgba(220, 38, 38, 0.7);
+      color: rgba(220, 38, 38, 0.85);
+      border: 2px dashed rgba(220, 38, 38, 0.85);
       padding: 6px 14px;
       border-radius: 4px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       text-align: center;
-      background: rgba(254, 242, 242, 0.75);
+      background: rgba(254, 242, 242, 0.9);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.12);
     }
 
     .sticker-watermark.active {
@@ -2377,13 +2408,22 @@
       </div>
       <div class="nav-tools-switch">
         <button type="button" class="nav-tab active" id="tabBtnTnved" onclick="switchTool('tnved')">
-          <span>🔍</span> <span class="tab-full">ТН ВЭД Чекер</span><span class="tab-short">ТН ВЭД</span>
+          <span>🔍</span>
+          <span class="tab-full">ТН ВЭД Чекер</span>
+          <span class="tab-mid">ТН ВЭД</span>
+          <span class="tab-short">ТН ВЭД</span>
         </button>
         <button type="button" class="nav-tab" id="tabBtnCalc" onclick="switchTool('calc')">
-          <span>⚖️</span> <span class="tab-full">Калькулятор кражи фото</span><span class="tab-short">Калькулятор</span>
+          <span>⚖️</span>
+          <span class="tab-full">Калькулятор кражи фото</span>
+          <span class="tab-mid">Калькулятор</span>
+          <span class="tab-short">Калькулятор</span>
         </button>
         <button type="button" class="nav-tab" id="tabBtnLabel" onclick="switchTool('label')">
-          <span>🏷️</span> <span class="tab-full">Термоэтикетки 58х40</span><span class="tab-short">Этикетки 58х40</span>
+          <span>🏷️</span>
+          <span class="tab-full">Термоэтикетки 58х40</span>
+          <span class="tab-mid">Этикетки 58х40</span>
+          <span class="tab-short">Этикетки 58х40</span>
         </button>
       </div>
       <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-nav" id="navKworkBtn">
@@ -3217,7 +3257,7 @@
                   <div class="sticker-safe-zone" title="Зона безопасности от ножа принтера 2.5 мм"></div>
 
                   <!-- Водяной знак для демо-режима -->
-                  <div id="stickerWatermark" class="sticker-watermark">
+                  <div id="stickerWatermark" class="sticker-watermark active">
                     <div class="sticker-watermark-text">ОБРАЗЕЦ WBCHECK<br>НЕ ДЛЯ СКЛАДА</div>
                   </div>
 
@@ -3272,7 +3312,7 @@
               </div>
 
               <div id="freeLimitBadge" style="font-size: 0.76rem; color: var(--text-tertiary); text-align: center; line-height: 1.4;">
-                Бесплатный режим: 1 тестовая этикетка без водяного знака для проверки принтера селлера
+                Бесплатный режим: тестовый образец с водяным знаком для калибровки термопринтера. Чистые файлы — на Kwork
               </div>
             </div>
           </div>
@@ -3388,7 +3428,7 @@
                     <span>Заказать партию на Kwork (1 000 ₽)</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                   </a>
-                  <a href="https://kwork.ru/user/25130833" target="_blank" class="btn-label-secondary" style="height: 42px; padding: 0 14px; font-size: 0.8rem; white-space: nowrap;">
+                  <a href="https://kwork.ru/user/milligat" target="_blank" class="btn-label-secondary" style="height: 42px; padding: 0 14px; font-size: 0.8rem; white-space: nowrap;">
                     👤 Профиль на Kwork
                   </a>
                 </div>
@@ -3488,7 +3528,7 @@
               </a>
             </li>
             <li>
-              <a href="https://kwork.ru/user/25130833" target="_blank" rel="noopener" style="font-weight: 700; color: var(--emerald-dark);">
+              <a href="https://kwork.ru/user/milligat" target="_blank" rel="noopener" style="font-weight: 700; color: var(--emerald-dark);">
                 👤 Профиль специалиста на Kwork (гарантия и отзывы)
               </a>
             </li>
@@ -4968,14 +5008,10 @@
         renderBarcodeSvg(prevSvg, barcodeVal || (labelMp === 'wb' ? '2038491048292' : 'OZN-84920-BL'));
       }
 
-      // Обновляем состояние водяного знака
+      // Водяной знак защитного образца активен всегда
       const wm = document.getElementById('stickerWatermark');
       if (wm) {
-        if (freeLabelsDownloaded >= 1) {
-          wm.classList.add('active');
-        } else {
-          wm.classList.remove('active');
-        }
+        wm.classList.add('active');
       }
     }
 
@@ -5122,11 +5158,14 @@
       </div>
     </div>
     <div class="p-sub">Арт: ${art} | Разм: ${size} | Цвет: ${color}</div>
-    <div class="p-barcode-wrap">
+    <div class="p-barcode-wrap" style="position: relative;">
       <svg class="p-barcode-svg" viewBox="${svgViewBox}" preserveAspectRatio="none">
         ${svgInner}
       </svg>
       <div class="p-digits">${isOzon ? 'OZON: ' + barcode : barcode}</div>
+      <div style="position: absolute; top: 2.5mm; left: 1mm; right: 1mm; border: 1.2pt dashed #000; background: rgba(255,255,255,0.92); padding: 0.8mm 1mm; text-align: center; font-weight: 900; font-size: 5pt; line-height: 1.1; letter-spacing: 0.5pt; transform: rotate(-8deg);">
+        ОБРАЗЕЦ WBCHECK · НЕ ДЛЯ СКЛАДА
+      </div>
     </div>
     <div class="p-bottom">
       <div>Состав: ${comp} | Сделано: ${country}</div>
@@ -5146,11 +5185,11 @@
         freeLabelsDownloaded = 1;
         try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
         updateLabelPreview();
-        showToast('1 тестовая этикетка отправлена на печать. Следующие будут сформированы с водяным знаком.');
+        showToast('Тестовый образец отправлен на печать. Чистые этикетки без водяных знаков доступны на Kwork.');
       }, 350);
     }
 
-    // Генерация чистого масштабируемого SVG для термопринтера и браузера
+    // Генерация защищённого образца SVG с неудаляемым водяным знаком
     function generateLabelSvgString() {
       updateLabelPreview();
 
@@ -5165,16 +5204,15 @@
       const eacChecked = (document.getElementById('labelCheckEac') || {}).checked;
       const isOzon = (labelMp === 'ozon');
 
-      const isLocked = (freeLabelsDownloaded >= 1);
       const svgInner = document.getElementById('prevBarcodeSvg').innerHTML;
 
-      // Водяной знак поверх штрихкода при блокировке
-      const watermarkXml = isLocked ? `
+      // Водяной знак защитного образца поверх штрихкода (всегда присутствует)
+      const watermarkXml = `
   <g transform="rotate(-16 290 175)">
-    <rect x="95" y="136" width="390" height="76" rx="8" fill="#fef2f2" fill-opacity="0.95" stroke="#dc2626" stroke-width="3" stroke-dasharray="8,5"/>
-    <text x="290" y="167" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="21" font-weight="900" fill="#dc2626" letter-spacing="2">ОБРАЗЕЦ WBCHECK</text>
-    <text x="290" y="197" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="16" font-weight="800" fill="#dc2626" letter-spacing="1.5">НЕ ДЛЯ СКЛАДА</text>
-  </g>` : '';
+    <rect x="85" y="136" width="410" height="76" rx="8" fill="#fef2f2" fill-opacity="0.95" stroke="#dc2626" stroke-width="3" stroke-dasharray="8,5"/>
+    <text x="290" y="167" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="20" font-weight="900" fill="#dc2626" letter-spacing="2">ОБРАЗЕЦ WBCHECK</text>
+    <text x="290" y="197" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="15" font-weight="800" fill="#dc2626" letter-spacing="1.5">НЕ ДЛЯ СКЛАДА · ТЕСТ ПРИНТЕРА</text>
+  </g>`;
 
       return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 400" width="100%" height="100%">
@@ -5210,36 +5248,40 @@
 </svg>`;
     }
 
-    // Скачивание масштабируемого векторного макета SVG
+    // Скачивание тестового образца SVG с водяным знаком
     function downloadSingleSvg() {
+      if (freeLabelsDownloaded >= 1) {
+        showFreemiumTrapModal('скачивание повторной этикетки');
+        return;
+      }
+
       const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2038491048292';
-      const isLocked = (freeLabelsDownloaded >= 1);
       const svgContent = generateLabelSvgString();
 
       const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Этикетка_58х40_${barcode}${isLocked ? '_ОБРАЗЕЦ' : ''}.svg`;
+      a.download = `Этикетка_58х40_${barcode}_ОБРАЗЕЦ.svg`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
-      if (!isLocked) {
-        freeLabelsDownloaded = 1;
-        try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
-        updateLabelPreview();
-        showToast('1 бесплатный векторный макет SVG скачан.');
-      } else {
-        showFreemiumTrapModal('скачивание повторной этикетки');
-      }
+      freeLabelsDownloaded = 1;
+      try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
+      updateLabelPreview();
+      showToast('Тестовый образец SVG скачан. Чистые партии без водяных знаков доступны на Kwork.');
     }
 
-    // Скачивание сверхчёткого растрового изображения PNG (300 DPI)
+    // Скачивание сверхчёткого тестового изображения PNG (300 DPI) с водяным знаком
     function downloadSinglePng() {
+      if (freeLabelsDownloaded >= 1) {
+        showFreemiumTrapModal('скачивание повторной этикетки');
+        return;
+      }
+
       const barcode = (document.getElementById('labelInputBarcode') || {}).value || '2038491048292';
-      const isLocked = (freeLabelsDownloaded >= 1);
       const svgContent = generateLabelSvgString();
 
       const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
@@ -5261,20 +5303,16 @@
           const pngUrl = URL.createObjectURL(pngBlob);
           const a = document.createElement('a');
           a.href = pngUrl;
-          a.download = `Этикетка_58х40_${barcode}${isLocked ? '_ОБРАЗЕЦ' : ''}.png`;
+          a.download = `Этикетка_58х40_${barcode}_ОБРАЗЕЦ.png`;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(pngUrl);
 
-          if (!isLocked) {
-            freeLabelsDownloaded = 1;
-            try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
-            updateLabelPreview();
-            showToast('1 бесплатная этикетка PNG (300 DPI) скачана.');
-          } else {
-            showFreemiumTrapModal('скачивание повторной этикетки');
-          }
+          freeLabelsDownloaded = 1;
+          try { localStorage.setItem('wbcheck_free_label_used', '1'); } catch (e) {}
+          updateLabelPreview();
+          showToast('Тестовый образец PNG (300 DPI) скачан. Чистые партии без водяных знаков доступны на Kwork.');
         }, 'image/png');
       };
       img.src = url;
@@ -5319,7 +5357,7 @@
             <a href="https://kwork.ru/e-commerce-social-network/54550913/sgeneriruyu-termoetiketki-so-shtrikhkodami-58kh40-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-label-primary" style="flex: 1; min-width: 220px; height: 44px; text-decoration: none;">
               Заказать партию на Kwork (1 000 ₽)
             </a>
-            <a href="https://kwork.ru/user/25130833" target="_blank" class="btn-label-secondary" style="height: 44px; padding: 0 16px; text-decoration: none;">
+            <a href="https://kwork.ru/user/milligat" target="_blank" class="btn-label-secondary" style="height: 44px; padding: 0 16px; text-decoration: none;">
               👤 Профиль автора
             </a>
           </div>
