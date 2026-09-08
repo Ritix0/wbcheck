@@ -1045,7 +1045,7 @@
       }
     }
 
-    /* Content-First Calculator Console (Linear / Raycast Style) */
+    /* Content-First Calculator Console (Spacious & Clean Layout) */
     .calc-wrap {
       margin-bottom: 50px;
     }
@@ -1056,13 +1056,24 @@
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .spec-header {
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-hairline);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .calc-section-divider {
       background: #f8fafc;
-      padding: 10px 24px;
-      font-size: 0.75rem;
+      padding: 10px 28px;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -1071,61 +1082,123 @@
       border-top: 1px solid var(--border-hairline);
     }
 
-    .calc-row {
-      padding: 16px 24px;
+    .calc-row-input {
+      padding: 20px 28px;
       border-bottom: 1px solid var(--border-hairline);
-      display: grid;
-      grid-template-columns: 220px 1fr auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .calc-row-stat {
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 24px;
     }
 
-    .calc-row:last-child {
-      border-bottom: none;
+    .stat-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    @media (max-width: 768px) {
-      .calc-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 14px 16px;
-      }
-      .calc-desc {
-        grid-column: 1 / -1 !important;
-      }
+    .stat-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
     }
 
-    .calc-label {
-      font-size: 0.8rem;
-      font-weight: 600;
+    .stat-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 1.22rem;
+      font-weight: 800;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
+      color: var(--text-primary);
+    }
+
+    .calc-label-clean {
+      font-size: 0.78rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-tertiary);
     }
 
-    .calc-controls {
+    /* Range Slider and Controls */
+    .calc-slider-box {
       display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
     }
 
-    .calc-desc {
-      grid-column: 2 / -1;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .calc-slider-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: #e2e8f0;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--emerald);
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: var(--emerald-dark);
+    }
+
+    .calc-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--emerald);
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     }
 
     /* Minimalist Number Chips */
     .num-chips {
       display: inline-flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 5px;
     }
 
     .num-chip {
-      padding: 5px 11px;
+      padding: 5px 12px;
       background: var(--bg-surface-subtle);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-sm);
@@ -1149,11 +1222,11 @@
     }
 
     .num-input {
-      width: 70px;
-      padding: 5px 8px;
+      width: 72px;
+      padding: 6px 8px;
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-sm);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
       font-family: var(--font-mono);
       background: #f8fafc;
@@ -1175,12 +1248,13 @@
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-hairline);
       gap: 2px;
+      max-width: 420px;
     }
 
     .segmented-btn {
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: var(--radius-sm);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--text-secondary);
       border: none;
@@ -1204,15 +1278,16 @@
 
     /* Editorial Warning Switch */
     .editorial-switch {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       background: #fffbeb;
       border: 1px solid #fde68a;
       border-radius: var(--radius-sm);
-      padding: 8px 12px;
+      padding: 8px 14px;
       cursor: pointer;
       user-select: none;
+      max-width: fit-content;
     }
 
     .editorial-switch input[type="checkbox"] {
@@ -1240,7 +1315,7 @@
     }
 
     .claim-code-header {
-      padding: 14px 20px;
+      padding: 14px 24px;
       background: #fafafa;
       border-bottom: 1px solid var(--border-hairline);
       display: flex;
@@ -1261,8 +1336,8 @@
 
     .claim-textarea {
       width: 100%;
-      min-height: 140px;
-      padding: 16px 20px;
+      min-height: 160px;
+      padding: 18px 24px;
       border: none;
       background: transparent;
       font-family: inherit;
@@ -1275,6 +1350,42 @@
 
     .claim-textarea:focus {
       outline: none;
+    }
+
+    @media (max-width: 768px) {
+      .spec-header, .calc-section-divider, .calc-row-input, .calc-row-stat {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+      .calc-row-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .stat-val {
+        text-align: left;
+        font-size: 1.15rem;
+      }
+      .segmented-control {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+      }
+      .segmented-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 4px;
+        font-size: 0.78rem;
+      }
+      .editorial-switch {
+        max-width: 100%;
+      }
+      .claim-code-header {
+        padding: 12px 16px;
+      }
+      .claim-textarea {
+        padding: 14px 16px;
+      }
     }
 
   </style>
@@ -1878,33 +1989,43 @@
       <section class="hero" style="padding-bottom: 24px;">
         <div class="hero-eyebrow">
           <span class="status-dot"></span>
-          <span>Правовая защита селлеров · Статьи 1252, 1259, 1300, 1301 ГК РФ</span>
+          <span>Правовая защита карточек товаров: статьи 1252, 1259, 1300, 1301 ГК РФ</span>
         </div>
         <h1 class="hero-title">Калькулятор компенсации за кражу фото и инфографики</h1>
-        <p class="hero-subtitle">Мгновенный расчёт законной суммы компенсации и судебных издержек нарушителя на Wildberries и Ozon с генерацией досудебного требования.</p>
+        <p class="hero-subtitle">Сервис помогает селлерам Wildberries и Ozon быстро рассчитать законную компенсацию по ст. 1301 ГК РФ, оценить судебные расходы нарушителя и составить досудебное требование для чата.</p>
       </section>
 
-      <!-- Unified Inspection Spec Console (Content-First) -->
+      <!-- Unified Inspection Spec Console (Spacious & Clean Layout) -->
       <section class="calc-wrap">
         <div class="calc-console">
           
           <div class="spec-header">
-            <div style="display:flex; align-items:center; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
               <span class="status-dot"></span>
-              <strong style="font-size: 0.98rem;">Параметры нарушения и судебный расчёт</strong>
-              <span class="status-pill" style="padding: 3px 10px; font-size: 0.72rem;">СТ. 1301 ГК РФ</span>
+              <span style="font-weight:700; font-size:0.95rem; color:var(--text-primary);">Калькулятор нарушения</span>
+              <span class="status-pill" style="padding: 3px 9px; font-size: 0.72rem;">ст. 1301 ГК РФ</span>
             </div>
-            <div style="font-size: 0.88rem; color: var(--text-secondary);">
-              Законный минимум: <strong id="calcStatMinHeader" style="font-family: var(--font-mono); color: var(--emerald-dark); font-size: 1.1rem;">40 000 ₽</strong>
+            <div style="font-size: 0.82rem; color: var(--text-tertiary);">
+              Судебная практика РФ · ст. 110 АПК РФ
             </div>
           </div>
 
           <!-- Раздел 1: Входные параметры -->
-          <div class="calc-section-divider">1. Исходные данные нарушения</div>
+          <div class="calc-section-divider">1. Исходные параметры нарушения</div>
 
-          <div class="calc-row">
-            <div class="calc-label">Количество слайдов:</div>
-            <div class="calc-controls">
+          <!-- Строка 1: Количество слайдов (Слайдер + Инпут + Чипсы) -->
+          <div class="calc-row-input">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="calc-label-clean">Количество слайдов инфографики / фото:</div>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <input type="number" id="calcSlides" class="num-input" min="1" max="50" value="4">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-tertiary);">шт.</span>
+              </div>
+            </div>
+            <div class="calc-slider-box">
+              <div class="calc-slider-row">
+                <input type="range" id="calcSlider" class="calc-slider" min="1" max="20" value="4">
+              </div>
               <div class="num-chips" id="chipGroupSlides">
                 <button type="button" class="num-chip" data-val="1">1</button>
                 <button type="button" class="num-chip" data-val="2">2</button>
@@ -1914,95 +2035,120 @@
                 <button type="button" class="num-chip" data-val="6">6</button>
                 <button type="button" class="num-chip" data-val="8">8</button>
                 <button type="button" class="num-chip" data-val="10">10</button>
+                <button type="button" class="num-chip" data-val="12">12</button>
+                <button type="button" class="num-chip" data-val="15">15</button>
               </div>
-              <input type="number" id="calcSlides" class="num-input" min="1" max="30" value="4">
-              <span style="font-size: 0.85rem; color: var(--text-tertiary);">шт.</span>
             </div>
-            <div class="calc-desc">
-              Каждый слайд инфографики и отдельное фото — самостоятельный объект права (п. 59-65 Постановления Пленума ВС РФ № 10).
+            <div class="stat-desc" style="margin-top: 2px;">
+              Каждый слайд инфографики и отдельная фотография считаются самостоятельными объектами авторского права (п. 59-65 Постановления Пленума ВС РФ № 10).
             </div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Маркетплейс:</div>
-            <div class="calc-controls">
-              <div class="segmented-control">
-                <button type="button" class="segmented-btn active" id="btnMpWb" onclick="setCalcMp('wb')">🟣 Wildberries</button>
-                <button type="button" class="segmented-btn" id="btnMpOzon" onclick="setCalcMp('ozon')">🔵 Ozon</button>
-              </div>
+          <!-- Строка 2: Маркетплейс -->
+          <div class="calc-row-input">
+            <div class="calc-label-clean">Маркетплейс:</div>
+            <div class="segmented-control">
+              <button type="button" class="segmented-btn active" id="btnMpWb" onclick="setCalcMp('wb')">🟣 Wildberries</button>
+              <button type="button" class="segmented-btn" id="btnMpOzon" onclick="setCalcMp('ozon')">🔵 Ozon</button>
             </div>
-            <div class="calc-desc" id="calcMpDesc">
-              Wildberries («Цифровой арбитраж» в ЛК WB Partners, 10 дней на ответ нарушителю перед принудительным сносом).
+            <div class="stat-desc" id="calcMpDesc">
+              Wildberries: рассмотрение жалоб через Цифровой арбитраж в кабинете продавца, 10 дней на ответ нарушителю перед блокировкой.
             </div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Удаление логотипа / бренда:</div>
-            <div class="calc-controls">
+          <!-- Строка 3: Удаление водяного знака / логотипа -->
+          <div class="calc-row-input">
+            <div class="calc-label-clean">Информация об авторском праве:</div>
+            <div>
               <label class="editorial-switch">
                 <input type="checkbox" id="calcStripLogo" onchange="calcRecalculate()">
                 <span class="editorial-switch-text">Срезан водяной знак или логотип (+ст. 1300 ГК РФ)</span>
               </label>
             </div>
-            <div class="calc-desc">
-              Удаление информации об авторском праве влечёт отдельную компенсацию от 10 000 до 5 000 000 ₽ за каждый слайд.
+            <div class="stat-desc">
+              Если нарушитель замазал или срезал ваш водяной знак, логотип или бренд, по ст. 1300 ГК РФ взыскивается дополнительная компенсация от 10 000 до 5 000 000 ₽ за каждый слайд.
             </div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Статус нарушителя:</div>
-            <div class="calc-controls">
-              <div class="segmented-control">
-                <button type="button" class="segmented-btn active" id="btnStatusIp" onclick="setCalcStatus('ip')">ИП / ООО (Арбитраж)</button>
-                <button type="button" class="segmented-btn" id="btnStatusSelf" onclick="setCalcStatus('self')">Самозанятый / Физлицо</button>
-              </div>
+          <!-- Строка 4: Статус нарушителя -->
+          <div class="calc-row-input">
+            <div class="calc-label-clean">Статус нарушителя:</div>
+            <div class="segmented-control">
+              <button type="button" class="segmented-btn active" id="btnStatusIp" onclick="setCalcStatus('ip')">ИП / ООО</button>
+              <button type="button" class="segmented-btn" id="btnStatusSelf" onclick="setCalcStatus('self')">Самозанятый</button>
             </div>
-            <div class="calc-desc">
-              Определяет судебную подсудность спора (Арбитражный суд или районный суд) и состав взыскиваемых издержек.
+            <div class="stat-desc">
+              Определяет судебную подсудность спора (арбитражный суд для юрлиц или районный суд для граждан) и состав судебных издержек.
             </div>
           </div>
 
           <!-- Раздел 2: Правовой расчёт -->
-          <div class="calc-section-divider">2. Спецификация законных требований и издержек</div>
+          <div class="calc-section-divider">2. Спецификация законных требований и судебных издержек</div>
 
-          <div class="calc-row">
-            <div class="calc-label">Законный минимум (ст. 1301 ГК):</div>
-            <div class="spec-val" id="calcStatMin" style="color: var(--emerald-dark);">40 000 ₽</div>
-            <div class="calc-desc" id="calcStatMinDesc">
-              10 000 ₽ за каждый из 4 украденных слайдов по ст. 1301 ГК РФ
+          <!-- Итог 1: Законный минимум -->
+          <div class="calc-row-stat">
+            <div class="stat-left">
+              <div class="stat-title">Законный минимум компенсации (ст. 1301 ГК РФ):</div>
+              <div class="stat-desc" id="calcStatMinDesc">
+                Минимум по закону (по 10 000 ₽ за каждый из 4 украденных слайдов)
+              </div>
             </div>
+            <div class="stat-val" id="calcStatMin" style="color: var(--emerald-dark);">40 000 ₽</div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Прогноз Арбитражного суда:</div>
-            <div class="spec-val" id="calcStatCourt">60 000 – 140 000 ₽</div>
-            <div class="calc-desc">
-              Реальная средняя сумма по решениям арбитражных судов РФ (15 000 – 35 000 ₽ за 1 слайд)
+          <!-- Итог 2: Прогноз Арбитражного суда -->
+          <div class="calc-row-stat">
+            <div class="stat-left">
+              <div class="stat-title">Реальный прогноз Арбитражного суда РФ:</div>
+              <div class="stat-desc">
+                Средняя судебная практика по коммерческим спорам (от 15 000 до 35 000 ₽ за слайд)
+              </div>
             </div>
+            <div class="stat-val" id="calcStatCourt">60 000 – 140 000 ₽</div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Судебные издержки нарушителя:</div>
-            <div class="spec-val" id="calcStatCosts">~62 000 ₽</div>
-            <div class="calc-desc">
-              Взыскивается с ответчика по ст. 110 АПК РФ: новая госпошлина от 10 000 ₽ + протокол фиксации 12 000 ₽ + юрист 40 000 ₽
+          <!-- Итог 3: Судебные издержки -->
+          <div class="calc-row-stat">
+            <div class="stat-left">
+              <div class="stat-title">Судебные расходы нарушителя по ст. 110 АПК РФ:</div>
+              <div class="stat-desc">
+                Взыскивается с ответчика: новая госпошлина от 10 000 ₽ + протокол фиксации 12 000 ₽ + юрист 40 000 ₽
+              </div>
             </div>
+            <div class="stat-val" id="calcStatCosts">~64 000 ₽</div>
           </div>
 
-          <div class="calc-row" style="background: #fff8f8;">
-            <div class="calc-label" style="color: #991b1b;">Совокупный риск нарушителя:</div>
-            <div class="spec-val" id="calcStatRisk" style="color: #b91c1c; font-size: 1.3rem;">до 202 000 ₽</div>
-            <div class="calc-desc" style="color: #7f1d1d;">
-              Финансовый удар по вору в суде при отказе от добровольного удаления карточки
+          <!-- Итог 4: Срок сноса карточки -->
+          <div class="calc-row-stat">
+            <div class="stat-left">
+              <div class="stat-title">Срок блокировки карточки маркетплейсом:</div>
+              <div class="stat-desc" id="calcStatDeadlineDesc">
+                Регламентный срок ответа нарушителя в Цифровом арбитраже Wildberries до принудительного удаления карточки с витрины.
+              </div>
             </div>
+            <div class="stat-val" id="calcStatDeadline" style="color: var(--amber-dark);">10 дней (WB Арбитраж)</div>
           </div>
 
-          <div class="calc-row">
-            <div class="calc-label">Мирное урегулирование:</div>
-            <div class="spec-val" id="calcStatSettle" style="color: var(--emerald);">30 000 – 40 000 ₽</div>
-            <div class="calc-desc">
-              Сумма для досудебного соглашения: нарушителю выгоднее выплатить её добровольно, чем потерять карточку и судиться
+          <!-- Итог 5: Совокупный финансовый риск -->
+          <div class="calc-row-stat" style="background: #fff8f8;">
+            <div class="stat-left">
+              <div class="stat-title" style="color: #991b1b;">Совокупный финансовый риск нарушителя:</div>
+              <div class="stat-desc" style="color: #7f1d1d;">
+                Полные финансовые потери нарушителя в суде при отказе решить вопрос мирно
+              </div>
             </div>
+            <div class="stat-val" id="calcStatRisk" style="color: #b91c1c; font-size: 1.35rem;">до 204 000 ₽</div>
+          </div>
+
+          <!-- Итог 6: Мирное урегулирование -->
+          <div class="calc-row-stat">
+            <div class="stat-left">
+              <div class="stat-title" style="color: var(--emerald-dark);">Рекомендуемая сумма мирного соглашения:</div>
+              <div class="stat-desc">
+                Сумма для досудебной выплаты: нарушителю выгоднее выплатить её добровольно, чем потерять карточку с отзывами и оплачивать суд
+              </div>
+            </div>
+            <div class="stat-val" id="calcStatSettle" style="color: var(--emerald); font-size: 1.25rem;">30 000 – 40 000 ₽</div>
           </div>
 
         </div>
@@ -2027,7 +2173,7 @@
           <div class="action-dock-info">
             <div class="action-dock-title">Нарушитель игнорирует сообщения в чате?</div>
             <div class="action-dock-text">
-              Чтобы юридический отдел Wildberries или Ozon принудительно заблокировал карточку-клон за 24–48 часов по регламенту площадки, требуется официальная мотивированная претензия со статьями 1252, 1259, 1301 ГК РФ и подтверждённые исходники (RAW, Figma, EXIF).
+              Если нарушитель не отвечает, юридический отдел Wildberries или Ozon принудительно заблокирует карточку-клон за 24–48 часов по официальной претензии с нормами закона и подтверждёнными исходниками (RAW, Figma, EXIF).
             </div>
           </div>
           <a href="https://kwork.ru/lawyer-consulting/54517650/sostavlyu-pretenziyu-za-krazhu-foto-dlya-blokirovki-kartochki-wb-i-ozon?ref=25130833" target="_blank" class="btn-dock-action">
@@ -2052,7 +2198,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-content">
-                Для положительного решения требуется прикрепить: 1) Оригинальные файлы фотокамеры в формате RAW (CR2, NEF, ARW, DNG) либо оригиналы JPEG с полными метаданными EXIF (дата, модель камеры, экспозиция); 2) Исходные макеты инфографики Figma с историей слоёв или несведенные PSD; 3) Скриншот из личного кабинета с более ранней датой загрузки; 4) Если привлекался дизайнер — договор авторского заказа и акт приёма-передачи.
+                Для положительного решения требуется прикрепить: 1) Оригинальные файлы фотокамеры в формате RAW (CR2, NEF, ARW, DNG) либо оригиналы JPEG с полными метаданными EXIF (дата, модель камеры, экспозиция); 2) Исходные макеты инфографики Figma с историей слоёв или несведённые PSD; 3) Скриншот из личного кабинета с более ранней датой загрузки; 4) Если привлекался дизайнер: договор авторского заказа и акт приёма-передачи.
               </div>
             </div>
 
@@ -2576,49 +2722,91 @@
     }
 
     // --- ЛОГИКА КАЛЬКУЛЯТОРА СТ. 1301 ГК РФ ---
+    // ==================== CALCULATOR LOGIC (ст. 1301 ГК РФ) ====================
     let calcMp = 'wb';
     let calcStatus = 'ip';
 
     function setCalcMp(mp) {
       calcMp = mp;
-      document.getElementById('btnMpWb').classList.toggle('active', mp === 'wb');
-      document.getElementById('btnMpOzon').classList.toggle('active', mp === 'ozon');
+      const btnWb = document.getElementById('btnMpWb');
+      const btnOz = document.getElementById('btnMpOzon');
+      if (btnWb) btnWb.classList.toggle('active', mp === 'wb');
+      if (btnOz) btnOz.classList.toggle('active', mp === 'ozon');
+
+      const desc = document.getElementById('calcMpDesc');
+      if (desc) {
+        desc.textContent = mp === 'wb'
+          ? 'Wildberries: рассмотрение жалоб через Цифровой арбитраж в кабинете продавца, 10 дней на ответ нарушителю перед блокировкой.'
+          : 'Ozon: подача претензии через службу контроля качества Ozon Claim, 3–7 дней на ответ до скрытия карточки с витрины.';
+      }
       calcRecalculate();
     }
 
     function setCalcStatus(st) {
       calcStatus = st;
-      document.getElementById('btnStatusIp').classList.toggle('active', st === 'ip');
-      document.getElementById('btnStatusSelf').classList.toggle('active', st === 'self');
+      const btnIp = document.getElementById('btnStatusIp');
+      const btnSelf = document.getElementById('btnStatusSelf');
+      if (btnIp) btnIp.classList.toggle('active', st === 'ip');
+      if (btnSelf) btnSelf.classList.toggle('active', st === 'self');
       calcRecalculate();
     }
 
-    // Обработка быстрых чипсов количества слайдов
-    document.getElementById('chipGroupSlides').addEventListener('click', (e) => {
-      const btn = e.target.closest('.chip-btn');
-      if (!btn) return;
-      document.querySelectorAll('#chipGroupSlides .chip-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('calcSlides').value = btn.dataset.val;
-      calcRecalculate();
-    });
+    // Синхронизация ползунка, чипсов и цифрового поля
+    function syncSlides(val) {
+      let num = parseInt(val) || 1;
+      if (num < 1) num = 1;
+      if (num > 50) num = 50;
 
-    document.getElementById('calcSlides').addEventListener('input', () => {
-      const val = parseInt(document.getElementById('calcSlides').value) || 1;
-      document.querySelectorAll('#chipGroupSlides .chip-btn').forEach(b => {
-        b.classList.toggle('active', parseInt(b.dataset.val) === val);
-      });
+      const input = document.getElementById('calcSlides');
+      const slider = document.getElementById('calcSlider');
+      const chipGroup = document.getElementById('chipGroupSlides');
+
+      if (input && parseInt(input.value) !== num) {
+        input.value = num;
+      }
+      if (slider && parseInt(slider.value) !== num && num <= 20) {
+        slider.value = num;
+      }
+      if (chipGroup) {
+        chipGroup.querySelectorAll('.num-chip').forEach(b => {
+          b.classList.toggle('active', parseInt(b.dataset.val) === num);
+        });
+      }
       calcRecalculate();
-    });
+    }
+
+    // Привязка слушателей контролов
+    function initCalcControls() {
+      const slider = document.getElementById('calcSlider');
+      if (slider) {
+        slider.addEventListener('input', (e) => syncSlides(e.target.value));
+      }
+
+      const input = document.getElementById('calcSlides');
+      if (input) {
+        input.addEventListener('input', (e) => syncSlides(e.target.value));
+      }
+
+      const chipGroup = document.getElementById('chipGroupSlides');
+      if (chipGroup) {
+        chipGroup.addEventListener('click', (e) => {
+          const btn = e.target.closest('.num-chip');
+          if (!btn) return;
+          syncSlides(btn.dataset.val);
+        });
+      }
+    }
 
     function calcRecalculate() {
-      let slides = parseInt(document.getElementById('calcSlides').value) || 1;
+      const input = document.getElementById('calcSlides');
+      let slides = parseInt(input ? input.value : 4) || 1;
       if (slides < 1) slides = 1;
       if (slides > 50) slides = 50;
 
-      const isStripLogo = document.getElementById('calcStripLogo').checked;
+      const stripLogoEl = document.getElementById('calcStripLogo');
+      const isStripLogo = stripLogoEl ? stripLogoEl.checked : false;
 
-      // 1. Законный минимум (ст. 1301 + ст. 1300)
+      // 1. Законный минимум (ст. 1301 + ст. 1300 ГК РФ)
       const baseMin = slides * 10000;
       const logoMin = isStripLogo ? slides * 10000 : 0;
       const totalMin = baseMin + logoMin;
@@ -2627,75 +2815,103 @@
       const courtLow = slides * 15000 + (isStripLogo ? slides * 10000 : 0);
       const courtHigh = slides * 35000 + (isStripLogo ? slides * 25000 : 0);
 
-      // 3. Судебные расходы
-      // Госпошлина по НК РФ (сентябрь 2024): до 100 000 руб = 10 000 руб; выше 100k = 10 000 + 5%
+      // 3. Судебные расходы ответчика по ст. 110 АПК РФ
       let duty = 10000;
       if (courtHigh > 100000) {
         duty += Math.round((courtHigh - 100000) * 0.05);
       }
-      const fixCost = 12000; // фиксация доказательств
-      const legalCost = calcStatus === 'ip' ? 40000 : 30000; // юрист
+      const fixCost = 12000;
+      const legalCost = calcStatus === 'ip' ? 40000 : 30000;
       const totalCosts = duty + fixCost + legalCost;
 
-      // 4. Суммарный финансовый риск нарушителя
+      // 4. Совокупный финансовый риск
       const totalRisk = courtHigh + totalCosts;
 
-      // 5. Рекомендуемая досудебная выплата (мирно)
+      // 5. Мирное досудебное соглашение
       const settleLow = Math.round(slides * 7500 / 1000) * 1000;
       const settleHigh = Math.round(slides * 10000 / 1000) * 1000;
 
-      // Вывод в интерфейс
-      document.getElementById('calcStatMin').textContent = totalMin.toLocaleString('ru-RU') + ' ₽';
-      const minH = document.getElementById('calcStatMinHeader'); if (minH) minH.textContent = totalMin.toLocaleString('ru-RU') + ' ₽';
-      document.getElementById('calcStatMinDesc').textContent = isStripLogo 
-        ? `Законный минимум: ${baseMin.toLocaleString('ru-RU')} ₽ (ст. 1301) + ${logoMin.toLocaleString('ru-RU')} ₽ (ст. 1300 за логотип)`
-        : `Минимум по закону (10 000 ₽ за каждый из ${slides} украденных слайдов)`;
+      // Вывод в DOM с проверкой на null
+      const elMin = document.getElementById('calcStatMin');
+      if (elMin) elMin.textContent = totalMin.toLocaleString('ru-RU') + ' ₽';
 
-      document.getElementById('calcStatCourt').textContent = `${courtLow.toLocaleString('ru-RU')} – ${courtHigh.toLocaleString('ru-RU')} ₽`;
-      document.getElementById('calcStatCosts').textContent = `~${totalCosts.toLocaleString('ru-RU')} ₽`;
-      document.getElementById('calcStatRisk').textContent = `до ${totalRisk.toLocaleString('ru-RU')} ₽`;
-      document.getElementById('calcStatSettle').textContent = `${settleLow.toLocaleString('ru-RU')} – ${settleHigh.toLocaleString('ru-RU')} ₽`;
+      const elMinDesc = document.getElementById('calcStatMinDesc');
+      if (elMinDesc) {
+        elMinDesc.textContent = isStripLogo 
+          ? `Законный минимум: ${baseMin.toLocaleString('ru-RU')} ₽ (ст. 1301) + ${logoMin.toLocaleString('ru-RU')} ₽ (ст. 1300 за логотип)`
+          : `Минимум по закону (по 10 000 ₽ за каждый из ${slides} украденных слайдов)`;
+      }
 
-      document.getElementById('calcStatDeadline').textContent = calcMp === 'wb' 
-        ? '10 дней (Цифровой арбитраж WB)' 
-        : '3–7 дней (Ozon Claim)';
+      const elCourt = document.getElementById('calcStatCourt');
+      if (elCourt) elCourt.textContent = `${courtLow.toLocaleString('ru-RU')} – ${courtHigh.toLocaleString('ru-RU')} ₽`;
+
+      const elCosts = document.getElementById('calcStatCosts');
+      if (elCosts) elCosts.textContent = `~${totalCosts.toLocaleString('ru-RU')} ₽`;
+
+      const elRisk = document.getElementById('calcStatRisk');
+      if (elRisk) elRisk.textContent = `до ${totalRisk.toLocaleString('ru-RU')} ₽`;
+
+      const elSettle = document.getElementById('calcStatSettle');
+      if (elSettle) elSettle.textContent = `${settleLow.toLocaleString('ru-RU')} – ${settleHigh.toLocaleString('ru-RU')} ₽`;
+
+      const elDeadline = document.getElementById('calcStatDeadline');
+      if (elDeadline) {
+        elDeadline.textContent = calcMp === 'wb' 
+          ? '10 дней (WB Арбитраж)' 
+          : '3–7 дней (Ozon Claim)';
+      }
+
+      const elDeadlineDesc = document.getElementById('calcStatDeadlineDesc');
+      if (elDeadlineDesc) {
+        elDeadlineDesc.textContent = calcMp === 'wb'
+          ? 'Регламентный срок ответа нарушителя в Цифровом арбитраже Wildberries до принудительного удаления карточки с витрины.'
+          : 'Срок проверки документов службой Ozon Claim до скрытия карточки-клона с витрины.';
+      }
 
       // Генерация текста претензии
       generateClaimText(slides, isStripLogo, totalMin, totalRisk, settleLow, settleHigh);
     }
 
+    // Хуманизированный текст досудебного предупреждения (без тире, живой, уверенный)
     function generateClaimText(slides, isStripLogo, totalMin, totalRisk, settleLow, settleHigh) {
       const mpName = calcMp === 'wb' ? 'Wildberries' : 'Ozon';
-      const arbName = calcMp === 'wb' ? '«Цифровой арбитраж» Wildberries' : 'службу защиты интеллектуальной собственности Ozon Claim';
+      const arbName = calcMp === 'wb' ? 'Цифровой арбитраж Wildberries' : 'службу контроля интеллектуальной собственности Ozon Claim';
       const courtType = calcStatus === 'ip' ? 'Арбитражный суд' : 'районный суд';
 
-      let text = `Здравствуйте. В вашей карточке товара на ${mpName} (артикул [УКАЖИТЕ АРТИКУЛ НАРУШИТЕЛЯ]) обнаружено незаконное использование ${slides} слайдов/фотографий авторской инфографики нашего бренда.\n\n` +
-        `Указанные изображения созданы нашим творческим трудом и защищены ст. 1252, 1259 и 1301 Гражданского кодекса РФ. Исходные файлы фотосъёмки (RAW/EXIF) и рабочие проекты дизайна (Figma) сохранены.\n\n`;
+      let text = `Здравствуйте. В карточке вашего товара на ${mpName} (артикул [УКАЖИТЕ АРТИКУЛ]) обнаружено незаконное использование наших авторских материалов. Всего скопировано слайдов инфографики и фотографий: ${slides} шт.\n\n` +
+        `Все исходные файлы съёмки (оригиналы RAW с метаданными камеры) и рабочие макеты в Figma сохранены у нас с подтверждением дат создания. Исключительные права защищены статьями 1252, 1259 и 1301 Гражданского кодекса РФ.\n\n`;
 
       if (isStripLogo) {
-        text += `Отягчающее обстоятельство: удаление/срезание информации об авторском праве (логотипа бренда) квалифицируется по ст. 1300 ГК РФ и влечет дополнительный штраф.\n\n`;
+        text += `С изображений также удалён наш фирменный знак или логотип бренда. Это отдельное правонарушение по ст. 1300 ГК РФ, за которое предусмотрена самостоятельная выплата от 10 000 до 5 000 000 ₽.\n\n`;
       }
 
-      text += `Законная сумма компенсации составляет от ${totalMin.toLocaleString('ru-RU')} до 5 000 000 ₽. В случае судебного разбирательства взыскиваются судебные издержки (госпошлина, нотариальный протокол, расходы на представителя), что увеличивает финансовый риск нарушителя до ${totalRisk.toLocaleString('ru-RU')} ₽.\n\n` +
+      text += `Законная сумма компенсации составляет от ${totalMin.toLocaleString('ru-RU')} ₽ (по 10 000 ₽ за каждый слайд). В случае судебного разбирательства с проигравшей стороны взыскиваются все издержки: новая госпошлина, фиксация доказательств и услуги юриста. По ст. 110 АПК РФ это увеличивает ваши финансовые потери до ${totalRisk.toLocaleString('ru-RU')} ₽.\n\n` +
         `ТРЕБОВАНИЯ:\n` +
-        `1. В течение 24 часов полностью удалить спорные слайды/фотографии из карточки товара.\n` +
-        `2. Либо урегулировать спор досудебным мировым соглашением с компенсацией ${settleLow.toLocaleString('ru-RU')} ₽.\n\n` +
-        `При отсутствии ответа в течение 24 часов мы направляем официальную мотивированную жалобу в ${arbName} с требованием принудительной блокировки карточки товара с витрины, а также передаём материалы юристу для подачи иска в ${courtType}.`;
+        `1. В течение 24 часов полностью удалить спорные слайды и фото из карточки товара.\n` +
+        `2. Либо заключить досудебное соглашение с выплатой компенсации ${settleLow.toLocaleString('ru-RU')} ₽ за право использования материалов.\n\n` +
+        `Если ответа не поступит в течение 24 часов, мы направляем официальную мотивированную жалобу в ${arbName} для блокировки карточки товара с витрины, а материалы передаются юристу для подачи иска в ${courtType}.`;
 
-      document.getElementById('calcClaimText').value = text;
+      const claimArea = document.getElementById('calcClaimText');
+      if (claimArea) {
+        claimArea.value = text;
+      }
     }
 
     function copyClaimTemplate() {
-      const text = document.getElementById('calcClaimText').value;
+      const claimArea = document.getElementById('calcClaimText');
+      const text = claimArea ? claimArea.value : '';
+      if (!text) return;
+
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('toast');
-        toast.textContent = 'Текст предупреждения скопирован в буфер обмена!';
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
+        if (toast) {
+          toast.textContent = 'Текст предупреждения скопирован в буфер обмена!';
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2500);
+        }
       });
     }
 
-    // Управление сворачиванием / растушёвкой таблицы реестра
     function toggleTableExpand() {
       const wrapper = document.getElementById('tableExpandWrapper');
       const btn = document.getElementById('btnTableExpand');
@@ -3067,6 +3283,8 @@
     renderDirectory(database);
     selectItem(1);
 
+    initCalcControls();
+    calcRecalculate();
   </script>
 </body>
 </html>
