@@ -3739,25 +3739,28 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
-  <!-- Яндекс Метрика (аналитика посещаемости, вебвизор и коммерческие цели) -->
+  <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112417981', 'ym');
 
-    // Идентификатор счётчика Яндекс Метрики (по умолчанию демо-ID 100249826, замените на ваш номер из metrika.yandex.ru)
-    window.YM_ID = 100249826;
+    // Реальный номер счётчика сайта WBCheck.ru
+    window.YM_ID = 112417981;
 
-    if (window.YM_ID && window.YM_ID > 0) {
-      ym(window.YM_ID, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true
-      });
-    }
+    ym(112417981, 'init', {
+      ssr: true,
+      webvisor: true,
+      clickmap: true,
+      ecommerce: "dataLayer",
+      referrer: document.referrer,
+      url: location.href,
+      accurateTrackBounce: true,
+      trackLinks: true
+    });
 
     // Универсальная функция отправки коммерческих целей в Метрику
     window.sendMetrikaGoal = function(goalName, goalParams) {
@@ -3770,8 +3773,8 @@
       }
     };
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/100249826" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Яндекс Метрика -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/112417981" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
