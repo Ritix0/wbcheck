@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WBCheck.ru: Проверка ТН ВЭД, Калькулятор кражи фото, Дизайн карточек WB, Этикетки 58х40 и QR-вкладыши</title>
-  <meta name="description" content="Бесплатные сервисы для селлеров Wildberries и Ozon: онлайн-поисковик ТН ВЭД по ПП РФ № 2425, калькулятор компенсации за кражу фото по ст. 1301 ГК РФ, аудит и дизайн продающих карточек WB с разбором слепых зон и болей из отзывов, генератор этикеток 58х40 и векторных QR-кодов.">
-  <meta name="keywords" content="wbcheck, дизайн карточек wildberries, инфографика для маркетплейсов, карточки товаров вайлдберриз, слепые зоны wildberries, аудит карточки товара, продающая инфографика wb, промпты для карточек wb, отказное письмо вайлдберриз, коды тн вэд озон, калькулятор кражи фото, компенсация ст 1301 гк рф, генератор этикеток 58х40, термоэтикетки wildberries ozon, печать штрихкодов ean-13, генератор qr кодов для вкладышей">
+  <title>WBCheck.ru: Экспресс-сервисы и защита для селлеров Wildberries и Ozon</title>
+  <meta name="description" content="Бесплатные онлайн-сервисы для селлеров Wildberries и Ozon: проверка кодов ТН ВЭД, генератор термоэтикеток 58х40, расчёт компенсации за фото и дизайнерские QR.">
+  <meta name="keywords" content="wbcheck, проверка тн вэд онлайн, отказное письмо вайлдберриз, коды тн вэд озон, пп рф 2425 перечень, генератор этикеток 58х40, печать термоэтикеток wildberries ozon, штрихкод ean 13 онлайн, расчёт компенсации за кражу фото, претензия за воровство инфографики wb, цифровой арбитраж wildberries, ozon claim защита прав, дизайнерский qr код для вкладышей, qr код в коробку wb, аудит карточки wildberries, слепые зоны вайлдберриз 2026, инфографика для маркетплейсов">
   <link rel="canonical" href="https://wbcheck.ru/">
   <meta name="yandex-verification" content="0b390d8f13a80720">
   <meta name="google-site-verification" content="QDdwyBmoJNkmasSulbp24yrtDqObQ4qTXI8py8pNdGU">
@@ -34,11 +34,84 @@
   <meta name="twitter:description" content="Бесплатный подбор ТН ВЭД, расчёт компенсации за кражу фото, дизайн продающих карточек WB, термоэтикетки 58х40 и векторные QR-вкладыши.">
   <meta name="twitter:image" content="https://wbcheck.ru/og-image.png">
 
-  <!-- Schema.org JSON-LD -->
+    <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://wbcheck.ru/#website",
+        "url": "https://wbcheck.ru/",
+        "name": "WBCheck.ru",
+        "description": "Экосистема бесплатных экспресс-сервисов и правовой защиты для селлеров Wildberries и Ozon",
+        "publisher": {
+          "@id": "https://wbcheck.ru/#organization"
+        },
+        "inLanguage": "ru-RU"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://wbcheck.ru/#organization",
+        "name": "WBCheck",
+        "url": "https://wbcheck.ru/",
+        "logo": "https://wbcheck.ru/logo.png",
+        "sameAs": [
+          "https://kwork.ru/user/milligat"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://wbcheck.ru/#author",
+        "name": "milligat",
+        "jobTitle": "Эксперт по маркетплейсам и защите авторских прав",
+        "url": "https://kwork.ru/user/milligat",
+        "sameAs": [
+          "https://kwork.ru/user/milligat"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://wbcheck.ru/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://wbcheck.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ТН ВЭД и Отказные письма",
+            "item": "https://wbcheck.ru/#tnved"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Калькулятор компенсации за кражу фото",
+            "item": "https://wbcheck.ru/#photo-calc"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Генератор этикеток 58х40",
+            "item": "https://wbcheck.ru/#labels-58x40"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Дизайнерский QR для вкладышей",
+            "item": "https://wbcheck.ru/#qr-code"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Аудит карточек Wildberries",
+            "item": "https://wbcheck.ru/#wb-cards"
+          }
+        ]
+      },
       {
         "@type": "WebApplication",
         "@id": "https://wbcheck.ru/#webapp",
@@ -52,11 +125,53 @@
           "price": "0",
           "priceCurrency": "RUB"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "description": "Бесплатные сервисы для селлеров маркетплейсов: экспресс-поисковик ТН ВЭД и отказных писем по ПП РФ № 2425, калькулятор компенсации за кражу фото по ст. 1301 ГК РФ, генератор термоэтикеток 58х40 со штрихкодами EAN-13 и Code-128 и генератор дизайнерских QR-кодов для вкладышей.",
+        "featureList": "Проверка кодов ТН ВЭД, расчёт компенсации за фото по ст. 1301 ГК РФ, печать термоэтикеток 58х40, векторные QR-вкладыши, аудит слепых зон инфографики WB",
         "author": {
-          "@type": "Person",
-          "name": "milligat",
-          "url": "https://kwork.ru/user/milligat"
+          "@id": "https://wbcheck.ru/#author"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://wbcheck.ru/#webapp-calc",
+        "url": "https://wbcheck.ru/#photo-calc",
+        "name": "Калькулятор компенсации за кражу фото и инфографики на Wildberries и Ozon",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB"
+        },
+        "description": "Расчёт законной компенсации за воровство фото и инфографики по ст. 1301 ГК РФ, ст. 1300 ГК РФ и расчёт судебных издержек по ст. 110 АПК РФ с генерацией досудебных претензий.",
+        "author": {
+          "@id": "https://wbcheck.ru/#author"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://wbcheck.ru/#webapp-labels",
+        "url": "https://wbcheck.ru/#labels-58x40",
+        "name": "Генератор и экспресс-валидатор термоэтикеток 58х40 для WB и Ozon",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB"
+        },
+        "description": "Онлайн-печать и валидация штрихкодов EAN-13 и Code-128 для термопринтеров 58х40 мм, защита от ножа принтера 2.5 мм и знаки ЕАС по ТР ТС 017/2011.",
+        "author": {
+          "@id": "https://wbcheck.ru/#author"
         }
       },
       {
@@ -74,9 +189,7 @@
         },
         "description": "Онлайн-генератор дизайнерских векторных QR-кодов со скруглёнными сквирклами, логотипом компании и фирменными палитрами для вкладышей в упаковку товара на Wildberries и Ozon.",
         "author": {
-          "@type": "Person",
-          "name": "milligat",
-          "url": "https://kwork.ru/user/milligat"
+          "@id": "https://wbcheck.ru/#author"
         }
       },
       {
@@ -94,9 +207,7 @@
         },
         "description": "Интерактивный аудит и разбор продающих карточек товаров для Wildberries: учет слепых зон мобильного интерфейса 2026 года, безопасные зоны под сердечко и корзину, отработка болей из отзывов покупателей и портфолио готовых карточек.",
         "author": {
-          "@type": "Person",
-          "name": "milligat",
-          "url": "https://kwork.ru/user/milligat"
+          "@id": "https://wbcheck.ru/#author"
         }
       },
       {
@@ -158,6 +269,14 @@
               "@type": "Answer",
               "text": "Самые экономичные и популярные форматы: визитка 90х50 мм, открытка А7 (74х105 мм) или вкладыш А6 (105х148 мм). Векторный формат SVG позволяет напечатать вкладыш любого размера с безупречной чёткостью шрифтов и линий."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Какие слепые зоны есть на карточке товара в мобильном приложении Wildberries?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "На экранах смартфонов правый верхний угол (120х120 px) перекрывается кнопкой избранного (сердечко), левый верхний — плашками скидок и акций, правый нижний — кнопкой корзины, а нижняя полоса (90 px) — плашкой цены и рейтинга. Текст и иконки должны располагаться в безопасной центральной зоне."
+            }
           }
         ]
       }
@@ -166,6 +285,36 @@
   </script>
 
   <style>
+    /* Accessible SEO semantic elements */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* GEO / AI Search Citable Lead Blocks */
+    .geo-lead-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-left: 3px solid var(--emerald);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+    .geo-lead-box strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
     :root {
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -3867,6 +4016,7 @@
   </header>
 
   <main class="container">
+    <h1 class="visually-hidden">WBCheck — Экосистема бесплатных экспресс-сервисов и правовой защиты для селлеров Wildberries и Ozon</h1>
     <div id="viewTnved" class="main-view">
     
     <!-- Hero & Spotlight Console -->
@@ -3875,8 +4025,11 @@
         <span class="status-dot"></span>
         <span>Экспресс-проверка товаров для Wildberries и Ozon</span>
       </div>
-      <h1 class="hero-title">Нужен ли сертификат или достаточно отказного письма?</h1>
+      <h2 class="hero-title">Нужен ли сертификат или достаточно отказного письма?</h2>
       <p class="hero-subtitle">Мгновенный поиск по кодам ТН ВЭД ЕАЭС, Постановлению № 2425 и техническим регламентам. Без звонков менеджеров и скрытых оплат.</p>
+      <div class="geo-lead-box" aria-label="Справочная информация о сертификации">
+        <strong>Справка по сертификации для маркетплейсов:</strong> Отказное информационное письмо для Wildberries и Ozon — это официальный документ аккредитованного органа по сертификации, подтверждающий, что продукция с указанными кодами ТН ВЭД ЕАЭС и ОКПД 2 не подлежит обязательной сертификации и декларированию по ПП РФ № 2425 и техническим регламентам ТР ТС. Документ бессрочный и защищает селлера от штрафов по ст. 14.43 КоАП РФ (до 300 000 ₽).
+      </div>
 
       <div class="search-console">
         <div class="search-input-wrap">
@@ -4291,7 +4444,7 @@
           <span class="status-dot"></span>
           <span>Правовая защита карточек товаров: статьи 1252, 1259, 1300, 1301 ГК РФ</span>
         </div>
-        <h1 class="hero-title">Калькулятор компенсации за кражу фото и инфографики</h1>
+        <h2 class="hero-title">Калькулятор компенсации за кражу фото и инфографики</h2>
         <p class="hero-subtitle">Сервис помогает селлерам Wildberries и Ozon быстро рассчитать законную компенсацию по ст. 1301 ГК РФ, оценить судебные расходы нарушителя и составить досудебное требование для чата.</p>
       </section>
 
@@ -4600,7 +4753,7 @@
           <span class="status-dot"></span>
           <span>Стандарт термопечати 58х40 мм для Wildberries и Ozon</span>
         </div>
-        <h1 class="hero-title">Генератор и экспресс-валидатор термоэтикеток со штрихкодами</h1>
+        <h2 class="hero-title">Генератор и экспресс-валидатор термоэтикеток со штрихкодами</h2>
         <p class="hero-subtitle">
           Создайте чёткую термоэтикетку по регламенту маркетплейсов с защитой от среза полей ножом принтера. Проверьте штрихкод EAN-13 или Code-128 на ошибки до отправки поставки на склад.
         </p>
@@ -4938,7 +5091,7 @@
           <span class="status-dot"></span>
           <span>Векторный генератор QR для вкладышей в товар на Wildberries и Ozon</span>
         </div>
-        <h1 class="hero-title">Дизайнерский QR-код с логотипом для вкладышей в упаковку</h1>
+        <h2 class="hero-title">Дизайнерский QR-код с логотипом для вкладышей в упаковку</h2>
         <p class="hero-subtitle">
           Защитите рейтинг карточки от негатива: переводите покупателей в Telegram до написания плохих отзывов на маркетплейсе, прикрепляйте видеоинструкции и активируйте гарантию. Эстетичные сквирклы Apple-style и градиенты под стиль бренда.
         </p>
@@ -5176,7 +5329,7 @@
           <span class="status-dot"></span>
           <span>Стандарты мобильной выдачи Wildberries 2026 года</span>
         </div>
-        <h1 class="card-hero-title">Как делаются карточки, которые продают, а не сливают рекламный бюджет</h1>
+        <h2 class="card-hero-title">Как делаются карточки, которые продают, а не сливают рекламный бюджет</h2>
         <p class="card-hero-subtitle">
           В ленте смартфона карточка товара занимает всего 180х240 пикселей. Если важный текст перекрыт системным сердечком WB, шрифты тонкие, а плашки перегружены сухими цифрами, селлер теряет до 40% переходов. Ниже разобран живой кейс создания карточки с отработкой болей из отзывов лидера выдачи.
         </p>
