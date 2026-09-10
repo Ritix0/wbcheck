@@ -2776,3 +2776,247 @@ const database = [
         }
       }
     });
+
+    // === Cookie Consent Banner & Privacy Policy (152-ФЗ) ===
+    (function initCookieConsent() {
+      if (typeof window === 'undefined' || typeof document === 'undefined') return;
+      if (localStorage.getItem('wbcheck_cookie_consent') === 'accepted') return;
+
+      const styleId = 'wbcheck-cookie-style';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
+          .cookie-banner-wrap {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 32px);
+            max-width: 680px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.16), 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+            padding: 14px 20px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            opacity: 0;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+            font-family: inherit;
+            box-sizing: border-box;
+          }
+          .cookie-banner-wrap.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+          }
+          .cookie-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: #334155;
+            line-height: 1.45;
+          }
+          .cookie-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+          }
+          .cookie-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+          }
+          .cookie-btn-accept {
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+            font-family: inherit;
+            white-space: nowrap;
+          }
+          .cookie-btn-accept:hover {
+            background: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+          }
+          .cookie-btn-details {
+            background: transparent;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: inherit;
+            white-space: nowrap;
+          }
+          .cookie-btn-details:hover {
+            color: #0f172a;
+            background: #f8fafc;
+            border-color: #cbd5e1;
+          }
+          @media (max-width: 640px) {
+            .cookie-banner-wrap {
+              bottom: 12px;
+              padding: 12px 14px;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 12px;
+              border-radius: 14px;
+            }
+            .cookie-content {
+              font-size: 0.78rem;
+              gap: 10px;
+            }
+            .cookie-actions {
+              justify-content: flex-end;
+              width: 100%;
+            }
+            .cookie-btn-accept {
+              flex: 1;
+              text-align: center;
+              padding: 10px 16px;
+            }
+          }
+          .cookie-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+          }
+          .cookie-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+          }
+          .cookie-modal-card {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 520px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            font-family: inherit;
+          }
+          .cookie-modal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+          }
+          .cookie-modal-body {
+            font-size: 0.84rem;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+          }
+          .cookie-modal-body p {
+            margin-bottom: 10px;
+          }
+          .cookie-modal-body strong {
+            color: #0f172a;
+          }
+          .cookie-modal-btn-close {
+            background: #0f172a;
+            color: #ffffff;
+            border: none;
+            padding: 9px 22px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-family: inherit;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      function createBanner() {
+        const banner = document.createElement('div');
+        banner.id = 'wbcheckCookieBanner';
+        banner.className = 'cookie-banner-wrap';
+        banner.setAttribute('role', 'region');
+        banner.setAttribute('aria-label', 'Согласие на использование файлов cookie');
+        banner.innerHTML = `
+          <div class="cookie-content">
+            <span class="cookie-icon" aria-hidden="true">🍪</span>
+            <span>Мы используем cookie и сервис Яндекс Метрика для корректной работы сайта и веб-аналитики (152-ФЗ). Продолжая использовать сервис, вы соглашаетесь с этим.</span>
+          </div>
+          <div class="cookie-actions">
+            <button type="button" class="cookie-btn-details" id="cookieBtnDetails">Подробнее</button>
+            <button type="button" class="cookie-btn-accept" id="cookieBtnAccept">Принять</button>
+          </div>
+        `;
+
+        const modal = document.createElement('div');
+        modal.id = 'wbcheckCookieModal';
+        modal.className = 'cookie-modal-overlay';
+        modal.innerHTML = `
+          <div class="cookie-modal-card" role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
+            <div class="cookie-modal-title" id="cookieModalTitle">Использование файлов cookie и 152-ФЗ</div>
+            <div class="cookie-modal-body">
+              <p><strong>100% Client-Side:</strong> Сервис WBCheck.ru не собирает, не запрашивает и не хранит личные данные пользователей (ФИО, телефоны, пароли). Все утилиты (генерация этикеток, расчёты, генерация QR) выполняются исключительно на вашем устройстве в браузере.</p>
+              <p><strong>Аналитика:</strong> Для учёта посещаемости и повышения качества сервиса используется счётчик Яндекс Метрика (ООО «Яндекс»), обрабатывающий технические параметры визита (IP-адрес, cookie, устройство) в соответствии со ст. 6 и 9 Федерального закона № 152-ФЗ.</p>
+              <p>Вы можете отключить cookie в настройках своего браузера в любой момент.</p>
+            </div>
+            <button type="button" class="cookie-modal-btn-close" id="cookieModalClose">Понятно</button>
+          </div>
+        `;
+
+        document.body.appendChild(banner);
+        document.body.appendChild(modal);
+
+        setTimeout(() => {
+          banner.classList.add('show');
+        }, 500);
+
+        document.getElementById('cookieBtnAccept').addEventListener('click', () => {
+          localStorage.setItem('wbcheck_cookie_consent', 'accepted');
+          banner.classList.remove('show');
+          setTimeout(() => banner.remove(), 400);
+        });
+
+        document.getElementById('cookieBtnDetails').addEventListener('click', () => {
+          modal.classList.add('show');
+        });
+
+        document.getElementById('cookieModalClose').addEventListener('click', () => {
+          modal.classList.remove('show');
+        });
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.remove('show');
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', createBanner);
+      } else {
+        createBanner();
+      }
+    })();
