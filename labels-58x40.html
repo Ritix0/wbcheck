@@ -986,7 +986,9 @@
 
     .table-expand-wrapper.collapsed .directory-table-container {
       max-height: 345px;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .table-fade-overlay {
@@ -1048,6 +1050,7 @@
     .directory-table-container {
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       background: #ffffff;
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-md);
