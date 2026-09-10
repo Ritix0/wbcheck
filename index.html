@@ -592,11 +592,25 @@
         width: fit-content;
       }
       .action-dock {
-        padding: 20px;
+        padding: 18px 14px;
+        gap: 14px;
+      }
+      .action-dock-title {
+        font-size: 1.02rem;
+      }
+      .action-dock-text {
+        font-size: 0.84rem;
+        line-height: 1.5;
       }
       .btn-dock-action {
         width: 100%;
         justify-content: center;
+        text-align: center;
+        white-space: normal;
+        padding: 12px 14px;
+        font-size: 0.84rem;
+        line-height: 1.35;
+        box-sizing: border-box;
       }
       .directory-table {
         min-width: 650px;
@@ -721,18 +735,21 @@
     .btn-dock-action {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       background: var(--text-primary);
       color: #ffffff;
-      font-size: 0.92rem;
+      font-size: 0.90rem;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 12px 20px;
       min-height: 46px;
       border-radius: var(--radius-sm);
       transition: var(--transition-fast);
-      white-space: nowrap;
       text-decoration: none;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+      text-align: center;
+      line-height: 1.35;
+      box-sizing: border-box;
     }
 
     .btn-dock-action:hover {
@@ -2199,10 +2216,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 44px;
+      min-height: 44px;
+      height: auto;
+      padding: 10px 14px;
       background: var(--text-primary);
       color: #ffffff;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
       border: none;
@@ -2210,6 +2229,11 @@
       transition: var(--transition-fast);
       text-decoration: none;
       box-shadow: var(--shadow-sm);
+      text-align: center;
+      line-height: 1.35;
+      box-sizing: border-box;
+      white-space: normal;
+      width: 100%;
     }
 
     .btn-label-primary:hover {
@@ -2932,18 +2956,24 @@
     .btn-card-primary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       background: var(--text-primary);
       color: #ffffff;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
-      padding: 10px 20px;
+      padding: 10px 16px;
+      min-height: 44px;
       border-radius: var(--radius-sm);
       border: none;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
       transition: var(--transition-fast);
       text-decoration: none;
+      text-align: center;
+      line-height: 1.35;
+      box-sizing: border-box;
+      white-space: normal;
     }
     .btn-card-primary:hover {
       background: #1e293b;
