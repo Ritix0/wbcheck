@@ -3835,43 +3835,61 @@
   <meta name="twitter:description" content="Генератор дизайнерских векторных QR-кодов для вкладышей в упаковку Wildberries и Ozon. Сквирклы, логотипы, градиенты и надёжная коррекция ошибок Level H 30%.">
   <meta name="twitter:image" content="https://wbcheck.ru/og-image.png">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-  <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112417981', 'ym');
-
-    // Реальный номер счётчика сайта WBCheck.ru
     window.YM_ID = 112417981;
+    window._ymLoaded = false;
+    window._ymQueue = [];
 
-    ym(112417981, 'init', {
-      ssr: true,
-      webvisor: true,
-      clickmap: true,
-      ecommerce: "dataLayer",
-      referrer: document.referrer,
-      url: location.href,
-      accurateTrackBounce: true,
-      trackLinks: true
-    });
-
-    // Универсальная функция отправки коммерческих целей в Метрику
+    // Безопасная отправка коммерческих целей (до и после загрузки Метрики)
     window.sendMetrikaGoal = function(goalName, goalParams) {
-      if (typeof ym === 'function' && window.YM_ID && window.YM_ID > 0) {
-        try {
-          ym(window.YM_ID, 'reachGoal', goalName, goalParams || {});
-        } catch (e) {
-          console.warn('Ошибка отправки цели в Яндекс Метрику:', e);
-        }
+      if (window._ymLoaded && typeof ym === 'function') {
+        try { ym(window.YM_ID, 'reachGoal', goalName, goalParams || {}); } catch(e) {}
+      } else {
+        window._ymQueue.push({ name: goalName, params: goalParams || {} });
       }
     };
+
+    function loadYandexMetrika() {
+      if (window._ymLoaded) return;
+      window._ymLoaded = true;
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112417981', 'ym');
+
+      ym(112417981, 'init', {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+      });
+
+      if (window._ymQueue && window._ymQueue.length) {
+        window._ymQueue.forEach(function(item) {
+          try { ym(112417981, 'reachGoal', item.name, item.params); } catch(e) {}
+        });
+        window._ymQueue = [];
+      }
+    }
+
+    // Запуск Метрики после полной отрисовки или по первому взаимодействию (минимизирует TBT)
+    if (document.readyState === 'complete') {
+      setTimeout(loadYandexMetrika, 2000);
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(loadYandexMetrika, 2000);
+      });
+    }
+    ['mousemove', 'touchstart', 'scroll', 'click', 'keydown'].forEach(function(ev) {
+      window.addEventListener(ev, loadYandexMetrika, { once: true, passive: true });
+    });
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/112417981" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
@@ -3882,7 +3900,7 @@
     <div class="container nav-inner">
       <div class="nav-row-top">
         <a href="index.html" class="logo" style="text-decoration:none; color:inherit;">
-          <img src="favicon-32x32.png" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
+          <img src="favicon.svg" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
           <span>WBCheck</span>
           <span class="logo-version">Инструменты селлера</span>
         </a>
@@ -4169,7 +4187,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="index.html" class="footer-logo" style="text-decoration:none; color:inherit;">
-            <img src="favicon-32x32.png" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
+            <img src="favicon.svg" width="24" height="24" alt="WBCheck" class="logo-icon" style="flex-shrink:0;">
             <span style="font-weight:700; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.01em;">WBCheck<span style="color:var(--emerald);">.ru</span></span>
           </a>
           <p class="footer-desc">
@@ -4193,7 +4211,7 @@
         <div class="footer-col">
           <div class="footer-heading">Инструменты сервиса</div>
           <ul class="footer-links">
-            <li><a href="#" href="index.html">🔍 Экспресс-проверка ТН ВЭД</a></li>
+            <li><a href="index.html">🔍 Экспресс-проверка ТН ВЭД</a></li>
             <li><a href="photo-calc.html">⚖️ Калькулятор кражи фото</a></li>
             <li><a href="labels-58x40.html">🏷️ Термоэтикетки 58х40</a></li>
             <li><a href="qr-code.html">✨ QR для вкладышей</a></li>

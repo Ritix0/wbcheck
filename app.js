@@ -959,7 +959,7 @@ const database = [
       }
 
       directoryBody.innerHTML = items.map(item => `
-        <tr class="directory-row ${item.id === selectedId ? 'selected' : ''}" data-id="${item.id}" tabindex="0" role="button" aria-label="Показать спецификацию для ${item.name}">
+        <tr class="directory-row ${item.id === selectedId ? 'selected' : ''}" data-id="${item.id}" tabindex="0" role="button">
           <td class="cell-name">${item.name}</td>
           <td class="cell-code"><span>${item.tnved}</span></td>
           <td class="cell-cat">${item.groupCategory || item.category}</td>
@@ -2834,7 +2834,7 @@ const database = [
             flex-shrink: 0;
           }
           .cookie-btn-accept {
-            background: #10b981;
+            background: #047857;
             color: #ffffff;
             border: none;
             padding: 8px 20px;
@@ -2848,7 +2848,7 @@ const database = [
             white-space: nowrap;
           }
           .cookie-btn-accept:hover {
-            background: #059669;
+            background: #065f46;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
           }
