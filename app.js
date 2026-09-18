@@ -953,8 +953,25 @@ const database = [
     // Рендер каталога
     function renderDirectory(items) {
       if (items.length === 0) {
-        directoryBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 36px 20px; color: var(--text-tertiary); line-height: 1.6;">Товары по вашему запросу не найдены в базе отказных писем.<br>Возможно, для этой продукции требуется обязательный сертификат или декларация (ТР ТС).</td></tr>';
-        registryCount.textContent = '0 товаров найдено';
+        directoryBody.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align: center; padding: 36px 16px; background: #f8fafc; border-radius: 8px;">
+              <div style="max-width: 520px; margin: 0 auto;">
+                <div style="font-weight: 700; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">
+                  Товара нет в базовом открытом списке
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 18px;">
+                  Многие категории требуют обязательный сертификат соответствия, пожарную декларацию или специальный техрегламент. Мы проверим ваш товар по всем нормам, подберём точные коды ТН ВЭД / ОКПД 2 и поможем оформить официальный документ.
+                </div>
+                <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-dock-action" style="display: inline-flex; width: auto; padding: 11px 22px; font-size: 0.88rem; text-decoration: none;">
+                  <span>Проверить товар на Kwork за 1 000 ₽</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </td>
+          </tr>`;
+        registryCount.textContent = '0 товаров в списке';
+        updateExpandButtonVisibility(0);
         return;
       }
 
@@ -990,6 +1007,11 @@ const database = [
       statusText.textContent = 'СЕРТИФИКАТ НЕ ТРЕБУЕТСЯ · ОТКАЗНОЕ ПИСЬМО';
       warningTitle.textContent = 'Ловушка модерации WB и Ozon:';
       resWarningBox.style.display = 'flex';
+
+      // Сброс блока действия
+      if (dockTitle) dockTitle.textContent = 'Официальное отказное письмо с реквизитами вашего ИП или ООО';
+      if (dockText) dockText.textContent = 'Справочник подтвердил статус товара. Для модерации маркетплейсов без риска штрафа оформите официальный документ аккредитованного органа под ключ.';
+      if (dockBtn) dockBtn.querySelector('span').textContent = 'Оформить под ключ за 1 000 ₽';
 
       // Подсветка строки в таблице
       document.querySelectorAll('.directory-row').forEach(row => {
@@ -1136,7 +1158,23 @@ const database = [
 
       // Обработка предупреждения о ловушке сертификации
       if (results && results.trap) {
-        directoryBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 36px 20px; color: var(--amber-dark); line-height: 1.6; font-weight: 500;">Внимание! По данному запросу продукция подлежит обязательной сертификации или декларированию.<br>Отказное письмо для этого товара не применяется.</td></tr>';
+        directoryBody.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align: center; padding: 36px 16px; background: #fffbeb; border-radius: 8px;">
+              <div style="max-width: 520px; margin: 0 auto;">
+                <div style="font-weight: 700; font-size: 1.05rem; color: var(--amber-dark); margin-bottom: 8px;">
+                  Продукция подлежит обязательной сертификации или декларированию
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 18px;">
+                  ${results.trap}<br>Отказное письмо для этого товара не применяется. Поможем определить точный техрегламент и подготовить официальные документы.
+                </div>
+                <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-dock-action" style="display: inline-flex; width: auto; padding: 11px 22px; font-size: 0.88rem; text-decoration: none; background: var(--amber-dark);">
+                  <span>Проверить товар на Kwork за 1 000 ₽</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </td>
+          </tr>`;
         registryCount.textContent = 'Отказное письмо не применяется';
 
         resCategory.textContent = 'Предупреждение модерации';
@@ -1146,11 +1184,11 @@ const database = [
         resLaw.textContent = results.trap;
         statusPill.className = 'status-pill status-amber';
         statusText.textContent = 'ТРЕБУЕТСЯ ОБЯЗАТЕЛЬНЫЙ СЕРТИФИКАТ ИЛИ ДЕКЛАРАЦИЯ';
-        warningTitle.textContent = 'Запрещёно продавать без сертификата:';
-        resWarningText.textContent = 'Попытка загрузить отказное письмо на эту продукцию приведет к отклонению карточки модерацией Wildberries / Ozon и штрафу до 300 000 ₽ по КоАП РФ ст. 14.43.';
+        warningTitle.textContent = 'Запрещено продавать без сертификата:';
+        resWarningText.textContent = 'Попытка загрузить отказное письмо на эту продукцию приведёт к отклонению карточки модерацией Wildberries / Ozon и штрафу до 300 000 ₽ по КоАП РФ ст. 14.43.';
         
         dockTitle.textContent = 'Оформим сертификат соответствия или декларацию ТР ТС';
-        dockText.textContent = 'Напишите нам состав и назначение товара на Kwork. Юрист проверит точный регламент (ТР ТС 007, 008, 004, 020) и поможет официально оформить документ аккредитованной лаборатории.';
+        dockText.textContent = 'Напишите нам состав и назначение товара на Kwork. Эксперт проверит точный регламент (ТР ТС 007, 008, 004, 020) и поможет официально оформить документ аккредитованной лаборатории.';
         dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
         return;
       }
@@ -1160,19 +1198,39 @@ const database = [
       if (results.length > 0) {
         selectItem(results[0].id);
       } else {
-        resCategory.textContent = 'Результат проверки';
-        resTitle.textContent = 'По запросу «' + e.target.value + '» совпадений в перечне отказных писем нет';
-        resTnved.textContent = 'Требуется анализ';
-        resOkpd2.textContent = 'ТР ТС / ТР ЕАЭС';
-        resLaw.textContent = 'Товар может подпадать под обязательную сертификацию или декларирование соответствия (ТР ТС 004/2011, 008/2011, 017/2011, 020/2011, ПП РФ № 2425). Для точного определения нужен анализ состава и характеристик.';
-        statusPill.className = 'status-pill status-amber';
-        statusText.textContent = 'ТРЕБУЕТСЯ ПРОВЕРКА ПО ТЕХРЕГЛАМЕНТАМ';
-        warningTitle.textContent = 'Внимание:';
-        resWarningText.textContent = 'Не продавайте несертифицированный товар вслепую! Штраф Роспотребнадзора по КоАП РФ ст. 14.43 составляет до 300 000 ₽ с блокировкой кабинета на маркетплейсе.';
-        
-        dockTitle.textContent = 'Бесплатно подберем код ТН ВЭД и проверим сертификацию';
-        dockText.textContent = 'Напишите нам категорию и состав товара на Kwork. Юрист проверит продукцию по всем 50+ техническим регламентам и оформит документ за 1 день.';
-        dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
+        const rawVal = e.target.value.trim();
+        const cleanDigits = rawVal.replace(/[^0-9]/g, '');
+        const isCodeQuery = cleanDigits.length >= 4;
+
+        if (isCodeQuery) {
+          resCategory.textContent = 'Проверка кода ТН ВЭД';
+          resTitle.textContent = 'Код ТН ВЭД «' + rawVal + '» отсутствует в базовом перечне отказных писем';
+          resTnved.textContent = rawVal;
+          resOkpd2.textContent = 'Требуется подбор по ГОСТ / ТР ТС';
+          resLaw.textContent = 'Продукция по данному коду не входит в открытый перечень простых отказных писем. Многие товары этой группы (включая полимерные, отделочные и строительные материалы) подлежат обязательному пожарному декларированию по 123-ФЗ или сертификации по техрегламентам ТР ТС / ЕАЭС. Для точного ответа нужен экспертный анализ состава и области применения.';
+          statusPill.className = 'status-pill status-amber';
+          statusText.textContent = 'ТРЕБУЕТСЯ ПРОВЕРКА ПО ТЕХРЕГЛАМЕНТАМ';
+          warningTitle.textContent = 'Риск блокировки и штрафа:';
+          resWarningText.textContent = 'Оформление простого отказного письма на товар, подлежащий пожарной безопасности или обязательной оценке соответствия, приведёт к блокировке карточки маркетплейсом и штрафу до 300 000 ₽ по ст. 14.43 КоАП РФ.';
+          
+          dockTitle.textContent = 'Индивидуальная проверка кода ТН ВЭД и документов';
+          dockText.textContent = 'Напишите нам наименование и состав товара на Kwork. Проверим точный техрегламент, подберём корректные коды ТН ВЭД / ОКПД 2 и поможем оформить официальный документ под ключ.';
+          dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
+        } else {
+          resCategory.textContent = 'Результат проверки';
+          resTitle.textContent = 'По запросу «' + rawVal + '» совпадений в базовом списке нет';
+          resTnved.textContent = 'Требуется индивидуальный подбор';
+          resOkpd2.textContent = 'ТР ТС / ГОСТ Р';
+          resLaw.textContent = 'Товар не входит в стартовый список простых сувениров и аксессуаров. Он может подпадать под обязательную сертификацию или декларирование (ТР ТС 004, 008, 017, 020 или ПП РФ № 2425). Для точного определения нужен экспертный анализ состава.';
+          statusPill.className = 'status-pill status-amber';
+          statusText.textContent = 'ТРЕБУЕТСЯ ПРОВЕРКА ПО ТЕХРЕГЛАМЕНТАМ';
+          warningTitle.textContent = 'Не рискуйте карточкой:';
+          resWarningText.textContent = 'Не используйте случайные коды ТН ВЭД из чужих карточек! Неверный код ведёт к отклонению поставки на складе маркетплейса и штрафу Роспотребнадзора до 300 000 ₽.';
+          
+          dockTitle.textContent = 'Подберём точные коды ТН ВЭД и проверим сертификацию';
+          dockText.textContent = 'Напишите нам категорию и состав товара на Kwork. Эксперт проверит продукцию по всем 50+ техническим регламентам и поможет оформить официальный документ за 1 день.';
+          dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
+        }
       }
     });
 
@@ -1189,10 +1247,39 @@ const database = [
       });
 
       const results = smartFilter(searchInput.value, activeCategory);
-      if (!results.trap) {
+      if (results && results.trap) {
+        directoryBody.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align: center; padding: 36px 16px; background: #fffbeb; border-radius: 8px;">
+              <div style="max-width: 520px; margin: 0 auto;">
+                <div style="font-weight: 700; font-size: 1.05rem; color: var(--amber-dark); margin-bottom: 8px;">
+                  Продукция подлежит обязательной сертификации
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 18px;">
+                  ${results.trap}
+                </div>
+                <a href="https://kwork.ru/lawyer-consulting/54553048/podberu-kod-tn-ved-i-oformlyu-otkaznoe-pismo-dlya-wildberries-i-ozon?ref=25130833" target="_blank" class="btn-dock-action" style="display: inline-flex; width: auto; padding: 11px 22px; font-size: 0.88rem; text-decoration: none; background: var(--amber-dark);">
+                  <span>Проверить товар на Kwork за 1 000 ₽</span>
+                </a>
+              </div>
+            </td>
+          </tr>`;
+        registryCount.textContent = 'Отказное письмо не применяется';
+      } else {
         renderDirectory(results);
         if (results.length > 0) {
           selectItem(results[0].id);
+        } else {
+          resCategory.textContent = 'Категория: ' + (cat === 'all' ? 'Все' : cat);
+          resTitle.textContent = 'В выбранной категории нет совпадений по запросу';
+          resTnved.textContent = 'Требуется подбор';
+          resOkpd2.textContent = 'ТР ТС / ГОСТ Р';
+          resLaw.textContent = 'Попробуйте сбросить фильтр категории или напишите нам на Kwork: подберём код ТН ВЭД индивидуально.';
+          statusPill.className = 'status-pill status-amber';
+          statusText.textContent = 'НЕТ СОВПАДЕНИЙ В КАТЕГОРИИ';
+          dockTitle.textContent = 'Подберём точные коды ТН ВЭД под ключ';
+          dockText.textContent = 'Напишите нам категорию и состав товара на Kwork. Эксперт проверит продукцию по всем 50+ техническим регламентам.';
+          dockBtn.querySelector('span').textContent = 'Проверить товар на Kwork за 1 000 ₽';
         }
       }
     });
@@ -1212,6 +1299,9 @@ const database = [
       });
       if (document.getElementById('directoryBody')) { renderDirectory(database); }
       if (document.getElementById('directoryBody')) { selectItem(1); }
+      if (dockTitle) dockTitle.textContent = 'Официальное отказное письмо с реквизитами вашего ИП или ООО';
+      if (dockText) dockText.textContent = 'Справочник подтвердил статус товара. Для модерации маркетплейсов без риска штрафа до 100 000 ₽ оформите официальный документ аккредитованного органа под ключ.';
+      if (dockBtn) dockBtn.querySelector('span').textContent = 'Оформить под ключ за 1 000 ₽';
       searchInput.focus();
     }
 
